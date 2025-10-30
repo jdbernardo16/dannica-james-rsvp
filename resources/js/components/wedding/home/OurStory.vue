@@ -132,7 +132,7 @@ onMounted(() => {
                         <div class="w-full overflow-hidden rounded-t-full">
                             <img
                                 class="w-full transform transition-transform duration-700 hover:scale-110"
-                                src="/images/element2.png"
+                                src="/images/img3.png"
                                 alt="couple"
                             />
                         </div>
@@ -166,7 +166,7 @@ onMounted(() => {
                         </div>
                     </div>
                     <h2
-                        class="font-secondary mb-6 text-4xl leading-tight text-gray-800 sm:text-5xl md:text-6xl lg:text-7xl"
+                        class="mb-6 font-secondary text-4xl leading-tight text-gray-800 sm:text-5xl md:text-6xl lg:text-7xl"
                     >
                         A Love Story
                     </h2>
@@ -191,7 +191,7 @@ onMounted(() => {
                             milestone.visible
                                 ? 'translate-y-0 opacity-100'
                                 : 'translate-y-8 opacity-0',
-                            index % 2 === 0 ? 'lg:mt-12' : 'lg:-mt-12',
+                            index % 2 === 0 ? 'lg:-mt-12' : 'lg:mt-12',
                         ]"
                     >
                         <div
@@ -227,7 +227,7 @@ onMounted(() => {
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-playfair mb-1 text-2xl text-gray-800 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
+                                            class="mb-1 font-playfair text-2xl text-gray-800 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
                                         >
                                             {{ milestone.title }}
                                         </h3>

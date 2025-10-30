@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 
-const weddingDate = new Date('2025-12-15T00:00:00');
+const weddingDate = new Date('2025-12-12T00:00:00');
 const timeLeft = ref({
     days: 0,
     hours: 0,
@@ -125,16 +125,16 @@ const countdownItems = computed(() => [
                 </div>
 
                 <h2
-                    class="font-secondary mb-6 text-6xl font-light tracking-wide text-gray-800 md:text-7xl"
+                    class="mb-6 font-secondary text-6xl font-light tracking-wide text-gray-800 md:text-7xl"
                 >
                     Save the Date
                 </h2>
 
                 <!-- Date and Location with enhanced styling -->
                 <div
-                    class="font-playfair mb-6 flex flex-col items-center justify-center space-y-2 text-center text-2xl font-light md:flex-row md:space-y-0 md:space-x-4 md:text-3xl"
+                    class="mb-6 flex flex-col items-center justify-center space-y-2 text-center font-playfair text-2xl font-light md:flex-row md:space-y-0 md:space-x-4 md:text-3xl"
                 >
-                    <p class="text-rose-600">December 15, 2025</p>
+                    <p class="text-rose-600">December 12, 2025</p>
                     <span class="hidden text-gray-400 md:inline">•</span>
                     <p class="text-gray-700">Intramuros Manila</p>
                 </div>

@@ -6,12 +6,13 @@ const locations = ref([
         id: 1,
         type: 'ceremony',
         title: 'Ceremony',
-        time: '3:00 PM',
-        description: 'Witness us become one at exactly 3:00 in the afternoon',
-        venue: 'Parish of the Holy Family',
-        address: 'Luyos, Tanauan, Batangas',
+        time: '2:30 PM',
+        description: 'Witness us become one at exactly 2:30 in the afternoon',
+        venue: 'San Agustine Church Immaculate Conception Parish',
+        address: 'Gen. Luna Street Intramuros, Manila',
         icon: 'heart',
         visible: false,
+        map: 'https://maps.app.goo.gl/z6BhRGKf3jQjPQBX6',
     },
     {
         id: 2,
@@ -20,10 +21,11 @@ const locations = ref([
         time: '4:45 PM onwards',
         description:
             'Join us celebrate and have fun until the last minute of our special day',
-        venue: 'Jardin De Antonio',
-        address: 'Talaga, Tanauan, Batangas',
+        venue: 'La Castellana',
+        address: 'Cabildo Cor. Beaterio Street Intramuros, Manila',
         icon: 'toast',
         visible: false,
+        map: 'https://maps.app.goo.gl/2amhumtYKS1NZNwH8',
     },
 ]);
 
@@ -151,7 +153,7 @@ onUnmounted(() => {
                     </div>
                 </div>
                 <h2
-                    class="font-secondary mb-6 text-4xl leading-tight text-gray-800 sm:text-5xl md:text-6xl lg:text-7xl"
+                    class="mb-6 font-secondary text-4xl leading-tight text-gray-800 sm:text-5xl md:text-6xl lg:text-7xl"
                 >
                     The Locations
                 </h2>
@@ -164,7 +166,7 @@ onUnmounted(() => {
 
             <!-- Locations Grid -->
             <div class="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 md:gap-12">
-                <div
+                <a
                     v-for="(location, index) in locations"
                     :key="location.id"
                     class="location-card"
@@ -173,6 +175,8 @@ onUnmounted(() => {
                             ? 'translate-y-0 opacity-100'
                             : 'translate-y-8 opacity-0',
                     ]"
+                    :href="location.map"
+                    target="_blank"
                 >
                     <div
                         class="group relative h-full overflow-hidden rounded-2xl border border-rose-100 bg-white p-8 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-rose-300 hover:shadow-2xl"
@@ -207,7 +211,7 @@ onUnmounted(() => {
                                 </div>
                                 <div>
                                     <h3
-                                        class="font-playfair mb-1 text-2xl text-gray-800 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
+                                        class="mb-1 font-playfair text-2xl text-gray-800 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
                                     >
                                         {{ location.title }}
                                     </h3>
@@ -253,7 +257,7 @@ onUnmounted(() => {
                             </svg>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             <!-- Bottom decorative element -->

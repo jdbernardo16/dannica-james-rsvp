@@ -42,12 +42,12 @@ onUnmounted(() => {
             >
                 <div class="text-center md:text-left">
                     <h1
-                        class="font-secondary animate-fade-in-up mb-6 text-5xl font-light tracking-wide text-white md:text-8xl"
+                        class="animate-fade-in-up mb-6 font-secondary text-5xl font-light tracking-wide text-white md:text-8xl"
                     >
                         <span
                             class="inline-block transform transition-transform duration-300 hover:scale-105"
                         >
-                            Dannica
+                            James
                         </span>
                         <span
                             class="mx-2 inline-block animate-pulse font-normal text-rose-200 md:mx-3"
@@ -57,7 +57,7 @@ onUnmounted(() => {
                         <span
                             class="inline-block transform transition-transform duration-300 hover:scale-105"
                         >
-                            James
+                            Dannica
                         </span>
                     </h1>
                     <p
