@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "laravel-boost": {
+      "command": "php",
+      "args": [
+        "artisan",
+        "boost:mcp"
+      ],
+      "alwaysAllow": [
+        "application-info",
+        "database-schema",
+        "list-available-config-keys",
+        "last-error",
+        "report-feedback",
+        "database-query",
+        "get-config",
+        "search-docs",
+        "list-available-env-vars",
+        "get-absolute-url",
+        "read-log-entries",
+        "browser-logs",
+        "tinker",
+        "list-routes",
+        "database-connections"
+      ]
+    }
+  }
+}

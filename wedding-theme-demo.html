@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Wedding Theme Demo</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&family=Dancing+Script:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* Wedding Theme CSS Variables */
+            :root {
+                /* Wedding Color Palette */
+                --wedding-ivory: #fffff0;
+                --wedding-ivory-dark: #f5f5e6;
+                --wedding-blush-light: #f4d1d1;
+                --wedding-blush: #e8b4b8;
+                --wedding-blush-dark: #d6989c;
+                --wedding-gold-light: #ffd700;
+                --wedding-gold: #d4af37;
+                --wedding-gold-medium: #b8860b;
+                --wedding-gold-dark: #9b7e0f;
+                --wedding-navy: #1e3a5f;
+                --wedding-navy-light: #2e4a6f;
+                --wedding-navy-lighter: #3e5a7f;
+
+                /* Typography */
+                --font-wedding-heading: 'Playfair Display', Georgia, serif;
+                --font-wedding-body:
+                    'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+                    'Segoe UI', Roboto, sans-serif;
+                --font-wedding-accent: 'Dancing Script', cursive;
+
+                /* Wedding-specific semantic colors */
+                --wedding-primary: var(--wedding-navy);
+                --wedding-primary-foreground: var(--wedding-ivory);
+                --wedding-secondary: var(--wedding-blush);
+                --wedding-secondary-foreground: var(--wedding-navy);
+                --wedding-accent: var(--wedding-gold);
+                --wedding-accent-foreground: var(--wedding-navy);
+                --wedding-background: var(--wedding-ivory);
+                --wedding-background-soft: var(--wedding-ivory-dark);
+                --wedding-muted: var(--wedding-blush-light);
+                --wedding-muted-foreground: var(--wedding-navy);
+
+                /* Wedding shadows */
+                --wedding-shadow-sm: 0 1px 2px 0 rgba(30, 58, 95, 0.05);
+                --wedding-shadow:
+                    0 4px 6px -1px rgba(30, 58, 95, 0.1),
+                    0 2px 4px -1px rgba(30, 58, 95, 0.06);
+                --wedding-shadow-md:
+                    0 10px 15px -3px rgba(30, 58, 95, 0.1),
+                    0 4px 6px -2px rgba(30, 58, 95, 0.05);
+                --wedding-shadow-lg:
+                    0 20px 25px -5px rgba(30, 58, 95, 0.1),
+                    0 10px 10px -5px rgba(30, 58, 95, 0.04);
+                --wedding-shadow-xl: 0 25px 50px -12px rgba(30, 58, 95, 0.25);
+                --wedding-shadow-soft: 0 2px 15px -3px rgba(212, 175, 55, 0.15);
+                --wedding-shadow-gold: 0 4px 20px -4px rgba(212, 175, 55, 0.3);
+
+                /* Wedding gradients */
+                --wedding-gradient-ivory: linear-gradient(
+                    135deg,
+                    #fffff0 0%,
+                    #f5f5e6 100%
+                );
+                --wedding-gradient-blush: linear-gradient(
+                    135deg,
+                    #f4d1d1 0%,
+                    #e8b4b8 100%
+                );
+                --wedding-gradient-gold: linear-gradient(
+                    135deg,
+                    #ffd700 0%,
+                    #d4af37 50%,
+                    #b8860b 100%
+                );
+                --wedding-gradient-navy: linear-gradient(
+                    135deg,
+                    #1e3a5f 0%,
+                    #2e4a6f 50%,
+                    #3e5a7f 100%
+                );
+                --wedding-gradient-subtle: linear-gradient(
+                    135deg,
+                    rgba(255, 255, 240, 0.9) 0%,
+                    rgba(244, 209, 209, 0.9) 100%
+                );
+
+                /* Wedding borders */
+                --wedding-border-width: 1px;
+                --wedding-border-color: var(--wedding-blush-light);
+                --wedding-border-color-gold: var(--wedding-gold);
+                --wedding-border-color-navy: var(--wedding-navy);
+
+                /* Wedding radius */
+                --wedding-radius-sm: 0.25rem;
+                --wedding-radius: 0.5rem;
+                --wedding-radius-md: 0.75rem;
+                --wedding-radius-lg: 1rem;
+                --wedding-radius-xl: 1.5rem;
+                --wedding-radius-2xl: 2rem;
+                --wedding-radius-full: 9999px;
+            }
+
+            /* Wedding Theme Base Styles */
+            .wedding-theme {
+                font-family: var(--font-wedding-body);
+                background-color: var(--wedding-background);
+                color: var(--wedding-primary);
+            }
+
+            /* Wedding typography base */
+            .wedding-theme h1,
+            .wedding-theme h2,
+            .wedding-theme h3,
+            .wedding-theme h4,
+            .wedding-theme h5,
+            .wedding-theme h6 {
+                font-family: var(--font-wedding-heading);
+                font-weight: 700;
+                color: var(--wedding-primary);
+                line-height: 1.2;
+            }
+
+            .wedding-theme h1 {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                font-weight: 900;
+                letter-spacing: -0.02em;
+            }
+
+            .wedding-theme h2 {
+                font-size: clamp(2rem, 4vw, 3rem);
+                font-weight: 700;
+                letter-spacing: -0.01em;
+            }
+
+            .wedding-theme h3 {
+                font-size: clamp(1.5rem, 3vw, 2.25rem);
+                font-weight: 700;
+            }
+
+            .wedding-theme p {
+                font-family: var(--font-wedding-body);
+                line-height: 1.7;
+                color: var(--wedding-primary);
+            }
+
+            .wedding-theme body {
+                background: var(--wedding-gradient-ivory);
+                min-height: 100vh;
+            }
+
+            /* Wedding colors */
+            .wedding-ivory {
+                color: var(--wedding-ivory);
+            }
+            .wedding-ivory-bg {
+                background-color: var(--wedding-ivory);
+            }
+            .wedding-blush {
+                color: var(--wedding-blush);
+            }
+            .wedding-blush-bg {
+                background-color: var(--wedding-blush);
+            }
+            .wedding-blush-light {
+                color: var(--wedding-blush-light);
+            }
+            .wedding-blush-light-bg {
+                background-color: var(--wedding-blush-light);
+            }
+            .wedding-gold {
+                color: var(--wedding-gold);
+            }
+            .wedding-gold-bg {
+                background-color: var(--wedding-gold);
+            }
+            .wedding-navy {
+                color: var(--wedding-navy);
+            }
+            .wedding-navy-bg {
+                background-color: var(--wedding-navy);
+            }
+
+            /* Wedding fonts */
+            .font-wedding-heading {
+                font-family: var(--font-wedding-heading);
+            }
+            .font-wedding-body {
+                font-family: var(--font-wedding-body);
+            }
+            .font-wedding-accent {
+                font-family: var(--font-wedding-accent);
+            }
+
+            /* Wedding text sizes */
+            .text-wedding-xs {
+                font-size: 0.75rem;
+                letter-spacing: 0.05em;
+            }
+            .text-wedding-sm {
+                font-size: 0.875rem;
+                letter-spacing: 0.025em;
+            }
+            .text-wedding-base {
+                font-size: 1rem;
+            }
+            .text-wedding-lg {
+                font-size: 1.125rem;
+                line-height: 1.6;
+            }
+            .text-wedding-xl {
+                font-size: 1.25rem;
+                line-height: 1.6;
+            }
+            .text-wedding-2xl {
+                font-size: 1.5rem;
+                line-height: 1.5;
+            }
+            .text-wedding-3xl {
+                font-size: 1.875rem;
+                line-height: 1.4;
+            }
+            .text-wedding-4xl {
+                font-size: 2.25rem;
+                line-height: 1.3;
+            }
+            .text-wedding-5xl {
+                font-size: 3rem;
+                line-height: 1.2;
+            }
+
+            /* Wedding shadows */
+            .shadow-wedding-sm {
+                box-shadow: var(--wedding-shadow-sm);
+            }
+            .shadow-wedding {
+                box-shadow: var(--wedding-shadow);
+            }
+            .shadow-wedding-md {
+                box-shadow: var(--wedding-shadow-md);
+            }
+            .shadow-wedding-lg {
+                box-shadow: var(--wedding-shadow-lg);
+            }
+            .shadow-wedding-xl {
+                box-shadow: var(--wedding-shadow-xl);
+            }
+            .shadow-wedding-soft {
+                box-shadow: var(--wedding-shadow-soft);
+            }
+            .shadow-wedding-gold {
+                box-shadow: var(--wedding-shadow-gold);
+            }
+
+            /* Wedding gradients */
+            .bg-wedding-gradient-ivory {
+                background: var(--wedding-gradient-ivory);
+            }
+            .bg-wedding-gradient-blush {
+                background: var(--wedding-gradient-blush);
+            }
+            .bg-wedding-gradient-gold {
+                background: var(--wedding-gradient-gold);
+            }
+            .bg-wedding-gradient-navy {
+                background: var(--wedding-gradient-navy);
+            }
+            .bg-wedding-gradient-subtle {
+                background: var(--wedding-gradient-subtle);
+            }
+
+            /* Wedding borders */
+            .border-wedding {
+                border: var(--wedding-border-width) solid
+                    var(--wedding-border-color);
+            }
+            .border-wedding-gold {
+                border: var(--wedding-border-width) solid
+                    var(--wedding-border-color-gold);
+            }
+            .border-wedding-navy {
+                border: var(--wedding-border-width) solid
+                    var(--wedding-border-color-navy);
+            }
+
+            /* Wedding radius */
+            .rounded-wedding-sm {
+                border-radius: var(--wedding-radius-sm);
+            }
+            .rounded-wedding {
+                border-radius: var(--wedding-radius);
+            }
+            .rounded-wedding-md {
+                border-radius: var(--wedding-radius-md);
+            }
+            .rounded-wedding-lg {
+                border-radius: var(--wedding-radius-lg);
+            }
+            .rounded-wedding-xl {
+                border-radius: var(--wedding-radius-xl);
+            }
+            .rounded-wedding-2xl {
+                border-radius: var(--wedding-radius-2xl);
+            }
+            .rounded-wedding-full {
+                border-radius: var(--wedding-radius-full);
+            }
+
+            /* Wedding decorative elements */
+            .wedding-divider {
+                height: 1px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--wedding-gold),
+                    transparent
+                );
+                margin: 2rem 0;
+            }
+
+            .wedding-divider-thick {
+                height: 2px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--wedding-gold),
+                    transparent
+                );
+                margin: 2rem 0;
+            }
+
+            .wedding-divider-blush {
+                height: 1px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--wedding-blush),
+                    transparent
+                );
+                margin: 2rem 0;
+            }
+
+            /* Wedding buttons */
+            .btn-wedding-primary {
+                background: var(--wedding-gradient-navy);
+                color: var(--wedding-ivory);
+                padding: 0.75rem 2rem;
+                border-radius: var(--wedding-radius-full);
+                font-family: var(--font-wedding-body);
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                transition: all 0.3s ease;
+                box-shadow: var(--wedding-shadow-md);
+                border: none;
+                cursor: pointer;
+                display: inline-block;
+            }
+
+            .btn-wedding-primary:hover {
+                background: var(--wedding-navy-light);
+                transform: translateY(-2px);
+                box-shadow: var(--wedding-shadow-lg);
+            }
+
+            .btn-wedding-secondary {
+                background: transparent;
+                color: var(--wedding-navy);
+                padding: 0.75rem 2rem;
+                border-radius: var(--wedding-radius-full);
+                font-family: var(--font-wedding-body);
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                transition: all 0.3s ease;
+                border: 2px solid var(--wedding-navy);
+                cursor: pointer;
+                display: inline-block;
+            }
+
+            .btn-wedding-secondary:hover {
+                background: var(--wedding-navy);
+                color: var(--wedding-ivory);
+                transform: translateY(-2px);
+            }
+
+            .btn-wedding-accent {
+                background: var(--wedding-gradient-gold);
+                color: var(--wedding-navy);
+                padding: 0.75rem 2rem;
+                border-radius: var(--wedding-radius-full);
+                font-family: var(--font-wedding-body);
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                transition: all 0.3s ease;
+                box-shadow: var(--wedding-shadow-gold);
+                border: none;
+                cursor: pointer;
+                display: inline-block;
+            }
+
+            .btn-wedding-accent:hover {
+                background: var(--wedding-gold-dark);
+                transform: translateY(-2px);
+                box-shadow: var(--wedding-shadow-lg);
+            }
+
+            /* Wedding cards */
+            .card-wedding {
+                background: rgba(255, 255, 240, 0.8);
+                backdrop-filter: blur(10px);
+                border: 1px solid var(--wedding-blush-light);
+                border-radius: var(--wedding-radius-lg);
+                padding: 2rem;
+                box-shadow: var(--wedding-shadow-soft);
+                transition: all 0.3s ease;
+            }
+
+            .card-wedding:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--wedding-shadow-lg);
+            }
+
+            .card-wedding-elegant {
+                background: var(--wedding-gradient-ivory);
+                border: 2px solid var(--wedding-gold);
+                border-radius: var(--wedding-radius-xl);
+                padding: 2.5rem;
+                box-shadow: var(--wedding-shadow-gold);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .card-wedding-elegant::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: var(--wedding-gradient-gold);
+            }
+
+            /* Wedding form elements */
+            .input-wedding {
+                background: rgba(255, 255, 240, 0.9);
+                border: 1px solid var(--wedding-blush-light);
+                border-radius: var(--wedding-radius-md);
+                padding: 0.75rem 1rem;
+                font-family: var(--font-wedding-body);
+                font-size: 1rem;
+                color: var(--wedding-navy);
+                transition: all 0.3s ease;
+                width: 100%;
+            }
+
+            .input-wedding:focus {
+                outline: none;
+                border-color: var(--wedding-gold);
+                box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+            }
+
+            .input-wedding::placeholder {
+                color: var(--wedding-blush);
+                font-style: italic;
+            }
+
+            /* Wedding animations */
+            .animate-fade-in {
+                animation: fadeIn 0.8s ease-in-out;
+            }
+
+            .animate-slide-up {
+                animation: slideUp 0.6s ease-out;
+            }
+
+            .animate-slide-down {
+                animation: slideDown 0.6s ease-out;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Wedding component classes */
+            .wedding-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1rem;
+            }
+
+            .wedding-section {
+                padding: 4rem 0;
+            }
+
+            .wedding-header {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+
+            .wedding-title {
+                font-family: var(--font-wedding-heading);
+                font-weight: 900;
+                color: var(--wedding-navy);
+                margin-bottom: 1rem;
+                position: relative;
+                display: inline-block;
+            }
+
+            .wedding-title::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 2px;
+                background: var(--wedding-gradient-gold);
+            }
+
+            .wedding-subtitle {
+                font-family: var(--font-wedding-accent);
+                font-size: 1.5rem;
+                color: var(--wedding-blush);
+                margin-top: 1.5rem;
+            }
+
+            .wedding-accent-text {
+                font-family: var(--font-wedding-accent);
+                color: var(--wedding-gold);
+                font-size: 1.25rem;
+            }
+
+            .wedding-nav {
+                background: rgba(255, 255, 240, 0.95);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid var(--wedding-blush-light);
+                padding: 1rem 0;
+            }
+
+            .wedding-footer {
+                background: var(--wedding-gradient-navy);
+                color: var(--wedding-ivory);
+                padding: 3rem 0 2rem;
+                margin-top: 4rem;
+            }
+
+            .wedding-hero {
+                background: var(--wedding-gradient-subtle);
+                min-height: 60vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body class="wedding-theme">
+        <!-- Navigation -->
+        <nav class="wedding-nav">
+            <div class="wedding-container">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-wedding-accent text-wedding-xl">
+                        Dannica & James
+                    </h2>
+                    <div class="space-x-6">
+                        <a
+                            href="#colors"
+                            class="wedding-navy hover:wedding-gold transition-colors"
+                            >Colors</a
+                        >
+                        <a
+                            href="#typography"
+                            class="wedding-navy hover:wedding-gold transition-colors"
+                            >Typography</a
+                        >
+                        <a
+                            href="#components"
+                            class="wedding-navy hover:wedding-gold transition-colors"
+                            >Components</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="wedding-hero">
+            <div class="wedding-hero-content">
+                <div class="wedding-container">
+                    <h1 class="wedding-title animate-fade-in">
+                        Wedding Theme Demo
+                    </h1>
+                    <p class="wedding-subtitle animate-slide-up">
+                        Elegant CSS Foundation for Your Special Day
+                    </p>
+                    <div class="mt-8 space-x-4">
+                        <button class="btn-wedding-accent animate-slide-down">
+                            View Components
+                        </button>
+                        <button
+                            class="btn-wedding-secondary animate-slide-down"
+                            style="animation-delay: 0.2s"
+                        >
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Colors Section -->
+        <section id="colors" class="wedding-section">
+            <div class="wedding-container">
+                <div class="wedding-header">
+                    <h2 class="wedding-title">Color Palette</h2>
+                    <p class="wedding-subtitle">
+                        Elegant colors for your wedding theme
+                    </p>
+                </div>
+
+                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="card-wedding text-center">
+                        <div
+                            class="wedding-ivory-bg rounded-wedding-lg border-wedding mb-4 h-24"
+                        ></div>
+                        <h3 class="font-wedding-heading text-wedding-lg">
+                            Ivory
+                        </h3>
+                        <p class="text-wedding-sm">#FFFFF0</p>
+                    </div>
+
+                    <div class="card-wedding text-center">
+                        <div
+                            class="wedding-blush-bg rounded-wedding-lg border-wedding mb-4 h-24"
+                        ></div>
+                        <h3 class="font-wedding-heading text-wedding-lg">
+                            Blush
+                        </h3>
+                        <p class="text-wedding-sm">#E8B4B8</p>
+                    </div>
+
+                    <div class="card-wedding text-center">
+                        <div
+                            class="wedding-gold-bg rounded-wedding-lg border-wedding mb-4 h-24"
+                        ></div>
+                        <h3 class="font-wedding-heading text-wedding-lg">
+                            Gold
+                        </h3>
+                        <p class="text-wedding-sm">#D4AF37</p>
+                    </div>
+
+                    <div class="card-wedding text-center">
+                        <div
+                            class="wedding-navy-bg rounded-wedding-lg border-wedding mb-4 h-24"
+                        ></div>
+                        <h3 class="font-wedding-heading text-wedding-lg">
+                            Navy
+                        </h3>
+                        <p class="text-wedding-sm">#1E3A5F</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Section -->
+        <section
+            id="typography"
+            class="wedding-section bg-wedding-gradient-subtle"
+        >
+            <div class="wedding-container">
+                <div class="wedding-header">
+                    <h2 class="wedding-title">Typography</h2>
+                    <p class="wedding-subtitle">
+                        Beautiful fonts for every occasion
+                    </p>
+                </div>
+
+                <div class="grid gap-8 md:grid-cols-3">
+                    <div class="card-wedding">
+                        <h3 class="font-wedding-heading text-wedding-2xl mb-4">
+                            Playfair Display
+                        </h3>
+                        <p class="text-wedding-lg font-wedding-heading">
+                            Elegant headings for your special day
+                        </p>
+                        <div class="wedding-divider my-4"></div>
+                        <p class="text-wedding-sm">
+                            Perfect for titles, headings, and important text
+                            that needs to make an impression.
+                        </p>
+                    </div>
+
+                    <div class="card-wedding">
+                        <h3 class="font-wedding-body text-wedding-2xl mb-4">
+                            Source Sans Pro
+                        </h3>
+                        <p class="text-wedding-lg font-wedding-body">
+                            Clean and readable body text
+                        </p>
+                        <div class="wedding-divider my-4"></div>
+                        <p class="text-wedding-sm">
+                            Ideal for paragraphs, descriptions, and content that
+                            requires excellent readability.
+                        </p>
+                    </div>
+
+                    <div class="card-wedding">
+                        <h3 class="font-wedding-accent text-wedding-2xl mb-4">
+                            Dancing Script
+                        </h3>
+                        <p class="text-wedding-lg font-wedding-accent">
+                            Decorative accent text
+                        </p>
+                        <div class="wedding-divider my-4"></div>
+                        <p class="text-wedding-sm">
+                            Beautiful for special quotes, signatures, and
+                            romantic accents throughout your design.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Components Section -->
+        <section id="components" class="wedding-section">
+            <div class="wedding-container">
+                <div class="wedding-header">
+                    <h2 class="wedding-title">Components</h2>
+                    <p class="wedding-subtitle">
+                        Ready-to-use wedding elements
+                    </p>
+                </div>
+
+                <div class="grid gap-8 md:grid-cols-2">
+                    <div class="card-wedding-elegant">
+                        <h3
+                            class="font-wedding-heading text-wedding-2xl wedding-navy"
+                        >
+                            RSVP Form
+                        </h3>
+                        <div class="wedding-divider-thick my-4"></div>
+                        <form class="space-y-4">
+                            <input
+                                type="text"
+                                class="input-wedding"
+                                placeholder="Your Name"
+                            />
+                            <input
+                                type="email"
+                                class="input-wedding"
+                                placeholder="Email Address"
+                            />
+                            <select class="input-wedding">
+                                <option>Number of Guests</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                            <button
+                                type="submit"
+                                class="btn-wedding-primary w-full"
+                            >
+                                Submit RSVP
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="card-wedding">
+                        <h3
+                            class="font-wedding-heading text-wedding-2xl wedding-navy"
+                        >
+                            Event Details
+                        </h3>
+                        <div class="wedding-divider my-4"></div>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="wedding-accent-text text-wedding-xl">
+                                    June 15, 2024
+                                </p>
+                                <p class="text-wedding-lg">
+                                    Ceremony at 4:00 PM
+                                </p>
+                            </div>
+                            <div>
+                                <p class="font-wedding-heading text-wedding-lg">
+                                    Garden Estate
+                                </p>
+                                <p class="text-wedding-base">
+                                    123 Wedding Lane
+                                </p>
+                                <p class="text-wedding-base">
+                                    Celebration, CA 12345
+                                </p>
+                            </div>
+                            <button class="btn-wedding-secondary">
+                                Get Directions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button Showcase -->
+                <div class="mt-12 text-center">
+                    <h3
+                        class="font-wedding-heading text-wedding-3xl wedding-navy mb-8"
+                    >
+                        Button Styles
+                    </h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button class="btn-wedding-primary">
+                            Primary Button
+                        </button>
+                        <button class="btn-wedding-secondary">
+                            Secondary Button
+                        </button>
+                        <button class="btn-wedding-accent">
+                            Accent Button
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Decorative Elements -->
+                <div class="mt-12">
+                    <h3
+                        class="font-wedding-heading text-wedding-3xl wedding-navy mb-8 text-center"
+                    >
+                        Decorative Elements
+                    </h3>
+                    <div class="space-y-8">
+                        <div>
+                            <p class="text-wedding-lg mb-4 text-center">
+                                Standard Divider
+                            </p>
+                            <div class="wedding-divider"></div>
+                        </div>
+                        <div>
+                            <p class="text-wedding-lg mb-4 text-center">
+                                Thick Divider
+                            </p>
+                            <div class="wedding-divider-thick"></div>
+                        </div>
+                        <div>
+                            <p class="text-wedding-lg mb-4 text-center">
+                                Blush Divider
+                            </p>
+                            <div class="wedding-divider-blush"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="wedding-footer">
+            <div class="wedding-container text-center">
+                <p class="wedding-accent-text text-wedding-xl mb-4">
+                    Dannica & James
+                </p>
+                <p class="wedding-ivory">Forever begins with us</p>
+                <div class="mt-6">
+                    <p class="wedding-accent-text">
+                        Wedding Theme CSS Foundation
+                    </p>
+                    <p class="wedding-ivory text-wedding-sm mt-2">
+                        Elegant styling for your special day
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
