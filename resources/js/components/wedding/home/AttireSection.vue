@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
+import OptimizedImage from '@/components/OptimizedImage.vue';
 
 const elementsVisible = ref({
     title: false,
@@ -183,11 +184,7 @@ onUnmounted(() => {
                                 class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-amber-50"
                             >
                                 <!-- Placeholder for attire image -->
-                                <img
-                                    class="h-full w-full object-cover"
-                                    src="/images/barong.png"
-                                    alt=""
-                                />
+                                <OptimizedImage src="/images/barong.png" alt="" class="h-full w-full object-cover" loading="lazy" />
                             </div>
                         </div>
 
@@ -226,11 +223,7 @@ onUnmounted(() => {
                                 class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-rose-50"
                             >
                                 <!-- Placeholder for attire image -->
-                                <img
-                                    class="h-full w-full object-cover"
-                                    src="/images/filipiniana.png"
-                                    alt=""
-                                />
+                                <OptimizedImage src="/images/filipiniana.png" alt="" class="h-full w-full object-cover" loading="lazy" />
                             </div>
                         </div>
 
@@ -239,11 +232,7 @@ onUnmounted(() => {
                                 Filipiniana dress or butterfly dress
                             </p>
                             <div class="flex items-center">
-                                <img
-                                    class="h-16"
-                                    src="/images/color-pallete.png"
-                                    alt=""
-                                />
+                                <OptimizedImage src="/images/color-pallete.png" alt="" class="h-16" loading="lazy" />
                             </div>
                         </div>
                     </div>

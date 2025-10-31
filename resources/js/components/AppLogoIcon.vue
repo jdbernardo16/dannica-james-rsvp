@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue';
+import OptimizedImage from './OptimizedImage.vue';
 
 defineOptions({
     inheritAttrs: false,
@@ -13,5 +14,5 @@ defineProps<Props>();
 </script>
 
 <template>
-    <img src="/images/logo.png" alt="" />
+    <OptimizedImage src="/images/logo.png" alt="" />
 </template>

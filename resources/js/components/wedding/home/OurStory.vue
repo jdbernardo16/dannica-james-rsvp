@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import OptimizedImage from '@/components/OptimizedImage.vue';
 import { onMounted, ref } from 'vue';
 
 const milestones = ref([
@@ -131,17 +132,23 @@ onMounted(() => {
                         class="hover:shadow-3xl relative z-[1] max-w-md rounded-t-full bg-gradient-to-br from-amber-100 to-rose-100 p-4 shadow-2xl transition-all duration-500 hover:scale-105 sm:p-5"
                     >
                         <div class="w-full overflow-hidden rounded-t-full">
-                            <img
-                                class="w-full transform transition-transform duration-700 hover:scale-110"
+                            <OptimizedImage
                                 src="/images/img3.png"
                                 alt="couple"
+                                class="w-full transform transition-transform duration-700 hover:scale-110"
+                                loading="lazy"
                             />
                         </div>
                     </div>
                     <div
                         class="absolute top-0 -right-[100px] z-0 w-[200px] rotate-45 opacity-60 sm:-right-[125px] sm:w-[250px] lg:-right-[150px] lg:w-[300px]"
                     >
-                        <img src="/images/decor1.png" alt="decor" />
+                        <OptimizedImage
+                            src="/images/decor1.png"
+                            alt="decor"
+                            class=""
+                            loading="lazy"
+                        />
                     </div>
                 </div>
 

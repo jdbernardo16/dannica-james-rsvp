@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import OptimizedImage from '@/components/OptimizedImage.vue';
 import { onMounted, ref } from 'vue';
 
 const elementsVisible = ref({
@@ -211,8 +212,8 @@ onMounted(() => {
                             <div
                                 class="relative aspect-[682/424] w-full overflow-hidden rounded-xl"
                             >
-                                <img
-                                    src="/images/DSC09806.JPG"
+                                <OptimizedImage
+                                    src="/images/frame5b.webp"
                                     alt="couple portrait"
                                     class="h-full w-full transform object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
@@ -241,8 +242,8 @@ onMounted(() => {
                             <div
                                 class="relative aspect-[443.25/591] w-full overflow-hidden rounded-xl"
                             >
-                                <img
-                                    src="/images/DSC09798.JPG"
+                                <OptimizedImage
+                                    src="/images/frame5.webp"
                                     alt="couple candid"
                                     class="h-full w-full transform object-cover transition-transform duration-700 group-hover:scale-110"
                                 />

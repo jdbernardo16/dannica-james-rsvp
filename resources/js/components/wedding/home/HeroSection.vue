@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import OptimizedImage from '@/components/OptimizedImage.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const heroImage = ref<HTMLElement | null>(null);
@@ -28,10 +29,11 @@ onUnmounted(() => {
                 ref="heroImage"
                 class="absolute inset-0 h-full w-full will-change-transform"
             >
-                <img
-                    class="h-full w-full object-cover object-right md:object-center"
-                    src="/images/DSC09755.JPG"
+                <OptimizedImage
+                    src="/images/hero.webp"
                     alt="Dannica & James"
+                    class="h-full w-full object-cover object-right md:object-center"
+                    loading="eager"
                 />
             </div>
             <div

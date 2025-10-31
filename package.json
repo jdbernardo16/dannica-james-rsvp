@@ -4,7 +4,8 @@
     "scripts": {
         "build": "vite build",
         "build:ssr": "vite build && vite build --ssr",
-        "build:optimized": "concurrently \"npm run optimize-images\" \"npm run build\"",
+        "build:optimized": "concurrently \"npm run optimize-images\" \"npm run update-image-references\" \"npm run build\"",
+        "update-image-references": "node scripts/update-image-references.js",
         "optimize-images": "node scripts/optimize-images.js",
         "dev": "vite",
         "format": "prettier --write resources/",
@@ -22,6 +23,7 @@
         "eslint": "^9.17.0",
         "eslint-config-prettier": "^10.0.1",
         "eslint-plugin-vue": "^9.32.0",
+        "glob": "^11.0.3",
         "imagemin": "^9.0.1",
         "imagemin-mozjpeg": "^10.0.0",
         "imagemin-pngquant": "^10.0.0",

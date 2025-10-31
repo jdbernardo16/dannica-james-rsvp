@@ -93,7 +93,7 @@ const countdownItems = computed(() => [
                         : '-translate-y-4 opacity-0'
                 "
             >
-                <img class="w-full" src="/images/element1.png" alt="element" />
+                <OptimizedImage src="/images/element1.png" alt="element" class="w-full" loading="lazy" />
             </div>
 
             <!-- Header section -->

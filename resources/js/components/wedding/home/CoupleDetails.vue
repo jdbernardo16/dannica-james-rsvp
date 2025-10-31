@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import OptimizedImage from '@/components/OptimizedImage.vue';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 
 // Types
@@ -247,12 +248,11 @@ const imageLoaded = ref(false);
                             class="image-frame"
                             :style="{ transform: imageTransform }"
                         >
-                            <img
-                                class="couple-image"
-                                src="/images/img2.JPG"
+                            <OptimizedImage
+                                src="/images/frame2.webp"
                                 alt="Couple portrait"
+                                class="couple-image"
                                 loading="lazy"
-                                @load="imageLoaded = true"
                             />
                             <div class="image-overlay" aria-hidden="true"></div>
                         </div>

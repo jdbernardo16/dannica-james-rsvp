@@ -23,16 +23,8 @@
                     class="custom-cursor absolute top-0 left-0 h-[220px] w-[220px] cursor-pointer"
                     @click="toggleFullscreen"
                 >
-                    <img
-                        class="animate-spin-slow"
-                        src="/images/cursor-text.svg"
-                        alt="Cursor"
-                    />
-                    <img
-                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                        src="/images/play.svg"
-                        alt="play"
-                    />
+                    <OptimizedImage src="/images/cursor-text.svg" alt="Cursor" class="animate-spin-slow" loading="lazy" />
+                    <OptimizedImage src="/images/play.svg" alt="play" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" loading="lazy" />
                 </div>
             </div>
         </div>
@@ -41,6 +33,7 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import OptimizedImage from '@/components/OptimizedImage.vue';
 
 const container = ref<HTMLElement | null>(null);
 const customCursor = ref<HTMLElement | null>(null);

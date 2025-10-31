@@ -42,6 +42,10 @@ const submit = () => {
         preserveScroll: true,
         onSuccess: () => {
             form.reset();
+            // Redirect to the selected group after successful guest creation
+            if (form.group_id) {
+                window.location.href = `/admin/groups/${form.group_id}`;
+            }
         },
     });
 };
