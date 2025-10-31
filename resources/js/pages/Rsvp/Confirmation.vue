@@ -586,7 +586,7 @@
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+                        <!-- <div class="mt-8 flex flex-col gap-4 sm:flex-row">
                             <button
                                 class="btn-wedding-secondary wedding-hover-lift flex-1"
                                 @click="resendConfirmation"
@@ -601,7 +601,7 @@
                                 <ArrowLeft class="mr-2 inline h-4 w-4" />
                                 Submit Another RSVP
                             </button>
-                        </div>
+                        </div> -->
                     </CardContent>
                 </Card>
 
@@ -629,18 +629,22 @@
                         <div
                             class="flex flex-col justify-center gap-4 sm:flex-row"
                         >
-                            <button
-                                class="btn-wedding-accent wedding-hover-lift"
-                            >
-                                <Phone class="mr-2 inline h-4 w-4" />
-                                Contact Couple
-                            </button>
-                            <button
-                                class="btn-wedding-secondary wedding-hover-lift"
-                            >
-                                <Calendar class="mr-2 inline h-4 w-4" />
-                                View Wedding Details
-                            </button>
+                            <a href="tel: +639560934971" target="_blank">
+                                <button
+                                    class="btn-wedding-accent wedding-hover-lift"
+                                >
+                                    <Phone class="mr-2 inline h-4 w-4" />
+                                    Contact Couple
+                                </button>
+                            </a>
+                            <a href="/">
+                                <button
+                                    class="btn-wedding-secondary wedding-hover-lift"
+                                >
+                                    <Calendar class="mr-2 inline h-4 w-4" />
+                                    View Wedding Details
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>

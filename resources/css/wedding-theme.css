@@ -3,7 +3,7 @@
 /* Wedding Theme CSS Variables */
 :root {
     /* Wedding Color Palette */
-    --wedding-ivory: #fffff0;
+    --wedding-ivory: #ffffff;
     --wedding-ivory-dark: #f5f5e6;
     --wedding-blush-light: #f4d1d1;
     --wedding-blush: #e8b4b8;
@@ -159,7 +159,7 @@
     }
 
     .wedding-theme body {
-        background: var(--wedding-gradient-ivory);
+        background: white;
         min-height: 100vh;
         font-family: var(--font-primary);
     }
@@ -776,7 +776,7 @@
 
     /* Wedding form elements */
     .input-wedding {
-        background: rgba(255, 255, 240, 0.9);
+        background: white;
         border: 1px solid var(--wedding-blush-light);
         border-radius: var(--wedding-radius-md);
         padding: 0.75rem 1rem;
@@ -1643,6 +1643,7 @@
         /* Form Input Optimizations */
         .input-wedding,
         .textarea-wedding {
+            background: white;
             padding: 1rem 0.75rem;
             font-size: 1rem;
             min-height: 48px;
@@ -1914,6 +1915,7 @@
         /* Form Input Tablet */
         .input-wedding,
         .textarea-wedding {
+            background: white;
             padding: 0.875rem 1rem;
             font-size: 1rem;
             min-height: 52px;
@@ -2065,6 +2067,7 @@
         /* Form Input Desktop */
         .input-wedding,
         .textarea-wedding {
+            background: white;
             padding: 0.75rem 1.25rem;
             font-size: 1.125rem;
             min-height: 56px;
@@ -2254,6 +2257,7 @@
 
         .input-wedding,
         .textarea-wedding {
+            background: white;
             padding: 0.875rem 0.5rem;
             font-size: 0.875rem;
         }
@@ -2337,7 +2341,6 @@
         background: var(--wedding-gradient-navy);
         color: var(--wedding-ivory);
         padding: 3rem 0 2rem;
-        margin-top: 4rem;
     }
 
     .wedding-hero {

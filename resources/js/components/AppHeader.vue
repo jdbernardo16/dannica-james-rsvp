@@ -4,13 +4,25 @@ import { ref, watch } from 'vue';
 const isMenuOpen = ref(false);
 
 const navItems = [
-    { name: 'Home', href: '#home' },
+    { name: 'Save the Date', href: '#save-the-date' },
     { name: 'Our Story', href: '#story' },
-    { name: 'Details', href: '#details' },
-    { name: 'RSVP', href: '#rsvp' },
+    { name: 'Couple', href: '#couple' },
+    { name: 'Invitation', href: '#invitation' },
+    { name: 'Schedule', href: '#schedule' },
+    { name: 'Location', href: '#location' },
+    { name: 'Attire', href: '#attire' },
+    { name: 'Entourage', href: '#entourage' },
+    { name: 'RSVP', href: '/rsvp' },
 ];
 
 const scrollToSection = (href: string) => {
+    // Check if it's a route navigation (starts with /)
+    if (href.startsWith('/')) {
+        window.location.href = href;
+        return;
+    }
+
+    // Handle anchor link scrolling
     const element = document.querySelector(href);
     if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
@@ -42,11 +54,11 @@ watch(isMenuOpen, (newValue) => {
         <div
             class="mx-auto flex max-w-[var(--container-default)] items-center justify-between px-4 sm:px-8"
         >
-            <div class="text-left">
+            <div @click="scrollToSection('#home')" class="text-left">
                 <h1
-                    class="font-secondary text-brown text-2xl font-normal tracking-wide sm:text-3xl"
+                    class="text-brown font-secondary text-2xl font-normal tracking-wide sm:text-3xl"
                 >
-                    Dannica & James
+                    James & Dannica
                 </h1>
             </div>
 
@@ -56,7 +68,7 @@ watch(isMenuOpen, (newValue) => {
                     <li v-for="item in navItems" :key="item.name">
                         <button
                             @click="scrollToSection(item.href)"
-                            class="font-primary group relative text-sm text-gray-700 transition-colors duration-300 hover:text-amber-600"
+                            class="group relative font-primary text-sm text-gray-700 transition-colors duration-300 hover:text-amber-600"
                         >
                             {{ item.name }}
                             <span
@@ -120,7 +132,7 @@ watch(isMenuOpen, (newValue) => {
                     >
                         <div class="text-left">
                             <h2
-                                class="font-secondary text-brown text-xl font-normal tracking-wide sm:text-2xl"
+                                class="text-brown font-secondary text-xl font-normal tracking-wide sm:text-2xl"
                             >
                                 Menu
                             </h2>
@@ -175,6 +187,23 @@ watch(isMenuOpen, (newValue) => {
                                             </svg>
                                             <svg
                                                 v-else-if="
+                                                    item.name ===
+                                                    'Save the Date'
+                                                "
+                                                class="h-5 w-5"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                                ></path>
+                                            </svg>
+                                            <svg
+                                                v-else-if="
                                                     item.name === 'Our Story'
                                                 "
                                                 class="h-5 w-5"
@@ -191,7 +220,7 @@ watch(isMenuOpen, (newValue) => {
                                             </svg>
                                             <svg
                                                 v-else-if="
-                                                    item.name === 'Details'
+                                                    item.name === 'Couple'
                                                 "
                                                 class="h-5 w-5"
                                                 fill="none"
@@ -202,7 +231,93 @@ watch(isMenuOpen, (newValue) => {
                                                     stroke-linecap="round"
                                                     stroke-linejoin="round"
                                                     stroke-width="2"
-                                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                                ></path>
+                                            </svg>
+                                            <svg
+                                                v-else-if="
+                                                    item.name === 'Invitation'
+                                                "
+                                                class="h-5 w-5"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                                ></path>
+                                            </svg>
+                                            <svg
+                                                v-else-if="
+                                                    item.name === 'Schedule'
+                                                "
+                                                class="h-5 w-5"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                ></path>
+                                            </svg>
+                                            <svg
+                                                v-else-if="
+                                                    item.name === 'Location'
+                                                "
+                                                class="h-5 w-5"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                                ></path>
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                                ></path>
+                                            </svg>
+                                            <svg
+                                                v-else-if="
+                                                    item.name === 'Attire'
+                                                "
+                                                class="h-5 w-5"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                                                ></path>
+                                            </svg>
+                                            <svg
+                                                v-else-if="
+                                                    item.name === 'Entourage'
+                                                "
+                                                class="h-5 w-5"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
                                                 ></path>
                                             </svg>
                                             <svg
@@ -241,10 +356,3 @@ watch(isMenuOpen, (newValue) => {
         </div>
     </Teleport>
 </template>
-
-<style scoped>
-/* Add padding to body to account for fixed header */
-:global(body) {
-    padding-top: var(--spacing-header);
-}
-</style>

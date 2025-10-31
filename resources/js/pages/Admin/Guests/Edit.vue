@@ -10,13 +10,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select';
+import CustomSelect from '@/components/ui/select/CustomSelect.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
 import type { BreadcrumbItemType } from '@/types';
 import { Head, Link, router, useForm } from '@inertiajs/vue3';
@@ -38,7 +32,7 @@ interface Rsvp {
 interface Guest {
     id: number;
     full_name: string;
-    email: string;
+    email: string | null;
     group_id: number;
     group_name: string;
     has_rsvp: boolean;
@@ -56,12 +50,16 @@ const props = defineProps<Props>();
 
 const form = useForm({
     full_name: props.guest.full_name,
-    email: props.guest.email,
+    email: props.guest.email || '',
     group_id: props.guest.group_id?.toString() || '',
 });
 
 const submit = () => {
-    form.put(`/admin/guests/${props.guest.id}/update`, {
+    // Use transform to convert empty email string to null before sending
+    form.transform((data) => ({
+        ...data,
+        email: data.email || null,
+    })).put(`/admin/guests/${props.guest.id}/update`, {
         preserveScroll: true,
     });
 };
@@ -156,7 +154,9 @@ const breadcrumbItems: BreadcrumbItemType[] = [
                             </div>
 
                             <div class="space-y-2">
-                                <Label for="email">Email Address</Label>
+                                <Label for="email"
+                                    >Email Address (Optional)</Label
+                                >
                                 <Input
                                     id="email"
                                     v-model="form.email"
@@ -165,7 +165,6 @@ const breadcrumbItems: BreadcrumbItemType[] = [
                                     :class="{
                                         'border-destructive': form.errors.email,
                                     }"
-                                    required
                                 />
                                 <p
                                     v-if="form.errors.email"
@@ -175,33 +174,27 @@ const breadcrumbItems: BreadcrumbItemType[] = [
                                 </p>
                                 <p class="text-sm text-muted-foreground">
                                     This email will be used to send RSVP
-                                    invitations
+                                    invitations (leave blank if not available)
                                 </p>
                             </div>
 
                             <div class="space-y-2">
                                 <Label for="group_id">Group</Label>
-                                <Select v-model="form.group_id" required>
-                                    <SelectTrigger
-                                        :class="{
-                                            'border-destructive':
-                                                form.errors.group_id,
-                                        }"
-                                    >
-                                        <SelectValue
-                                            placeholder="Select a group"
-                                        />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem
-                                            v-for="group in groups"
-                                            :key="group.id"
-                                            :value="group.id.toString()"
-                                        >
-                                            {{ group.name }}
-                                        </SelectItem>
-                                    </SelectContent>
-                                </Select>
+                                <CustomSelect
+                                    v-model="form.group_id"
+                                    :options="
+                                        groups.map((group) => ({
+                                            value: group.id.toString(),
+                                            label: group.name,
+                                        }))
+                                    "
+                                    placeholder="Select a group"
+                                    :class="{
+                                        'border-destructive':
+                                            form.errors.group_id,
+                                    }"
+                                    required
+                                />
                                 <p
                                     v-if="form.errors.group_id"
                                     class="text-sm text-destructive"

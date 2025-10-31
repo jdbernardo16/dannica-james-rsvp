@@ -28,9 +28,16 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/guests/{guest}/edit', [GuestController::class, 'edit'])->name('guests.edit');
     Route::put('/guests/{guest}/update', [GuestController::class, 'update'])->name('guests.update');
     Route::delete('/guests/{guest}/delete', [GuestController::class, 'delete'])->name('guests.delete');
+    Route::post('/guests/{guest}/send-rsvp', [GuestController::class, 'sendRsvpEmail'])->name('guests.send-rsvp');
 
     // RSVPs
     Route::get('/rsvps', [RsvpController::class, 'index'])->name('rsvps.index');
-    Route::get('/rsvps/{rsvp}', [RsvpController::class, 'show'])->name('rsvps.show');
     Route::get('/rsvps/export', [RsvpController::class, 'export'])->name('rsvps.export');
+    Route::get('/rsvps/export-pdf', [RsvpController::class, 'exportPdf'])->name('rsvps.export.pdf');
+    Route::get('/rsvps/{rsvp}', [RsvpController::class, 'show'])->name('rsvps.show');
+    
+    // Test route for debugging
+    Route::get('/test-export', function() {
+        return response()->json(['message' => 'Export routes are working']);
+    });
 });

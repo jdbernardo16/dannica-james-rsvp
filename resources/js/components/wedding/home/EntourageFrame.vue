@@ -4,57 +4,126 @@ import { onMounted, onUnmounted, ref } from 'vue';
 const entourage = {
     parents: {
         bride: {
-            father: 'Mr. Roberto Dela Cruz',
-            mother: 'Mrs. Maria Dela Cruz',
+            father: 'Mr. Danilo R. Tejada',
+            mother: 'Mrs. Elona L. Tejada',
             label: 'Parents of the Bride',
         },
         groom: {
-            father: 'Mr. Antonio Santos',
-            mother: 'Mrs. Elena Santos',
+            father: 'Mr. Jesus R. Villaluz',
+            mother: 'Mrs. Imelda D. Villaluz',
             label: 'Parents of the Groom',
         },
     },
     principalSponsors: [
+        // Male Sponsors
         {
-            name: 'Atty. Roberto & Mrs. Maria Santos',
+            name: 'Mr. Teddy R. Vinzon',
             role: 'Principal Sponsor',
         },
         {
-            name: 'Dr. Carlos & Mrs. Elena Rodriguez',
+            name: 'Mr. Erick J. Santos',
             role: 'Principal Sponsor',
         },
         {
-            name: 'Engr. Miguel & Mrs. Sofia Fernandez',
+            name: 'Mr. Salvador R. Tejada Jr.',
             role: 'Principal Sponsor',
         },
         {
-            name: 'Atty. Antonio & Mrs. Carmen Dela Cruz',
+            name: 'Mr. Danilo C. Teofilo',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mr. Enrico Simon',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mr. Cristino Cuanang',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mr. Remilo Eguico',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mr. Michael Dingco',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mr. Aries Torreleiza',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Chief Engr. Jaime Roncales',
+            role: 'Principal Sponsor',
+        },
+        // Female Sponsors
+        {
+            name: 'Mrs. Carmela C. Vinzon',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mrs. Jasmin D. Sarmiento',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mrs. Consuelo B. Bernardo',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mrs. Ma. Leticia D. Teofilo',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mrs. Elisa G. Simon',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mrs. May Quimba',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mrs. Eway V. Castillo',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mrs. Analyn P. Navarro',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mrs. Cristina Torreleiza',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mrs. Angelina Lamis',
             role: 'Principal Sponsor',
         },
     ],
     secondarySponsors: [
-        { name: 'Marcus & Leila Santiago', role: 'Candle Sponsors' },
-        { name: 'David & Anna Reyes', role: 'Veil Sponsors' },
-        { name: 'Michael & Clara Martinez', role: 'Cord Sponsors' },
+        { name: 'Einar Jedrek D. Santos', role: 'Candle Sponsor' },
+        { name: 'Marion Joyce D. Sarmiento', role: 'Candle Sponsor' },
+        { name: 'Jesi Valencia', role: 'Veil Sponsor' },
+        { name: 'Mary Claire Vinzon-Geronimo', role: 'Veil Sponsor' },
+        { name: 'John Dennis B. Bernardo', role: 'Cord Sponsor' },
+        { name: 'Jona Jane T. Gran', role: 'Cord Sponsor' },
     ],
     groomsmen: [
-        { name: 'Daniel Wilson', role: 'Best Man' },
-        { name: 'Joshua Thompson', role: 'Groomsman' },
-        { name: 'Ryan Garcia', role: 'Groomsman' },
-        { name: 'Kevin Lee', role: 'Groomsman' },
+        { name: 'Jemuel Christian D. Villaluz', role: 'Best Man' },
+        { name: 'Jerico N. Villaluz', role: 'Groomsman' },
+        { name: 'Brian Paolo Rañeses', role: 'Groomsman' },
     ],
     bridesmaids: [
-        { name: 'Sophia Anderson', role: 'Maid of Honor' },
-        { name: 'Emma Davis', role: 'Bridesmaid' },
-        { name: 'Olivia Brown', role: 'Bridesmaid' },
-        { name: 'Ava Johnson', role: 'Bridesmaid' },
+        { name: 'Ona Elledan Tejada-Bernardo', role: 'Matron of Honor' },
+        { name: 'Ericka Jayne D. Santos', role: 'Bridesmaid' },
+        { name: 'Eisha Eurice F. Valencia', role: 'Bridesmaid' },
     ],
-    coinBearer: { name: 'Lucas James', role: 'Coin Bearer' },
-    bibleBearer: { name: 'Ethan Michael', role: 'Bible Bearer' },
-    ringBearer: { name: 'Liam Alexander', role: 'Ring Bearer' },
+    coinBearer: { name: 'Emmanuel D. Aguilar', role: 'Coin Bearer' },
+    bibleBearer: { name: 'Kyle Dame F. Villaspin', role: 'Bible Bearer' },
+    ringBearer: { name: 'Zeke Nikolai S. Sarmiento', role: 'Ring Bearer' },
     flowerGirls: [
-        { name: 'Isabella Rose', role: 'Flower Girl' },
-        { name: 'Mia Grace', role: 'Flower Girl' },
+        { name: 'Julia Dennise T. Bernardo', role: 'Little Bride' },
+        { name: 'Elliyah Jhay D. Santos', role: 'Flower Lady' },
+        { name: 'Eiryn Jessy D. Santos', role: 'Flower Lady' },
+        { name: 'Meiryne Joie D. Sarmiento', role: 'Flower Lady' },
     ],
 };
 
@@ -144,6 +213,7 @@ onUnmounted(() => {
 
 <template>
     <section
+        id="entourage"
         class="relative overflow-hidden bg-gradient-to-b from-rose-50/20 via-white to-amber-50/20 py-16 md:py-24"
     >
         <!-- Background decorative elements -->
@@ -243,7 +313,7 @@ onUnmounted(() => {
                     </div>
                 </div>
                 <h2
-                    class="font-secondary mb-6 text-4xl leading-tight text-gray-800 sm:text-5xl md:text-6xl lg:text-7xl"
+                    class="mb-6 font-secondary text-4xl leading-tight text-gray-800 sm:text-5xl md:text-6xl lg:text-7xl"
                 >
                     Our Entourage
                 </h2>
@@ -265,7 +335,7 @@ onUnmounted(() => {
                 "
             >
                 <h3
-                    class="font-secondary mb-8 text-center text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
+                    class="mb-8 text-center font-secondary text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
                 >
                     Our Parents
                 </h3>
@@ -295,7 +365,7 @@ onUnmounted(() => {
                                         </svg>
                                     </div>
                                     <h4
-                                        class="font-secondary mb-4 text-xl font-light text-gray-800 transition-colors duration-300 group-hover:text-rose-600 sm:text-2xl"
+                                        class="mb-4 font-secondary text-xl font-light text-gray-800 transition-colors duration-300 group-hover:text-rose-600 sm:text-2xl"
                                     >
                                         {{ entourage.parents.bride.label }}
                                     </h4>
@@ -356,7 +426,7 @@ onUnmounted(() => {
                                         </svg>
                                     </div>
                                     <h4
-                                        class="font-secondary mb-4 text-xl font-light text-gray-800 transition-colors duration-300 group-hover:text-rose-600 sm:text-2xl"
+                                        class="mb-4 font-secondary text-xl font-light text-gray-800 transition-colors duration-300 group-hover:text-rose-600 sm:text-2xl"
                                     >
                                         {{ entourage.parents.groom.label }}
                                     </h4>
@@ -404,7 +474,7 @@ onUnmounted(() => {
                 "
             >
                 <h3
-                    class="font-secondary mb-8 text-center text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
+                    class="mb-8 text-center font-secondary text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
                 >
                     Principal Sponsors
                 </h3>
@@ -465,7 +535,7 @@ onUnmounted(() => {
                 "
             >
                 <h3
-                    class="font-secondary mb-8 text-center text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
+                    class="mb-8 text-center font-secondary text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
                 >
                     Secondary Sponsors
                 </h3>
@@ -529,7 +599,7 @@ onUnmounted(() => {
                     <!-- Groomsmen -->
                     <div>
                         <h3
-                            class="font-secondary mb-8 text-center text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
+                            class="mb-8 text-center font-secondary text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
                         >
                             Groomsmen
                         </h3>
@@ -587,7 +657,7 @@ onUnmounted(() => {
                     <!-- Bridesmaids -->
                     <div>
                         <h3
-                            class="font-secondary mb-8 text-center text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
+                            class="mb-8 text-center font-secondary text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
                         >
                             Bridesmaids
                         </h3>
@@ -646,7 +716,7 @@ onUnmounted(() => {
 
             <!-- Little Ones Section -->
             <div
-                class="little-ones-section mx-auto max-w-4xl transition-all delay-600 duration-1000 ease-out"
+                class="little-ones-section mx-auto max-w-6xl transition-all delay-600 duration-1000 ease-out"
                 :class="
                     sectionsVisible.littleOnes
                         ? 'translate-y-0 opacity-100'
@@ -654,7 +724,7 @@ onUnmounted(() => {
                 "
             >
                 <h3
-                    class="font-secondary mb-8 text-center text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
+                    class="mb-8 text-center font-secondary text-2xl font-light text-gray-800 sm:text-3xl md:mb-12"
                 >
                     Our Little Ones
                 </h3>
@@ -780,7 +850,7 @@ onUnmounted(() => {
                 </div>
 
                 <div
-                    class="mx-auto grid max-w-md gap-4 sm:grid-cols-2 md:gap-6"
+                    class="mx-auto grid max-w-2xl gap-4 sm:grid-cols-2 md:grid-cols-2 md:gap-6 lg:grid-cols-2"
                 >
                     <div
                         v-for="(girl, index) in entourage.flowerGirls"

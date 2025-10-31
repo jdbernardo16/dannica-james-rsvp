@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section id="video">
         <div class="relative m-auto w-full">
             <div
                 ref="container"
@@ -53,7 +53,7 @@ const videoClasses = computed(() => {
         return 'w-full h-full object-cover';
     }
     // Normal styling with custom positioning and scaling
-    return 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125 transition-all duration-300';
+    return 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-130 transition-all duration-300 w-full';
 });
 
 const onMouseMove = (e: MouseEvent) => {

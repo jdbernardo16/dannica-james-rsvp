@@ -98,6 +98,7 @@ onUnmounted(() => {
 
 <template>
     <section
+        id="schedule"
         class="bg-gradient-to-b from-rose-50/20 via-white to-rose-50/20 py-20"
     >
         <div class="container mx-auto px-6">
@@ -123,7 +124,7 @@ onUnmounted(() => {
                     </div>
                 </div>
                 <h2
-                    class="font-secondary mb-4 text-4xl font-light text-gray-800 sm:text-5xl md:text-6xl"
+                    class="mb-4 font-secondary text-4xl font-light text-gray-800 sm:text-5xl md:text-6xl"
                 >
                     Our Wedding Day
                 </h2>
@@ -202,12 +203,12 @@ onUnmounted(() => {
 
                                     <div class="relative z-10">
                                         <div
-                                            class="font-playfair mb-3 text-2xl font-light text-rose-500 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
+                                            class="mb-3 font-playfair text-2xl font-light text-rose-500 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
                                         >
                                             {{ event.time }}
                                         </div>
                                         <h3
-                                            class="font-secondary mb-3 text-2xl font-light text-gray-800 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
+                                            class="mb-3 font-secondary text-2xl font-light text-gray-800 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
                                         >
                                             {{ event.title }}
                                         </h3>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Guest;
 use App\Models\Group;
+use App\Mail\RsvpInvitationMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -44,9 +46,9 @@ class GuestController extends Controller
         }
 
         // Filter by RSVP status
-        if ($request->has('rsvp_status') && $request->rsvp_status && $request->rsvp_status !== 'all') {
-            switch ($request->rsvp_status) {
-                case 'submitted':
+        if ($request->has('status') && $request->status && $request->status !== 'all') {
+            switch ($request->status) {
+                case 'responded':
                     $query->whereHas('group.rsvps');
                     break;
                 case 'pending':
@@ -66,8 +68,15 @@ class GuestController extends Controller
         }
 
         $guests = $query->orderBy('full_name')
-            ->paginate(15)
-            ->withQueryString();
+            ->paginate($request->get('per_page', 15))
+            ->withQueryString()
+            ->through(function ($guest) {
+                // Add has_rsvp attribute to the guest
+                if ($guest->group) {
+                    $guest->has_rsvp = $guest->group->hasRsvp();
+                }
+                return $guest;
+            });
 
         // Get all groups for filter dropdown
         $groups = Group::orderBy('name')->get(['id', 'name']);
@@ -75,7 +84,7 @@ class GuestController extends Controller
         return Inertia::render('Admin/Guests/Index', [
             'guests' => $guests,
             'groups' => $groups,
-            'filters' => $request->only(['search', 'group_id', 'has_email', 'rsvp_status']),
+            'filters' => $request->only(['search', 'group_id', 'has_email', 'status', 'per_page']),
         ]);
     }
 
@@ -118,6 +127,11 @@ class GuestController extends Controller
             $query->orderBy('created_at', 'desc');
         }]);
 
+        // Add has_rsvp attribute to the guest's group
+        if ($guest->group) {
+            $guest->group->has_rsvp = $guest->group->hasRsvp();
+        }
+
         return Inertia::render('Admin/Guests/Show', [
             'guest' => $guest,
         ]);
@@ -134,6 +148,11 @@ class GuestController extends Controller
         // Add group_name to the guest object for the frontend
         $guestData = $guest->toArray();
         $guestData['group_name'] = $guest->group ? $guest->group->name : null;
+        
+        // Add has_rsvp attribute to the guest's group
+        if ($guest->group) {
+            $guestData['has_rsvp'] = $guest->group->hasRsvp();
+        }
 
         return Inertia::render('Admin/Guests/Edit', [
             'guest' => $guestData,
@@ -174,5 +193,35 @@ class GuestController extends Controller
         return redirect()
             ->route('admin.guests.index')
             ->with('success', 'Guest deleted successfully.');
+    }
+
+    /**
+     * Send RSVP invitation email to a guest.
+     */
+    public function sendRsvpEmail(Guest $guest)
+    {
+        // Check if guest has an email
+        if (!$guest->email) {
+            return back()->with('error', 'Guest does not have an email address.');
+        }
+
+        // Check if group already has RSVP
+        if ($guest->group && $guest->group->hasRsvp()) {
+            return back()->with('error', 'This group has already submitted an RSVP.');
+        }
+
+        try {
+            Mail::to($guest->email)->send(new RsvpInvitationMail($guest));
+            
+            return back()->with('success', 'RSVP invitation email sent successfully to ' . $guest->full_name . '.');
+        } catch (\Exception $e) {
+            \Log::error('Failed to send RSVP invitation email', [
+                'guest_id' => $guest->id,
+                'email' => $guest->email,
+                'error' => $e->getMessage()
+            ]);
+
+            return back()->with('error', 'Failed to send RSVP invitation email. Please try again later.');
+        }
     }
 }
