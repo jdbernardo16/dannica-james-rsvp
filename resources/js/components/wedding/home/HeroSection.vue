@@ -22,7 +22,7 @@ onUnmounted(() => {
 });
 </script>
 <template>
-    <section>
+    <section id="home">
         <div class="relative h-[60vh] overflow-hidden md:h-screen">
             <div
                 ref="heroImage"

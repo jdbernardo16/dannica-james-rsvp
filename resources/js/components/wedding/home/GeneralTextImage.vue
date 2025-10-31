@@ -57,9 +57,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <section
-        class="relative overflow-hidden bg-gradient-to-b from-rose-50/20 via-white to-amber-50/20 py-16 md:py-24"
-    >
+    <section id="invitation">
         <!-- Background decorative elements -->
         <div class="pointer-events-none absolute inset-0">
             <div class="absolute top-20 left-10 h-32 w-32 opacity-5">

@@ -125,6 +125,7 @@ const imageLoaded = ref(false);
 
 <template>
     <section
+        id="couple"
         ref="sectionRef"
         class="interests-section"
         role="region"

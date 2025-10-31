@@ -22,9 +22,7 @@ withDefaults(defineProps<Props>(), {
     <div
         :class="[
             'flex min-h-screen flex-col',
-            showWeddingTheme
-                ? 'wedding-theme bg-wedding-gradient-ivory'
-                : 'bg-background',
+            showWeddingTheme ? 'wedding-theme' : 'bg-background',
         ]"
     >
         <Head :title="title">
@@ -116,7 +114,7 @@ withDefaults(defineProps<Props>(), {
         </header>
 
         <!-- Main Content -->
-        <main class="relative z-10 flex-grow">
+        <main class="relative z-10 flex-grow py-20">
             <div :class="showWeddingTheme ? 'animate-fade-in' : ''">
                 <slot />
             </div>

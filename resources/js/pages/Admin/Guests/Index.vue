@@ -8,6 +8,14 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import {
     Select,
@@ -24,11 +32,12 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
+import { Toast } from '@/components/ui/toast';
 import AdminLayout from '@/layouts/AdminLayout.vue';
 import type { BreadcrumbItemType } from '@/types';
-import { Head, Link, router } from '@inertiajs/vue3';
+import { Head, Link, router, usePage } from '@inertiajs/vue3';
 import { Edit, Eye, Mail, Plus, Search, Trash2 } from 'lucide-vue-next';
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 // Define props interface
 interface Guest {
@@ -75,11 +84,56 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const page = usePage();
 
 const search = ref(props.filters.search);
 const status = ref(props.filters.status);
 const groupId = ref(props.filters.group_id);
 const perPage = ref(props.filters.per_page);
+
+// State for confirmation modal
+const showConfirmModal = ref(false);
+const selectedGuestId = ref<number | null>(null);
+const selectedGuestName = ref<string>('');
+
+// Flash messages from backend
+const flash = computed(() => page.props.flash as any);
+
+// Toast state
+const showToast = ref(false);
+const toastMessage = ref('');
+const toastType = ref<'success' | 'error'>('success');
+
+// Show toast when flash message changes
+watch(
+    flash,
+    (newFlash) => {
+        if (newFlash?.success) {
+            toastMessage.value = newFlash.success;
+            toastType.value = 'success';
+            showToast.value = true;
+
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                showToast.value = false;
+            }, 5000);
+        } else if (newFlash?.error) {
+            toastMessage.value = newFlash.error;
+            toastType.value = 'error';
+            showToast.value = true;
+
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                showToast.value = false;
+            }, 5000);
+        }
+    },
+    { immediate: true },
+);
+
+const closeToast = () => {
+    showToast.value = false;
+};
 
 const breadcrumbItems: BreadcrumbItemType[] = [
     {
@@ -123,23 +177,42 @@ const deleteGuest = (id: number) => {
 
 const getStatusBadge = (hasRsvp: boolean) => {
     return hasRsvp
-        ? { variant: 'default', label: 'Responded' }
+        ? { variant: 'default', label: 'Group Responded' }
         : { variant: 'secondary', label: 'Pending' };
 };
 
-const sendRsvpEmail = (guestId: number) => {
-    if (confirm('Send RSVP invitation email to this guest?')) {
+const sendRsvpEmail = (guestId: number, guestName: string) => {
+    selectedGuestId.value = guestId;
+    selectedGuestName.value = guestName;
+    showConfirmModal.value = true;
+};
+
+const confirmSendRsvpEmail = () => {
+    if (selectedGuestId.value) {
         router.post(
-            `/admin/guests/${guestId}/send-rsvp`,
+            `/admin/guests/${selectedGuestId.value}/send-rsvp`,
             {},
             {
                 preserveScroll: true,
                 onSuccess: () => {
-                    // Show success message
+                    showConfirmModal.value = false;
+                    selectedGuestId.value = null;
+                    selectedGuestName.value = '';
+                },
+                onError: () => {
+                    showConfirmModal.value = false;
+                    selectedGuestId.value = null;
+                    selectedGuestName.value = '';
                 },
             },
         );
     }
+};
+
+const cancelSendRsvpEmail = () => {
+    showConfirmModal.value = false;
+    selectedGuestId.value = null;
+    selectedGuestName.value = '';
 };
 </script>
 
@@ -300,16 +373,54 @@ const sendRsvpEmail = (guestId: number) => {
                                     </Button>
                                 </TableCell>
                                 <TableCell>
-                                    <Badge
-                                        :variant="
-                                            getStatusBadge(guest.has_rsvp)
-                                                .variant as any
-                                        "
-                                    >
-                                        {{
-                                            getStatusBadge(guest.has_rsvp).label
-                                        }}
-                                    </Badge>
+                                    <div class="flex items-center gap-2">
+                                        <Badge
+                                            :variant="
+                                                getStatusBadge(guest.has_rsvp)
+                                                    .variant as any
+                                            "
+                                        >
+                                            {{
+                                                getStatusBadge(guest.has_rsvp)
+                                                    .label
+                                            }}
+                                        </Badge>
+                                        <div
+                                            v-if="guest.has_rsvp"
+                                            class="h-4 w-4 text-muted-foreground"
+                                            title="RSVP status is based on group response"
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="16"
+                                                height="16"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <circle
+                                                    cx="12"
+                                                    cy="12"
+                                                    r="10"
+                                                />
+                                                <line
+                                                    x1="12"
+                                                    y1="16"
+                                                    x2="12"
+                                                    y2="12"
+                                                />
+                                                <line
+                                                    x1="12"
+                                                    y1="8"
+                                                    x2="12.01"
+                                                    y2="8"
+                                                />
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </TableCell>
                                 <TableCell>{{
                                     new Date(
@@ -345,7 +456,12 @@ const sendRsvpEmail = (guestId: number) => {
                                         <Button
                                             variant="ghost"
                                             size="sm"
-                                            @click="sendRsvpEmail(guest.id)"
+                                            @click="
+                                                sendRsvpEmail(
+                                                    guest.id,
+                                                    guest.full_name,
+                                                )
+                                            "
                                             :disabled="guest.has_rsvp"
                                             title="Send RSVP Email"
                                         >
@@ -384,15 +500,44 @@ const sendRsvpEmail = (guestId: number) => {
                                     as-child
                                 >
                                     <Link v-if="link.url" :href="link.url">
-                                        {{ link.label }}
+                                        <div v-html="link.label"></div>
                                     </Link>
-                                    <span v-else>{{ link.label }}</span>
+                                    <div v-else v-html="link.label"></div>
                                 </Button>
                             </div>
                         </div>
                     </div>
                 </CardContent>
             </Card>
+
+            <!-- Confirmation Modal -->
+            <Dialog v-model:open="showConfirmModal">
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Send RSVP Invitation</DialogTitle>
+                        <DialogDescription>
+                            Are you sure you want to send an RSVP invitation
+                            email to {{ selectedGuestName }}?
+                        </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                        <Button variant="outline" @click="cancelSendRsvpEmail">
+                            Cancel
+                        </Button>
+                        <Button @click="confirmSendRsvpEmail">
+                            Send Email
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+
+            <!-- Toast Notification -->
+            <Toast
+                :message="toastMessage"
+                :type="toastType"
+                :show="showToast"
+                @close="closeToast"
+            />
         </div>
     </AdminLayout>
 </template>

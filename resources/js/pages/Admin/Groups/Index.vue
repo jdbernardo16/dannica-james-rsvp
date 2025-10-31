@@ -320,9 +320,9 @@ const getStatusBadge = (hasRsvp: boolean) => {
                                     as-child
                                 >
                                     <Link v-if="link.url" :href="link.url">
-                                        {{ link.label }}
+                                        <span v-html="link.label"></span>
                                     </Link>
-                                    <span v-else>{{ link.label }}</span>
+                                    <span v-else v-html="link.label"></span>
                                 </Button>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <template>
     <PublicLayout
-        title="RSVP - James & Dannica's Wedding"
+        title="RSVP - Wedding Invitation"
         description="Please fill out this form to let us know if you can attend our special day"
         :showHeader="false"
         :showFooter="false"
@@ -114,35 +114,22 @@
                                         >
                                             Full Name
                                         </Label>
-                                        <div class="relative">
-                                            <Input
-                                                id="guest_name"
-                                                v-model="formData.guest_name"
-                                                type="text"
-                                                placeholder="Enter your full name"
-                                                :disabled="isLoading"
-                                                required
-                                                class="input-wedding wedding-transition-slow mt-2 pr-12"
-                                                :class="{
-                                                    error: errors.guest_name,
-                                                    success:
-                                                        guestFound &&
-                                                        !errors.guest_name,
-                                                }"
-                                            />
-                                            <button
-                                                type="button"
-                                                class="text-wedding-navy hover:text-wedding-gold absolute top-1/2 right-2 -translate-y-1/2 transform p-2 transition-colors duration-200"
-                                                @click="checkGuestName"
-                                                :disabled="
-                                                    isLoading ||
-                                                    !formData.guest_name.trim()
-                                                "
-                                                title="Find My Invitation"
-                                            >
-                                                <Search class="h-4 w-4" />
-                                            </button>
-                                        </div>
+                                        <Input
+                                            id="guest_name"
+                                            v-model="formData.guest_name"
+                                            type="text"
+                                            placeholder="Enter your full name"
+                                            :disabled="isLoading"
+                                            @blur="checkGuestName"
+                                            required
+                                            class="input-wedding wedding-transition-slow mt-2"
+                                            :class="{
+                                                error: errors.guest_name,
+                                                success:
+                                                    guestFound &&
+                                                    !errors.guest_name,
+                                            }"
+                                        />
                                         <p
                                             v-if="errors.guest_name"
                                             class="font-wedding-medium mt-1 text-sm text-red-600"
@@ -240,8 +227,7 @@
                                         v-if="
                                             !guestFound &&
                                             formData.guest_name &&
-                                            !isLoading &&
-                                            errors.guest_name
+                                            !isLoading
                                         "
                                         class="rounded-wedding-lg border-2 border-red-200 bg-red-50 p-4"
                                     >
@@ -1057,7 +1043,6 @@ import {
     CheckCircle,
     Minus,
     Plus,
-    Search,
     Send,
     XCircle,
 } from 'lucide-vue-next';
@@ -1112,12 +1097,11 @@ const formData = ref<FormData>({
     email: '',
 });
 
-// Watch for changes in guest name to reset guest found status only when field is empty
+// Watch for changes in guest name to reset guest found status
 watch(
     () => formData.value.guest_name,
-    (newValue) => {
-        // Reset guest found status only when field is completely empty
-        if (newValue === '') {
+    () => {
+        if (formData.value.guest_name === '') {
             guestFound.value = false;
             guestData.value = null;
             errors.value.guest_name = '';

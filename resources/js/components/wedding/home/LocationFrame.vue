@@ -33,7 +33,6 @@ const sectionVisible = ref(false);
 
 const handleScroll = () => {
     const sectionEl = document.querySelector('.locations-section');
-    const locationCards = document.querySelectorAll('.location-card');
     const windowHeight = window.innerHeight;
 
     if (sectionEl) {
@@ -41,31 +40,20 @@ const handleScroll = () => {
 
         if (rect.top < windowHeight * 0.8 && rect.top > 0) {
             sectionVisible.value = true;
+
+            // Trigger card animations with staggered delays
+            locations.value.forEach((location, index) => {
+                setTimeout(() => {
+                    location.visible = true;
+                }, index * 200); // 200ms stagger between cards
+            });
         }
     }
-
-    locationCards.forEach((el, index) => {
-        const rect = el.getBoundingClientRect();
-        const elementMiddle = rect.top + rect.height / 2;
-
-        if (
-            elementMiddle < windowHeight * 0.8 &&
-            elementMiddle > 0 &&
-            locations.value[index]
-        ) {
-            locations.value[index].visible = true;
-        }
-    });
 };
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
-
-    // Trigger section animation after mount
-    setTimeout(() => {
-        sectionVisible.value = true;
-    }, 300);
 });
 
 onUnmounted(() => {
@@ -75,6 +63,7 @@ onUnmounted(() => {
 
 <template>
     <section
+        id="location"
         class="locations-section relative overflow-hidden bg-gradient-to-b from-rose-50/30 via-white to-amber-50/30 py-20 md:py-28"
     >
         <!-- Background decorative elements -->
@@ -169,11 +158,11 @@ onUnmounted(() => {
                 <a
                     v-for="(location, index) in locations"
                     :key="location.id"
-                    class="location-card"
+                    class="location-card block transition-all duration-700 ease-out"
                     :class="[
                         location.visible
                             ? 'translate-y-0 opacity-100'
-                            : 'translate-y-8 opacity-0',
+                            : 'translate-y-12 opacity-0',
                     ]"
                     :href="location.map"
                     target="_blank"
@@ -323,9 +312,9 @@ onUnmounted(() => {
 
 /* Staggered animation delays for cards */
 .location-card:nth-child(1) {
-    transition-delay: 0.1s;
+    transition-delay: 0ms;
 }
 .location-card:nth-child(2) {
-    transition-delay: 0.2s;
+    transition-delay: 200ms;
 }
 </style>

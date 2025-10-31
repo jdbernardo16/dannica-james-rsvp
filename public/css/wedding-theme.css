@@ -776,7 +776,7 @@
 
     /* Wedding form elements */
     .input-wedding {
-        background: rgba(255, 255, 240, 0.9);
+        background: white;
         border: 1px solid var(--wedding-blush-light);
         border-radius: var(--wedding-radius-md);
         padding: 0.75rem 1rem;
@@ -1348,19 +1348,6 @@
         position: relative;
     }
 
-    .wedding-success-animation::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100px;
-        height: 100px;
-        background: radial-gradient(circle, var(--wedding-gold), transparent);
-        border-radius: 50%;
-        animation: wedding-success-burst 1s ease-out;
-    }
-
     /* Confetti and Petal Elements */
     .wedding-confetti {
         position: fixed;
@@ -1643,6 +1630,7 @@
         /* Form Input Optimizations */
         .input-wedding,
         .textarea-wedding {
+            background: white;
             padding: 1rem 0.75rem;
             font-size: 1rem;
             min-height: 48px;
@@ -1838,12 +1826,6 @@
             margin: -8px 0 0 -8px;
         }
 
-        /* Success Animation Mobile */
-        .wedding-success-animation::before {
-            width: 80px;
-            height: 80px;
-        }
-
         /* Confetti and Petals Mobile */
         .wedding-confetti,
         .wedding-petal {
@@ -1914,6 +1896,7 @@
         /* Form Input Tablet */
         .input-wedding,
         .textarea-wedding {
+            background: white;
             padding: 0.875rem 1rem;
             font-size: 1rem;
             min-height: 52px;
@@ -2065,6 +2048,7 @@
         /* Form Input Desktop */
         .input-wedding,
         .textarea-wedding {
+            background: white;
             padding: 0.75rem 1.25rem;
             font-size: 1.125rem;
             min-height: 56px;
@@ -2254,6 +2238,7 @@
 
         .input-wedding,
         .textarea-wedding {
+            background: white;
             padding: 0.875rem 0.5rem;
             font-size: 0.875rem;
         }
@@ -2337,7 +2322,6 @@
         background: var(--wedding-gradient-navy);
         color: var(--wedding-ivory);
         padding: 3rem 0 2rem;
-        margin-top: 4rem;
     }
 
     .wedding-hero {

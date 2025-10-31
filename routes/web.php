@@ -8,10 +8,6 @@ Route::get('/', function () {
     return Inertia::render('Index');
 })->name('home');
 
-Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 // Test route for layout testing
 Route::get('/test-layout', function () {
     return Inertia::render('TestLayout');
@@ -25,5 +21,8 @@ Route::post('/rsvp/check-guest', [RsvpController::class, 'checkGuest'])->name('r
 Route::post('/rsvp/resend-confirmation', [RsvpController::class, 'resendConfirmation'])->name('rsvp.resend-confirmation');
 Route::get('/rsvp/preview-email', [RsvpController::class, 'previewEmail'])->name('rsvp.preview-email');
 
+Route::prefix('admin')->group(function () {
+    require __DIR__ . '/admin.php';
+});
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';

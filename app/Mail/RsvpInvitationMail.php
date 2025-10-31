@@ -2,37 +2,33 @@
 
 namespace App\Mail;
 
-use App\Models\Rsvp;
+use App\Models\Guest;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RsvpConfirmationMail extends Mailable
+class RsvpInvitationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-     * The RSVP instance.
+     * The guest instance.
      *
-     * @var \App\Models\Rsvp
+     * @var \App\Models\Guest
      */
-    public $rsvp;
+    public $guest;
 
     /**
      * Create a new message instance.
      *
-     * @param  \App\Models\Rsvp  $rsvp
+     * @param  \App\Models\Guest  $guest
      * @return void
      */
-    public function __construct(Rsvp $rsvp)
+    public function __construct(Guest $guest)
     {
-        $this->rsvp = $rsvp->load(['group', 'group.guests']);
-        
-        // Transform the RSVP data to include group information as direct properties
-        $this->rsvp->group_name = $this->rsvp->group ? $this->rsvp->group->name : null;
-        $this->rsvp->max_attendees = $this->rsvp->group ? $this->rsvp->group->max_attendees : null;
+        $this->guest = $guest->load(['group', 'group.guests']);
     }
 
     /**
@@ -43,7 +39,7 @@ class RsvpConfirmationMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'RSVP Confirmation - Thank You for Your Response!',
+            subject: 'You\'re Invited! - Dannica & James\'s Wedding',
         );
     }
 
@@ -55,7 +51,7 @@ class RsvpConfirmationMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'mail.rsvp-confirmation',
+            view: 'mail.rsvp-invitation',
         );
     }
 

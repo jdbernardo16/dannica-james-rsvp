@@ -62,6 +62,7 @@ const countdownItems = computed(() => [
 
 <template>
     <section
+        id="save-the-date"
         class="relative overflow-hidden bg-gradient-to-b from-white via-rose-50/30 to-white py-24 md:py-32"
     >
         <!-- Floating decorative elements -->
@@ -158,7 +159,7 @@ const countdownItems = computed(() => [
                     "
                 >
                     <div
-                        class="flex flex-wrap items-start justify-center gap-3 md:gap-6"
+                        class="flex flex-wrap items-start justify-center gap-3 text-center md:gap-6"
                     >
                         <template
                             v-for="(item, index) in countdownItems"

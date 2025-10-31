@@ -15,6 +15,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Http\JsonResponse;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RsvpController extends Controller
 {
@@ -26,11 +27,15 @@ class RsvpController extends Controller
         $query = Rsvp::with(['group', 'group.guests']);
 
         // Filter by attendance status
-        if ($request->has('attendance') && $request->attendance && $request->attendance !== 'all') {
-            if ($request->attendance === 'attending') {
+        if ($request->has('status') && $request->status && $request->status !== 'all') {
+            if ($request->status === 'attending') {
                 $query->attending();
-            } elseif ($request->attendance === 'not_attending') {
+            } elseif ($request->status === 'not_attending') {
                 $query->notAttending();
+            } elseif ($request->status === 'partial') {
+                $query->where('attending_count', '>', 0)->where('attending_count', '<', function($q) {
+                    $q->selectRaw('max_attendees')->from('groups')->whereColumn('groups.id', 'rsvps.group_id');
+                });
             }
         }
 
@@ -54,12 +59,18 @@ class RsvpController extends Controller
         }
 
         $rsvps = $query->latestSubmitted()
-            ->paginate(15)
-            ->withQueryString();
+            ->paginate($request->get('per_page', 15))
+            ->withQueryString()
+            ->through(function ($rsvp) {
+                // Transform the RSVP data to include group information as direct properties
+                $rsvp->group_name = $rsvp->group ? $rsvp->group->name : null;
+                $rsvp->max_attendees = $rsvp->group ? $rsvp->group->max_attendees : null;
+                return $rsvp;
+            });
 
         return Inertia::render('Admin/Rsvps/Index', [
             'rsvps' => $rsvps,
-            'filters' => $request->only(['search', 'attendance', 'date_from', 'date_to']),
+            'filters' => $request->only(['search', 'status', 'date_from', 'date_to', 'per_page']),
         ]);
     }
 
@@ -69,6 +80,10 @@ class RsvpController extends Controller
     public function show(Rsvp $rsvp): Response
     {
         $rsvp->load(['group', 'group.guests']);
+
+        // Transform the RSVP data to include group information as direct properties
+        $rsvp->group_name = $rsvp->group ? $rsvp->group->name : null;
+        $rsvp->max_attendees = $rsvp->group ? $rsvp->group->max_attendees : null;
 
         return Inertia::render('Admin/Rsvps/Show', [
             'rsvp' => $rsvp,
@@ -83,11 +98,15 @@ class RsvpController extends Controller
         $query = Rsvp::with(['group', 'group.guests']);
 
         // Apply same filters as index
-        if ($request->has('attendance') && $request->attendance) {
-            if ($request->attendance === 'attending') {
+        if ($request->has('status') && $request->status && $request->status !== 'all') {
+            if ($request->status === 'attending') {
                 $query->attending();
-            } elseif ($request->attendance === 'not_attending') {
+            } elseif ($request->status === 'not_attending') {
                 $query->notAttending();
+            } elseif ($request->status === 'partial') {
+                $query->where('attending_count', '>', 0)->where('attending_count', '<', function($q) {
+                    $q->selectRaw('max_attendees')->from('groups')->whereColumn('groups.id', 'rsvps.group_id');
+                });
             }
         }
 
@@ -108,7 +127,13 @@ class RsvpController extends Controller
             $query->whereDate('submitted_at', '<=', $request->date_to);
         }
 
-        $rsvps = $query->latestSubmitted()->get();
+        $rsvps = $query->latestSubmitted()->get()->each(function ($rsvp) {
+            // Transform RSVP data to include group information as direct properties
+            $rsvp->group_name = $rsvp->group ? $rsvp->group->name : null;
+            $rsvp->max_attendees = $rsvp->group ? $rsvp->group->max_attendees : null;
+            // Ensure the formatted date is available
+            $rsvp->submitted_at_formatted = $rsvp->submitted_at ? $rsvp->submitted_at->format('F j, Y \a\t g:i A') : '';
+        });
 
         $headers = [
             'Content-Type' => 'text/csv',
@@ -131,10 +156,10 @@ class RsvpController extends Controller
 
             // CSV data
             foreach ($rsvps as $rsvp) {
-                $guestNames = $rsvp->group->guests->pluck('full_name')->implode(', ');
+                $guestNames = $rsvp->group && $rsvp->group->guests ? $rsvp->group->guests->pluck('full_name')->implode(', ') : '';
 
                 fputcsv($file, [
-                    $rsvp->group->name,
+                    $rsvp->group ? $rsvp->group->name : 'Unknown Group',
                     $guestNames,
                     $rsvp->email,
                     $rsvp->attending_count,
@@ -148,6 +173,62 @@ class RsvpController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    /**
+     * Export RSVPs to PDF file (admin).
+     */
+    public function exportPdf(Request $request)
+    {
+        $query = Rsvp::with(['group', 'group.guests']);
+
+        // Apply same filters as index
+        if ($request->has('status') && $request->status && $request->status !== 'all') {
+            if ($request->status === 'attending') {
+                $query->attending();
+            } elseif ($request->status === 'not_attending') {
+                $query->notAttending();
+            } elseif ($request->status === 'partial') {
+                $query->where('attending_count', '>', 0)->where('attending_count', '<', function($q) {
+                    $q->selectRaw('max_attendees')->from('groups')->whereColumn('groups.id', 'rsvps.group_id');
+                });
+            }
+        }
+
+        if ($request->has('search') && $request->search) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->whereHas('group', function ($subQuery) use ($search) {
+                    $subQuery->where('name', 'like', "%{$search}%");
+                })->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->has('date_from') && $request->date_from) {
+            $query->whereDate('submitted_at', '>=', $request->date_from);
+        }
+
+        if ($request->has('date_to') && $request->date_to) {
+            $query->whereDate('submitted_at', '<=', $request->date_to);
+        }
+
+        $rsvps = $query->latestSubmitted()->get()->map(function ($rsvp) {
+            // Transform the RSVP data to include group information as direct properties
+            $rsvp->group_name = $rsvp->group ? $rsvp->group->name : null;
+            $rsvp->max_attendees = $rsvp->group ? $rsvp->group->max_attendees : null;
+            return $rsvp;
+        });
+
+        // Generate PDF
+        $pdf = Pdf::loadView('pdf.rsvps', ['rsvps' => $rsvps])
+            ->setPaper('a4')
+            ->setOption('font-family', 'Arial')
+            ->setOption('margin-top', '20px')
+            ->setOption('margin-bottom', '20px')
+            ->setOption('margin-left', '15px')
+            ->setOption('margin-right', '15px');
+
+        return $pdf->download('rsvps_' . date('Y-m-d') . '.pdf');
     }
 
     /**
@@ -249,6 +330,13 @@ class RsvpController extends Controller
 
         if ($rsvpId) {
             $rsvp = Rsvp::with(['group', 'group.guests'])->find($rsvpId);
+            
+            // Transform the RSVP data to include group information as direct properties
+            if ($rsvp) {
+                $rsvp->group_name = $rsvp->group ? $rsvp->group->name : null;
+                $rsvp->max_attendees = $rsvp->group ? $rsvp->group->max_attendees : null;
+            }
+            
             // Clear the session variable
             Session::forget('rsvp_id');
         }
@@ -318,6 +406,10 @@ class RsvpController extends Controller
                 'message' => 'RSVP not found.',
             ], 404);
         }
+
+        // Transform the RSVP data to include group information as direct properties
+        $rsvp->group_name = $rsvp->group ? $rsvp->group->name : null;
+        $rsvp->max_attendees = $rsvp->group ? $rsvp->group->max_attendees : null;
 
         // Send confirmation email if email is provided
         if ($rsvp->email) {
