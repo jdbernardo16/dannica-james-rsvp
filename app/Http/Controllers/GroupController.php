@@ -25,8 +25,8 @@ class GroupController extends Controller
         }
 
         // Filter by RSVP status
-        if ($request->has('rsvp_status') && $request->rsvp_status && $request->rsvp_status !== 'all') {
-            switch ($request->rsvp_status) {
+        if ($request->has('status') && $request->status && $request->status !== 'all') {
+            switch ($request->status) {
                 case 'submitted':
                     $query->whereHas('rsvps');
                     break;
@@ -47,12 +47,18 @@ class GroupController extends Controller
         }
 
         $groups = $query->orderBy('name')
-            ->paginate(10)
-            ->withQueryString();
+            ->paginate($request->get('per_page', 10))
+            ->withQueryString()
+            ->through(function ($group) {
+                $group->has_rsvp = $group->hasRsvp();
+                // Map guests_count to guest_count for consistency with the model accessor
+                $group->guest_count = $group->guests_count;
+                return $group;
+            });
 
         return Inertia::render('Admin/Groups/Index', [
             'groups' => $groups,
-            'filters' => $request->only(['search', 'rsvp_status']),
+            'filters' => $request->only(['search', 'status', 'per_page']),
         ]);
     }
 
@@ -89,6 +95,15 @@ class GroupController extends Controller
         $group->load(['guests', 'rsvps' => function ($query) {
             $query->orderBy('created_at', 'desc');
         }]);
+        
+        // Load guest count
+        $group->loadCount('guests');
+
+        // Add has_rsvp attribute
+        $group->has_rsvp = $group->hasRsvp();
+        
+        // Map guests_count to guest_count for consistency with the model accessor
+        $group->guest_count = $group->guests_count;
 
         return Inertia::render('Admin/Groups/Show', [
             'group' => $group,
@@ -101,6 +116,18 @@ class GroupController extends Controller
     public function edit(Group $group): Response
     {
         $group->load(['guests']);
+        
+        // Load guest count
+        $group->loadCount('guests');
+
+        // Add has_rsvp attribute
+        $group->has_rsvp = $group->hasRsvp();
+        
+        // Map guests_count to guest_count for consistency with the model accessor
+        $group->guest_count = $group->guests_count;
+        
+        // Add attending count from the latest RSVP
+        $group->attending_count = $group->attending_count;
 
         return Inertia::render('Admin/Groups/Edit', [
             'group' => $group,

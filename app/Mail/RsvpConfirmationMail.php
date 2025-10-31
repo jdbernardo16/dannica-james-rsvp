@@ -29,6 +29,10 @@ class RsvpConfirmationMail extends Mailable
     public function __construct(Rsvp $rsvp)
     {
         $this->rsvp = $rsvp->load(['group', 'group.guests']);
+        
+        // Transform the RSVP data to include group information as direct properties
+        $this->rsvp->group_name = $this->rsvp->group ? $this->rsvp->group->name : null;
+        $this->rsvp->max_attendees = $this->rsvp->group ? $this->rsvp->group->max_attendees : null;
     }
 
     /**

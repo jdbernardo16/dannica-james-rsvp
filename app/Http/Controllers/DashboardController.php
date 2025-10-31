@@ -25,7 +25,13 @@ class DashboardController extends Controller
         $recentRsvps = Rsvp::with('group')
             ->latestSubmitted()
             ->limit(5)
-            ->get();
+            ->get()
+            ->map(function ($rsvp) {
+                // Transform the RSVP data to include group information as direct properties
+                $rsvp->group_name = $rsvp->group ? $rsvp->group->name : null;
+                $rsvp->max_attendees = $rsvp->group ? $rsvp->group->max_attendees : null;
+                return $rsvp;
+            });
 
         // Get groups with RSVP status
         $groupsWithRsvp = Group::with(['guests'])
@@ -35,6 +41,7 @@ class DashboardController extends Controller
                     'id' => $group->id,
                     'name' => $group->name,
                     'guest_count' => $group->guest_count,
+                    'max_attendees' => $group->max_attendees,
                     'has_rsvp' => $group->hasRsvp(),
                     'is_attending' => $group->isAttending(),
                     'attending_count' => $group->attending_count,
@@ -62,7 +69,7 @@ class DashboardController extends Controller
                     'id' => $group['id'],
                     'name' => $group['name'],
                     'guest_count' => $group['guest_count'],
-                    'max_attendees' => $group['guest_count'], // Using guest_count as max_attendees since it's not in the original data
+                    'max_attendees' => $group['max_attendees'],
                     'has_rsvp' => $group['has_rsvp'],
                 ];
             }),

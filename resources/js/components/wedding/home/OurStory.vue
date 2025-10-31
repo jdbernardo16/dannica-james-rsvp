@@ -69,6 +69,7 @@ onMounted(() => {
 
 <template>
     <section
+        id="story"
         class="relative overflow-hidden bg-gradient-to-b from-rose-50/30 via-white to-rose-50/30 py-16 md:py-24"
     >
         <!-- Background decorative elements -->
@@ -132,7 +133,7 @@ onMounted(() => {
                         <div class="w-full overflow-hidden rounded-t-full">
                             <img
                                 class="w-full transform transition-transform duration-700 hover:scale-110"
-                                src="/images/element2.png"
+                                src="/images/img3.png"
                                 alt="couple"
                             />
                         </div>
@@ -166,7 +167,7 @@ onMounted(() => {
                         </div>
                     </div>
                     <h2
-                        class="font-secondary mb-6 text-4xl leading-tight text-gray-800 sm:text-5xl md:text-6xl lg:text-7xl"
+                        class="mb-6 font-secondary text-4xl leading-tight text-gray-800 sm:text-5xl md:text-6xl lg:text-7xl"
                     >
                         A Love Story
                     </h2>
@@ -189,13 +190,13 @@ onMounted(() => {
                         class="story-card"
                         :class="[
                             milestone.visible
-                                ? 'translate-y-0 opacity-100'
-                                : 'translate-y-8 opacity-0',
-                            index % 2 === 0 ? 'lg:mt-12' : 'lg:-mt-12',
+                                ? 'translate-y-0 scale-100 opacity-100'
+                                : 'translate-y-12 scale-95 opacity-0',
+                            index % 2 === 0 ? 'lg:-mt-12' : 'lg:mt-12',
                         ]"
                     >
                         <div
-                            class="group relative h-fit overflow-hidden rounded-2xl border border-rose-100 bg-white p-8 shadow-lg transition-all duration-500 hover:-translate-y-2 hover:border-rose-300 hover:shadow-2xl"
+                            class="group relative h-fit overflow-hidden rounded-2xl border border-rose-100 bg-white p-8 shadow-lg transition-all duration-700 ease-out hover:-translate-y-2 hover:border-rose-300 hover:shadow-2xl"
                         >
                             <!-- Decorative gradient overlay -->
                             <div
@@ -227,7 +228,7 @@ onMounted(() => {
                                     </div>
                                     <div>
                                         <h3
-                                            class="font-playfair mb-1 text-2xl text-gray-800 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
+                                            class="mb-1 font-playfair text-2xl text-gray-800 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
                                         >
                                             {{ milestone.title }}
                                         </h3>
@@ -345,17 +346,50 @@ onMounted(() => {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-/* Staggered animation delays for cards */
+/* Enhanced smooth animations for cards */
+.story-card {
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center bottom;
+}
+
 .story-card:nth-child(1) {
-    transition-delay: 0.1s;
+    transition-delay: 0ms;
 }
+
 .story-card:nth-child(2) {
-    transition-delay: 0.2s;
+    transition-delay: 150ms;
 }
+
 .story-card:nth-child(3) {
-    transition-delay: 0.3s;
+    transition-delay: 300ms;
 }
+
 .story-card:nth-child(4) {
-    transition-delay: 0.4s;
+    transition-delay: 450ms;
+}
+
+/* Add subtle entrance animation for card content */
+.story-card .group {
+    transition: all 0.6s ease-out;
+}
+
+.story-card:not(.visible) .group {
+    transform: translateY(20px);
+    opacity: 0.8;
+}
+
+.story-card.visible .group {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Enhanced hover effects */
+.story-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    z-index: 10;
+}
+
+.story-card:hover .group {
+    transform: translateY(-4px);
 }
 </style>

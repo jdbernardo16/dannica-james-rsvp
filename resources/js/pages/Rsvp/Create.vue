@@ -1,71 +1,11 @@
 <template>
     <PublicLayout
-        title="RSVP - Wedding Invitation"
+        title="RSVP - James & Dannica's Wedding"
         description="Please fill out this form to let us know if you can attend our special day"
         :showHeader="false"
         :showFooter="false"
     >
         <!-- Decorative Floral Corners with Enhanced Animations -->
-        <div
-            class="wedding-animate-fade-in-down wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed top-0 left-0 h-24 w-24 opacity-20 sm:h-32 sm:w-32"
-            style="animation-delay: 0.2s"
-        >
-            <svg
-                viewBox="0 0 100 100"
-                class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
-            >
-                <path
-                    d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
-                    fill="currentColor"
-                />
-                <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
-            </svg>
-        </div>
-        <div
-            class="wedding-animate-fade-in-down wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed top-0 right-0 h-24 w-24 rotate-90 opacity-20 sm:h-32 sm:w-32"
-            style="animation-delay: 0.4s"
-        >
-            <svg
-                viewBox="0 0 100 100"
-                class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
-            >
-                <path
-                    d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
-                    fill="currentColor"
-                />
-                <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
-            </svg>
-        </div>
-        <div
-            class="wedding-animate-fade-in-up wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed bottom-0 left-0 h-24 w-24 -rotate-90 opacity-20 sm:h-32 sm:w-32"
-            style="animation-delay: 0.6s"
-        >
-            <svg
-                viewBox="0 0 100 100"
-                class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
-            >
-                <path
-                    d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
-                    fill="currentColor"
-                />
-                <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
-            </svg>
-        </div>
-        <div
-            class="wedding-animate-fade-in-up wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed right-0 bottom-0 h-24 w-24 rotate-180 opacity-20 sm:h-32 sm:w-32"
-            style="animation-delay: 0.8s"
-        >
-            <svg
-                viewBox="0 0 100 100"
-                class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
-            >
-                <path
-                    d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
-                    fill="currentColor"
-                />
-                <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
-            </svg>
-        </div>
 
         <div
             class="wedding-smooth-scroll wedding-container relative z-10 px-4 py-8 sm:py-10 lg:py-12"
@@ -75,11 +15,11 @@
                 <div
                     class="wedding-header wedding-animate-bounce-in mb-8 text-center sm:mb-10 lg:mb-12"
                 >
-                    <h1
-                        class="wedding-title text-wedding-4xl sm:text-wedding-5xl font-wedding-black wedding-navy wedding-hover-glow"
+                    <h3
+                        class="wedding-title text-wedding-4xl sm:text-wedding-5xl"
                     >
-                        Wedding RSVP
-                    </h1>
+                        James & Dannica's Wedding
+                    </h3>
                     <div
                         class="wedding-divider wedding-animate-gold-shimmer mt-4 mb-3 sm:mt-6 sm:mb-4"
                     ></div>
@@ -98,38 +38,41 @@
                     </p>
                 </div>
 
-                <!-- Wedding-themed Step Indicator -->
+                <!-- Wedding-themed Progress Bar -->
                 <div class="wedding-animate-slide-up mb-8 sm:mb-10 lg:mb-12">
-                    <div class="wedding-step-indicator">
-                        <div
-                            v-for="(step, index) in steps"
-                            :key="index"
-                            class="wedding-step"
-                            :class="{
-                                active: currentStep === index,
-                                completed: currentStep > index,
-                            }"
-                        >
+                    <div class="wedding-progress-container">
+                        <div class="wedding-progress-bar">
                             <div
-                                class="wedding-step-circle wedding-touch-target"
-                            >
-                                <CheckCircle
-                                    v-if="currentStep > index"
-                                    class="h-4 w-4 sm:h-5 sm:w-5"
-                                />
-                                <span v-else class="text-sm sm:text-base">{{
-                                    index + 1
-                                }}</span>
-                            </div>
-                            <span
-                                class="wedding-step-label text-xs sm:text-sm"
-                                >{{ step.title }}</span
-                            >
-                            <div
-                                v-if="index < steps.length - 1"
-                                class="wedding-step-connector"
-                                :class="{ completed: currentStep > index }"
+                                class="wedding-progress-fill"
+                                :style="{ width: progressPercentage + '%' }"
                             ></div>
+                        </div>
+                        <div class="wedding-progress-steps">
+                            <div
+                                v-for="(step, index) in steps"
+                                :key="index"
+                                class="wedding-progress-step"
+                                :class="{
+                                    active: currentStep === index,
+                                    completed: currentStep > index,
+                                }"
+                                @click="goToStep(index)"
+                            >
+                                <div class="wedding-progress-dot">
+                                    <CheckCircle
+                                        v-if="currentStep > index"
+                                        class="h-3 w-3 sm:h-4 sm:w-4"
+                                    />
+                                    <span v-else class="text-xs sm:text-sm">{{
+                                        index + 1
+                                    }}</span>
+                                </div>
+                                <span
+                                    class="wedding-progress-label text-xs sm:text-sm"
+                                >
+                                    {{ step.title }}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,11 +90,11 @@
                                 class="wedding-animate-page-transition space-y-6"
                             >
                                 <div>
-                                    <h2
+                                    <h3
                                         class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
                                     >
                                         Find Your Invitation
-                                    </h2>
+                                    </h3>
                                     <div
                                         class="wedding-divider-blush mt-4"
                                     ></div>
@@ -171,22 +114,35 @@
                                         >
                                             Full Name
                                         </Label>
-                                        <Input
-                                            id="guest_name"
-                                            v-model="formData.guest_name"
-                                            type="text"
-                                            placeholder="Enter your full name"
-                                            :disabled="isLoading"
-                                            @blur="checkGuestName"
-                                            required
-                                            class="input-wedding wedding-transition-slow mt-2"
-                                            :class="{
-                                                error: errors.guest_name,
-                                                success:
-                                                    guestFound &&
-                                                    !errors.guest_name,
-                                            }"
-                                        />
+                                        <div class="relative">
+                                            <Input
+                                                id="guest_name"
+                                                v-model="formData.guest_name"
+                                                type="text"
+                                                placeholder="Enter your full name"
+                                                :disabled="isLoading"
+                                                required
+                                                class="input-wedding wedding-transition-slow mt-2 pr-12"
+                                                :class="{
+                                                    error: errors.guest_name,
+                                                    success:
+                                                        guestFound &&
+                                                        !errors.guest_name,
+                                                }"
+                                            />
+                                            <button
+                                                type="button"
+                                                class="text-wedding-navy hover:text-wedding-gold absolute top-1/2 right-2 -translate-y-1/2 transform p-2 transition-colors duration-200"
+                                                @click="checkGuestName"
+                                                :disabled="
+                                                    isLoading ||
+                                                    !formData.guest_name.trim()
+                                                "
+                                                title="Find My Invitation"
+                                            >
+                                                <Search class="h-4 w-4" />
+                                            </button>
+                                        </div>
                                         <p
                                             v-if="errors.guest_name"
                                             class="font-wedding-medium mt-1 text-sm text-red-600"
@@ -284,7 +240,8 @@
                                         v-if="
                                             !guestFound &&
                                             formData.guest_name &&
-                                            !isLoading
+                                            !isLoading &&
+                                            errors.guest_name
                                         "
                                         class="rounded-wedding-lg border-2 border-red-200 bg-red-50 p-4"
                                     >
@@ -319,11 +276,11 @@
                                 class="wedding-animate-page-transition space-y-6"
                             >
                                 <div>
-                                    <h2
+                                    <h3
                                         class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
                                     >
                                         Will You Be Attending?
-                                    </h2>
+                                    </h3>
                                     <div
                                         class="wedding-divider-blush mt-4"
                                     ></div>
@@ -415,11 +372,11 @@
                                 class="wedding-animate-page-transition space-y-6"
                             >
                                 <div>
-                                    <h2
+                                    <h3
                                         class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
                                     >
                                         Message to the Couple
-                                    </h2>
+                                    </h3>
                                     <div
                                         class="wedding-divider-blush mt-4"
                                     ></div>
@@ -464,11 +421,11 @@
                                 class="wedding-animate-page-transition space-y-6"
                             >
                                 <div>
-                                    <h2
+                                    <h3
                                         class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
                                     >
                                         Song Suggestion
-                                    </h2>
+                                    </h3>
                                     <div
                                         class="wedding-divider-blush mt-4"
                                     ></div>
@@ -515,11 +472,11 @@
                                 class="wedding-animate-page-transition space-y-6"
                             >
                                 <div>
-                                    <h2
+                                    <h3
                                         class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
                                     >
                                         Email Address
-                                    </h2>
+                                    </h3>
                                     <div
                                         class="wedding-divider-blush mt-4"
                                     ></div>
@@ -577,11 +534,11 @@
                                 class="wedding-animate-page-transition space-y-6"
                             >
                                 <div>
-                                    <h2
+                                    <h3
                                         class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
                                     >
                                         Review Your RSVP
-                                    </h2>
+                                    </h3>
                                     <div
                                         class="wedding-divider-blush mt-4"
                                     ></div>
@@ -774,69 +731,211 @@
 
 <style scoped>
 /* Component-specific styles that enhance the wedding theme */
-.wedding-step-indicator {
+.wedding-progress-container {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
 }
 
-/* Mobile-specific adjustments that complement the wedding theme */
+.wedding-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--wedding-blush-light);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.wedding-progress-fill {
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--wedding-gold),
+        var(--wedding-gold-dark)
+    );
+    border-radius: 4px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.wedding-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: wedding-progress-shimmer 2s ease-in-out infinite;
+}
+
+.wedding-progress-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.wedding-progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.wedding-progress-step.completed {
+    cursor: pointer;
+}
+
+.wedding-progress-step:not(.completed):not(.active) {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.wedding-progress-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--wedding-ivory);
+    border: 2px solid var(--wedding-blush-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wedding-navy);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 2;
+}
+
+.wedding-progress-step.active .wedding-progress-dot {
+    background: var(--wedding-gold);
+    border-color: var(--wedding-gold);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+    animation: wedding-progress-active 2s ease-in-out infinite;
+}
+
+.wedding-progress-step.completed .wedding-progress-dot {
+    background: var(--wedding-gold);
+    border-color: var(--wedding-gold);
+    color: white;
+    animation: wedding-progress-complete 0.6s ease-out;
+}
+
+.wedding-progress-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--wedding-navy);
+    text-align: center;
+    max-width: 80px;
+    line-height: 1.2;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wedding-progress-step.active .wedding-progress-label {
+    color: var(--wedding-navy);
+    font-weight: 600;
+}
+
+.wedding-progress-step.completed .wedding-progress-label {
+    color: var(--wedding-navy);
+    font-weight: 600;
+}
+
+/* Mobile-specific adjustments */
 @media (max-width: 639px) {
-    .wedding-step:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        top: 24px;
-        left: 20px;
-        width: 2px;
-        height: 20px;
-        background: var(--wedding-blush-light);
-        z-index: 1;
+    .wedding-progress-dot {
+        width: 28px;
+        height: 28px;
     }
 
-    .wedding-step.completed::after {
-        background: var(--wedding-gold);
+    .wedding-progress-label {
+        font-size: 0.7rem;
+        max-width: 60px;
     }
 }
 
 /* Tablet-specific adjustments */
 @media (min-width: 640px) and (max-width: 1023px) {
-    .wedding-step-circle {
-        width: 56px;
-        height: 56px;
-        font-size: 1.125rem;
+    .wedding-progress-dot {
+        width: 30px;
+        height: 30px;
     }
 
-    .wedding-step-label {
-        max-width: 90px;
-        font-size: 0.8rem;
+    .wedding-progress-label {
+        font-size: 0.725rem;
+        max-width: 70px;
     }
 }
 
 /* Desktop-specific adjustments */
 @media (min-width: 1024px) {
-    .wedding-step-circle {
-        width: 64px;
-        height: 64px;
-        font-size: 1.25rem;
+    .wedding-progress-dot {
+        width: 32px;
+        height: 32px;
     }
 
-    .wedding-step-label {
-        max-width: 120px;
-        font-size: 0.9rem;
+    .wedding-progress-label {
+        font-size: 0.75rem;
+        max-width: 80px;
     }
 }
 
 /* Small mobile adjustments */
 @media (max-width: 374px) {
-    .wedding-step-circle {
-        width: 40px;
-        height: 40px;
-        font-size: 0.875rem;
+    .wedding-progress-dot {
+        width: 24px;
+        height: 24px;
     }
 
-    .wedding-step-label {
-        font-size: 0.75rem;
-        margin-left: 0.75rem;
+    .wedding-progress-label {
+        font-size: 0.65rem;
+        max-width: 50px;
+    }
+}
+
+/* Animations */
+@keyframes wedding-progress-shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes wedding-progress-active {
+    0%,
+    100% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+    }
+    50% {
+        transform: scale(1.15);
+        box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.3);
+    }
+}
+
+@keyframes wedding-progress-complete {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
@@ -958,6 +1057,7 @@ import {
     CheckCircle,
     Minus,
     Plus,
+    Search,
     Send,
     XCircle,
 } from 'lucide-vue-next';
@@ -1012,11 +1112,12 @@ const formData = ref<FormData>({
     email: '',
 });
 
-// Watch for changes in guest name to reset guest found status
+// Watch for changes in guest name to reset guest found status only when field is empty
 watch(
     () => formData.value.guest_name,
-    () => {
-        if (formData.value.guest_name === '') {
+    (newValue) => {
+        // Reset guest found status only when field is completely empty
+        if (newValue === '') {
             guestFound.value = false;
             guestData.value = null;
             errors.value.guest_name = '';
@@ -1050,6 +1151,16 @@ const canProceed = computed(() => {
 const canSubmit = computed(() => {
     return canProceed.value && guestFound.value && guestData.value;
 });
+
+const progressPercentage = computed(() => {
+    return ((currentStep.value + 1) / steps.length) * 100;
+});
+
+const goToStep = (stepIndex: number) => {
+    if (stepIndex <= currentStep.value) {
+        currentStep.value = stepIndex;
+    }
+};
 
 const isValidEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

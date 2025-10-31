@@ -22,7 +22,7 @@ onUnmounted(() => {
 });
 </script>
 <template>
-    <section>
+    <section id="home">
         <div class="relative h-[60vh] overflow-hidden md:h-screen">
             <div
                 ref="heroImage"
@@ -42,12 +42,12 @@ onUnmounted(() => {
             >
                 <div class="text-center md:text-left">
                     <h1
-                        class="font-secondary animate-fade-in-up mb-6 text-5xl font-light tracking-wide text-white md:text-8xl"
+                        class="animate-fade-in-up mb-6 font-secondary text-5xl font-light tracking-wide text-white md:text-8xl"
                     >
                         <span
                             class="inline-block transform transition-transform duration-300 hover:scale-105"
                         >
-                            Dannica
+                            James
                         </span>
                         <span
                             class="mx-2 inline-block animate-pulse font-normal text-rose-200 md:mx-3"
@@ -57,7 +57,7 @@ onUnmounted(() => {
                         <span
                             class="inline-block transform transition-transform duration-300 hover:scale-105"
                         >
-                            James
+                            Dannica
                         </span>
                     </h1>
                     <p
@@ -68,6 +68,28 @@ onUnmounted(() => {
                         surrounded by the love and laughter of those who mean
                         the most.
                     </p>
+                    <div class="mt-6 text-center md:text-left">
+                        <a
+                            href="/rsvp"
+                            class="inline-flex items-center justify-center rounded-full bg-rose-600 px-8 py-4 text-base font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-rose-700 hover:shadow-xl focus:ring-4 focus:ring-rose-300 focus:outline-none md:px-10 md:py-4 md:text-lg"
+                        >
+                            RSVP Now
+                            <svg
+                                class="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                ></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2">

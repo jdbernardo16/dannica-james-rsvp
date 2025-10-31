@@ -36,6 +36,7 @@ interface Group {
     max_attendees: number;
     guest_count: number;
     has_rsvp: boolean;
+    attending_count: number;
     created_at: string;
     guests: Guest[];
 }
@@ -197,6 +198,14 @@ const breadcrumbItems: BreadcrumbItemType[] = [
                                 >
                                 <Badge variant="secondary">{{
                                     group.guest_count
+                                }}</Badge>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-medium"
+                                    >Attending Count</span
+                                >
+                                <Badge variant="default">{{
+                                    group.attending_count
                                 }}</Badge>
                             </div>
                             <div class="flex items-center justify-between">

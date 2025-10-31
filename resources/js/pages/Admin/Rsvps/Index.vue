@@ -40,6 +40,16 @@ interface Rsvp {
     message: string;
     song_suggestion: string;
     submitted_at: string;
+    group?: {
+        id: number;
+        name: string;
+        max_attendees: number;
+        guests: Array<{
+            id: number;
+            full_name: string;
+            email: string;
+        }>;
+    };
 }
 
 interface PaginationLink {
@@ -108,18 +118,32 @@ watch([search, status, dateFrom, dateTo, perPage], () => {
 });
 
 const exportRsvps = () => {
-    const params = new URLSearchParams();
-    if (search.value) params.append('search', search.value);
-    if (status.value) params.append('status', status.value);
-    if (dateFrom.value) params.append('date_from', dateFrom.value);
-    if (dateTo.value) params.append('date_to', dateTo.value);
+    // Build query parameters object
+    const params: any = {};
 
-    window.location.href = `/admin/rsvps/export?${params.toString()}`;
+    if (search.value) params.search = search.value;
+    if (status.value) params.status = status.value;
+    if (dateFrom.value) params.date_from = dateFrom.value;
+    if (dateTo.value) params.date_to = dateTo.value;
+
+    // Create query string
+    const queryString = new URLSearchParams(params).toString();
+    const url = `/admin/rsvps/export${queryString ? '?' + queryString : ''}`;
+
+    // Create a temporary link to trigger the download
+    const link = document.createElement('a');
+    link.href = url;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 };
 
 const getAttendanceStatus = (attendingCount: number, maxAttendees: number) => {
     if (attendingCount === 0)
         return { variant: 'destructive', label: 'Not Attending' };
+    if (maxAttendees === 0)
+        return { variant: 'secondary', label: 'Unknown Capacity' };
     if (attendingCount >= maxAttendees)
         return { variant: 'default', label: 'Full Group Attending' };
     return { variant: 'secondary', label: 'Partial Attendance' };
@@ -127,6 +151,28 @@ const getAttendanceStatus = (attendingCount: number, maxAttendees: number) => {
 
 const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString();
+};
+
+const exportRsvpsPdf = () => {
+    // Build query parameters object
+    const params: any = {};
+
+    if (search.value) params.search = search.value;
+    if (status.value) params.status = status.value;
+    if (dateFrom.value) params.date_from = dateFrom.value;
+    if (dateTo.value) params.date_to = dateTo.value;
+
+    // Create query string
+    const queryString = new URLSearchParams(params).toString();
+    const url = `/admin/rsvps/export-pdf${queryString ? '?' + queryString : ''}`;
+
+    // Create a temporary link to trigger download
+    const link = document.createElement('a');
+    link.href = url;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 };
 </script>
 
@@ -143,10 +189,16 @@ const formatDate = (dateString: string) => {
                         Manage wedding RSVP responses
                     </p>
                 </div>
-                <Button @click="exportRsvps">
-                    <Download class="mr-2 h-4 w-4" />
-                    Export RSVPs
-                </Button>
+                <div class="flex gap-2">
+                    <Button @click="exportRsvps" variant="outline">
+                        <Download class="mr-2 h-4 w-4" />
+                        Export CSV
+                    </Button>
+                    <Button @click="exportRsvpsPdf">
+                        <Download class="mr-2 h-4 w-4" />
+                        Export PDF
+                    </Button>
+                </div>
             </div>
 
             <!-- Filters Card -->
@@ -180,7 +232,7 @@ const formatDate = (dateString: string) => {
                                 <SelectItem value="attending"
                                     >Attending</SelectItem
                                 >
-                                <SelectItem value="not-attending"
+                                <SelectItem value="not_attending"
                                     >Not Attending</SelectItem
                                 >
                                 <SelectItem value="partial">Partial</SelectItem>
@@ -273,7 +325,7 @@ const formatDate = (dateString: string) => {
                         <TableBody>
                             <TableRow v-for="rsvp in rsvps.data" :key="rsvp.id">
                                 <TableCell class="font-medium">{{
-                                    rsvp.group_name
+                                    rsvp.group_name || 'Unknown Group'
                                 }}</TableCell>
                                 <TableCell>{{ rsvp.email }}</TableCell>
                                 <TableCell>
@@ -282,14 +334,16 @@ const formatDate = (dateString: string) => {
                                             :variant="
                                                 getAttendanceStatus(
                                                     rsvp.attending_count,
-                                                    rsvp.max_attendees,
+                                                    rsvp.group?.max_attendees ||
+                                                        0,
                                                 ).variant as any
                                             "
                                         >
                                             {{
                                                 getAttendanceStatus(
                                                     rsvp.attending_count,
-                                                    rsvp.max_attendees,
+                                                    rsvp.group?.max_attendees ||
+                                                        0,
                                                 ).label
                                             }}
                                         </Badge>
@@ -297,7 +351,8 @@ const formatDate = (dateString: string) => {
                                             class="text-xs text-muted-foreground"
                                         >
                                             {{ rsvp.attending_count }} /
-                                            {{ rsvp.max_attendees }} attending
+                                            {{ rsvp.max_attendees || 0 }}
+                                            attending
                                         </p>
                                     </div>
                                 </TableCell>
@@ -347,9 +402,9 @@ const formatDate = (dateString: string) => {
                                     as-child
                                 >
                                     <Link v-if="link.url" :href="link.url">
-                                        {{ link.label }}
+                                        <span v-html="link.label"></span>
                                     </Link>
-                                    <span v-else>{{ link.label }}</span>
+                                    <span v-else v-html="link.label"></span>
                                 </Button>
                             </div>
                         </div>
