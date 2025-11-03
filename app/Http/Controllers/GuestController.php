@@ -183,11 +183,6 @@ class GuestController extends Controller
      */
     public function delete(Guest $guest)
     {
-        // Check if guest's group has RSVPs before deletion
-        if ($guest->group->rsvps()->exists()) {
-            return back()->with('error', 'Cannot delete guest from a group with existing RSVPs.');
-        }
-
         $guest->delete();
 
         return redirect()

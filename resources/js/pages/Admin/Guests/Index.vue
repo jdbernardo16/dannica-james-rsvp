@@ -96,6 +96,10 @@ const showConfirmModal = ref(false);
 const selectedGuestId = ref<number | null>(null);
 const selectedGuestName = ref<string>('');
 
+// Modal state for delete confirmation
+const isDeleteModalOpen = ref(false);
+const guestToDelete = ref<Guest | null>(null);
+
 // Flash messages from backend
 const flash = computed(() => page.props.flash as any);
 
@@ -164,15 +168,33 @@ watch([search, status, groupId, perPage], () => {
 });
 
 const deleteGuest = (id: number) => {
-    if (
-        confirm(
-            'Are you sure you want to delete this guest? This action cannot be undone.',
-        )
-    ) {
-        router.delete(`/admin/guests/${id}`, {
+    // Find the guest data
+    const guest = props.guests.data.find((g) => g.id === id);
+    if (guest) {
+        guestToDelete.value = guest;
+        isDeleteModalOpen.value = true;
+    }
+};
+
+const confirmDelete = () => {
+    if (guestToDelete.value) {
+        router.delete(`/admin/guests/${guestToDelete.value.id}/delete`, {
             preserveScroll: true,
+            onSuccess: () => {
+                isDeleteModalOpen.value = false;
+                guestToDelete.value = null;
+            },
+            onError: () => {
+                isDeleteModalOpen.value = false;
+                guestToDelete.value = null;
+            },
         });
     }
+};
+
+const cancelDelete = () => {
+    isDeleteModalOpen.value = false;
+    guestToDelete.value = null;
 };
 
 const getStatusBadge = (hasRsvp: boolean) => {
@@ -526,6 +548,31 @@ const cancelSendRsvpEmail = () => {
                         </Button>
                         <Button @click="confirmSendRsvpEmail">
                             Send Email
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+
+            <!-- Delete Confirmation Modal -->
+            <Dialog
+                :open="isDeleteModalOpen"
+                @update:open="isDeleteModalOpen = $event"
+            >
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Delete Guest</DialogTitle>
+                        <DialogDescription>
+                            Are you sure you want to delete guest "{{
+                                guestToDelete?.full_name
+                            }}"? This action cannot be undone.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                        <Button variant="secondary" @click="cancelDelete">
+                            Cancel
+                        </Button>
+                        <Button variant="destructive" @click="confirmDelete">
+                            Delete Guest
                         </Button>
                     </DialogFooter>
                 </DialogContent>
