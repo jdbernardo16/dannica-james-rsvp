@@ -8,6 +8,14 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import {
     Select,
@@ -72,6 +80,10 @@ const search = ref(props.filters.search);
 const status = ref(props.filters.status);
 const perPage = ref(props.filters.per_page);
 
+// Modal state for delete confirmation
+const isDeleteModalOpen = ref(false);
+const groupToDelete = ref<Group | null>(null);
+
 const breadcrumbItems: BreadcrumbItemType[] = [
     {
         title: 'Dashboard',
@@ -100,15 +112,33 @@ watch([search, status, perPage], () => {
 });
 
 const deleteGroup = (id: number) => {
-    if (
-        confirm(
-            'Are you sure you want to delete this group? This action cannot be undone.',
-        )
-    ) {
-        router.delete(`/admin/groups/${id}`, {
+    // Find the group data
+    const group = props.groups.data.find((g) => g.id === id);
+    if (group) {
+        groupToDelete.value = group;
+        isDeleteModalOpen.value = true;
+    }
+};
+
+const confirmDelete = () => {
+    if (groupToDelete.value) {
+        router.delete(`/admin/groups/${groupToDelete.value.id}/delete`, {
             preserveScroll: true,
+            onSuccess: () => {
+                isDeleteModalOpen.value = false;
+                groupToDelete.value = null;
+            },
+            onError: () => {
+                isDeleteModalOpen.value = false;
+                groupToDelete.value = null;
+            },
         });
     }
+};
+
+const cancelDelete = () => {
+    isDeleteModalOpen.value = false;
+    groupToDelete.value = null;
 };
 
 const getStatusBadge = (hasRsvp: boolean) => {
@@ -330,5 +360,30 @@ const getStatusBadge = (hasRsvp: boolean) => {
                 </CardContent>
             </Card>
         </div>
+
+        <!-- Delete Confirmation Modal -->
+        <Dialog
+            :open="isDeleteModalOpen"
+            @update:open="isDeleteModalOpen = $event"
+        >
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Delete Group</DialogTitle>
+                    <DialogDescription>
+                        Are you sure you want to delete group "{{
+                            groupToDelete?.name
+                        }}"? This action cannot be undone.
+                    </DialogDescription>
+                </DialogHeader>
+                <DialogFooter>
+                    <Button variant="secondary" @click="cancelDelete">
+                        Cancel
+                    </Button>
+                    <Button variant="destructive" @click="confirmDelete">
+                        Delete Group
+                    </Button>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
     </AdminLayout>
 </template>

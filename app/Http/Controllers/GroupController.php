@@ -161,15 +161,8 @@ class GroupController extends Controller
      */
     public function delete(Group $group)
     {
-        // Check if group has RSVPs before deletion
-        if ($group->rsvps()->exists()) {
-            return back()->with('error', 'Cannot delete group with existing RSVPs.');
-        }
-
-        // Delete guests first (they have foreign key constraint)
-        $group->guests()->delete();
-
-        // Delete the group
+        // Delete the group - related guests and RSVPs will be automatically deleted
+        // due to cascadeOnDelete() constraints in the database migrations
         $group->delete();
 
         return redirect()
