@@ -5,37 +5,149 @@ import { Head } from '@inertiajs/vue3';
 interface Props {
     title?: string;
     description?: string;
+    keywords?: string;
+    author?: string;
+    imageUrl?: string;
+    url?: string;
+    weddingDate?: string;
+    weddingLocation?: string;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
     title: 'Dannica & James - Wedding RSVP',
-    description: 'Join us in celebrating our special day',
+    description:
+        'Join Dannica and James as they celebrate their wedding day. Find event details, timeline, location information, and RSVP for their special celebration of love.',
+    keywords:
+        'wedding, Dannica, James, marriage, celebration, RSVP, wedding ceremony, wedding reception, love story, wedding vows',
+    author: 'Dannica & James',
+    imageUrl: '/images/banner.webp',
+    url: '/',
+    weddingDate: '2024-12-15',
+    weddingLocation: 'Manila, Philippines',
 });
+
+// Structured data for wedding event
+const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Wedding',
+    name: 'Dannica & James Wedding',
+    description: props.description,
+    startDate: props.weddingDate,
+    location: {
+        '@type': 'Place',
+        name: props.weddingLocation,
+        address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Manila',
+            addressCountry: 'Philippines',
+        },
+    },
+    bride: {
+        '@type': 'Person',
+        name: 'Dannica',
+    },
+    groom: {
+        '@type': 'Person',
+        name: 'James',
+    },
+    url: props.url,
+    image: props.imageUrl,
+    offers: {
+        '@type': 'Offer',
+        url: `${props.url}rsvp`,
+        description: 'RSVP for Dannica and James wedding',
+        availability: 'https://schema.org/InStock',
+    },
+};
 </script>
 
 <template>
     <div class="min-h-screen">
         <Head :title="title">
+            <!-- Basic Meta Tags -->
             <meta name="description" :content="description" />
+            <meta name="keywords" :content="keywords" />
+            <meta name="author" :content="author" />
             <meta
                 name="viewport"
                 content="width=device-width, initial-scale=1"
             />
+            <meta
+                name="robots"
+                content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+            />
+            <meta name="language" content="English" />
+            <meta name="revisit-after" content="7 days" />
+
+            <!-- Open Graph Meta Tags -->
+            <meta property="og:title" :content="title" />
+            <meta property="og:description" :content="description" />
+            <meta property="og:image" :content="imageUrl" />
+            <meta
+                property="og:image:alt"
+                content="Dannica & James Wedding Celebration"
+            />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:url" :content="url" />
+            <meta property="og:type" content="website" />
+            <meta property="og:site_name" content="Dannica & James Wedding" />
+            <meta property="og:locale" content="en_US" />
+
+            <!-- Twitter Card Meta Tags -->
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" :content="title" />
+            <meta name="twitter:description" :content="description" />
+            <meta name="twitter:image" :content="imageUrl" />
+            <meta
+                name="twitter:image:alt"
+                content="Dannica & James Wedding Celebration"
+            />
+
+            <!-- Additional SEO Meta Tags -->
+            <meta name="theme-color" content="#E6B8C2" />
+            <meta name="msapplication-TileColor" content="#E6B8C2" />
+            <meta name="application-name" content="Dannica & James Wedding" />
+            <meta name="apple-mobile-web-app-title" content="D&J Wedding" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta
+                name="apple-mobile-web-app-status-bar-style"
+                content="default"
+            />
+
+            <!-- Canonical URL -->
+            <link rel="canonical" :href="url" />
+
+            <!-- Preconnect to external domains -->
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link
+                rel="preconnect"
+                href="https://fonts.gstatic.com"
+                crossorigin="anonymous"
+            />
+
+            <!-- Structured Data -->
+            <script
+                type="application/ld+json"
+                v-html="JSON.stringify(structuredData)"
+            ></script>
         </Head>
 
-        <!-- AppHeader Component -->
-        <AppHeader />
+        <!-- AppHeader Component with landmark role -->
+        <header role="banner">
+            <AppHeader />
+        </header>
 
-        <!-- Main Content -->
-        <main class="relative z-10">
+        <!-- Main Content with landmark role -->
+        <main class="relative z-10" role="main">
             <!-- Add padding top to account for fixed header -->
             <div class="pt-17">
                 <slot />
             </div>
         </main>
 
-        <!-- Wedding-themed Footer -->
-        <footer class="wedding-footer relative z-10 mt-auto">
+        <!-- Wedding-themed Footer with landmark role -->
+        <footer class="wedding-footer relative z-10 mt-auto" role="contentinfo">
             <div class="wedding-container">
                 <div class="py-6 text-center">
                     <div class="mb-4">

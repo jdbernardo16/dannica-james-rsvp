@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import OptimizedImage from '@/components/OptimizedImage.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const locations = ref([
@@ -285,7 +286,12 @@ onUnmounted(() => {
                             <div
                                 class="relative overflow-hidden rounded-2xl bg-white p-4 shadow-lg transition-transform duration-300 hover:scale-105"
                             >
-                                <OptimizedImage src="/images/direction-qr.png" alt="Direction QR Code" class="h-32 w-32 object-contain md:h-40 md:w-40" loading="lazy" />
+                                <OptimizedImage
+                                    src="/images/direction-qr.png"
+                                    alt="Direction QR Code"
+                                    class="h-32 w-32 object-contain md:h-40 md:w-40"
+                                    loading="lazy"
+                                />
                             </div>
                         </a>
 
