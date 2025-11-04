@@ -2,69 +2,29 @@
 import OptimizedImage from '@/components/OptimizedImage.vue';
 import { onMounted, ref } from 'vue';
 
-const milestones = ref([
-    {
-        id: 1,
-        title: 'First Met',
-        date: 'January 15, 2019',
-        story: 'Two strangers crossed paths at a coffee shop, unaware that a beautiful journey was about to begin.',
-        icon: 'heart',
-        visible: false,
-    },
-    {
-        id: 2,
-        title: 'Became a Couple',
-        date: 'September 08, 2020',
-        story: 'After months of laughter, deep conversations, and stolen glances, we officially became one.',
-        icon: 'heart',
-        visible: false,
-    },
-    {
-        id: 3,
-        title: 'The Proposal',
-        date: 'March 22, 2024',
-        story: 'Under a starlit sky, with trembling hands and a full heart, the question was asked. She said yes!',
-        icon: 'ring',
-        visible: false,
-    },
-    {
-        id: 4,
-        title: 'The Wedding',
-        date: 'December 15, 2025',
-        story: "The day we've been dreaming of - where two become one, surrounded by love and cherished memories.",
-        icon: 'toast',
-        visible: false,
-    },
-]);
+const verseVisible = ref(false);
 
 const handleScroll = () => {
-    const elements = document.querySelectorAll('.story-card');
+    const element = document.querySelector('.bible-verse-container');
+    if (!element) return;
+
+    const rect = element.getBoundingClientRect();
+    const elementMiddle = rect.top + rect.height / 2;
     const windowHeight = window.innerHeight;
 
-    elements.forEach((el, index) => {
-        const rect = el.getBoundingClientRect();
-        const elementMiddle = rect.top + rect.height / 2;
-
-        if (
-            elementMiddle < windowHeight * 0.8 &&
-            elementMiddle > 0 &&
-            milestones.value[index]
-        ) {
-            milestones.value[index].visible = true;
-        }
-    });
+    if (elementMiddle < windowHeight * 0.8 && elementMiddle > 0) {
+        verseVisible.value = true;
+    }
 };
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
 
-    // Trigger first milestone after mount
+    // Trigger verse animation after mount
     setTimeout(() => {
-        if (milestones.value[0]) {
-            milestones.value[0].visible = true;
-        }
-    }, 300);
+        verseVisible.value = true;
+    }, 500);
 });
 </script>
 
@@ -122,7 +82,7 @@ onMounted(() => {
         <div class="mx-auto max-w-[1440px] px-4 sm:px-8 md:px-12 lg:px-20">
             <!-- Header Section with Image -->
             <div
-                class="mb-20 flex flex-col md:mb-28 lg:flex-row lg:items-center lg:space-x-16 xl:space-x-24"
+                class="flex flex-col lg:flex-row lg:items-center lg:space-x-16 xl:space-x-24"
             >
                 <!-- Image Section -->
                 <div
@@ -176,118 +136,149 @@ onMounted(() => {
                     <h2
                         class="mb-6 font-secondary text-4xl leading-tight text-gray-800 sm:text-5xl md:text-6xl lg:text-7xl"
                     >
-                        A Love Story
+                        Love Defined
                     </h2>
                     <p
                         class="mx-auto max-w-2xl text-lg leading-relaxed font-light text-gray-600 md:text-xl lg:mx-0"
                     >
-                        Every great love story has a beginning. Here's ours - a
-                        journey of laughter, growth, and endless moments that
-                        led us to forever.
+                        The sacred scripture beautifully defines the love that
+                        binds two hearts together in holy matrimony.
                     </p>
                 </div>
             </div>
 
-            <!-- Story Cards Section -->
-            <div class="mx-auto max-w-6xl">
-                <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <!-- Bible Verse Section -->
+            <!-- <div class="bible-verse-container mx-auto max-w-5xl">
+                <div
+                    class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-rose-50 via-white to-amber-50 shadow-2xl"
+                    :class="[
+                        verseVisible
+                            ? 'translate-y-0 opacity-100'
+                            : 'translate-y-16 opacity-0',
+                    ]"
+                >
                     <div
-                        v-for="(milestone, index) in milestones"
-                        :key="milestone.id"
-                        class="story-card"
-                        :class="[
-                            milestone.visible
-                                ? 'translate-y-0 scale-100 opacity-100'
-                                : 'translate-y-12 scale-95 opacity-0',
-                            index % 2 === 0 ? 'lg:-mt-12' : 'lg:mt-12',
-                        ]"
-                    >
-                        <div
-                            class="group relative h-fit overflow-hidden rounded-2xl border border-rose-100 bg-white p-8 shadow-lg transition-all duration-700 ease-out hover:-translate-y-2 hover:border-rose-300 hover:shadow-2xl"
-                        >
-                            <!-- Decorative gradient overlay -->
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-rose-50/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                            ></div>
+                        class="h-2 bg-gradient-to-r from-rose-300 via-amber-300 to-rose-300"
+                    ></div>
 
-                            <!-- Icon -->
+                    <div class="relative z-10 p-12 md:p-16">
+                        <div class="mb-10 text-center">
                             <div
-                                class="absolute -top-4 -right-4 h-20 w-20 rotate-12 transform opacity-10 transition-transform duration-500 group-hover:rotate-45"
+                                class="mb-4 inline-flex items-center space-x-4"
                             >
-                                <img
-                                    :src="`/images/${milestone.icon}.png`"
-                                    :alt="milestone.icon"
-                                    class="h-full w-full object-contain"
-                                />
-                            </div>
-
-                            <div class="relative z-10">
-                                <!-- Icon and Title Row -->
-                                <div class="mb-6 flex items-center">
-                                    <div
-                                        class="mr-4 flex h-16 w-16 transform items-center justify-center rounded-full bg-gradient-to-br from-rose-400 to-amber-400 shadow-lg transition-transform duration-300 group-hover:scale-110"
-                                    >
-                                        <img
-                                            :src="`/images/${milestone.icon}.png`"
-                                            :alt="milestone.icon"
-                                            class="h-8 w-8 object-contain"
-                                        />
-                                    </div>
-                                    <div>
-                                        <h3
-                                            class="mb-1 font-playfair text-2xl text-gray-800 transition-colors duration-300 group-hover:text-rose-600 md:text-3xl"
-                                        >
-                                            {{ milestone.title }}
-                                        </h3>
-                                        <p
-                                            class="text-sm font-medium tracking-widest text-rose-500 uppercase"
-                                        >
-                                            {{ milestone.date }}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <!-- Story Content -->
-                                <p
-                                    class="text-lg leading-relaxed font-light text-gray-600"
+                                <div
+                                    class="h-px w-20 bg-gradient-to-r from-transparent to-rose-300"
+                                ></div>
+                                <span
+                                    class="font-secondary text-lg text-rose-400"
+                                    >❦</span
                                 >
-                                    {{ milestone.story }}
+                                <div
+                                    class="h-px w-20 bg-gradient-to-l from-transparent to-rose-300"
+                                ></div>
+                            </div>
+                            <h3
+                                class="font-secondary text-3xl text-gray-800 md:text-4xl"
+                            >
+                                1 Corinthians 13:4-7
+                            </h3>
+                        </div>
+
+                        <div class="space-y-6 text-center">
+                            <div class="relative">
+                                <p
+                                    class="font-secondary text-2xl leading-relaxed text-gray-800 md:text-3xl"
+                                >
+                                    <span class="text-rose-600">❝</span>
+                                    <span class="relative font-medium">
+                                        Love is patient, love is kind.
+                                        <span
+                                            class="absolute -bottom-2 left-1/2 h-px w-16 -translate-x-1/2 bg-gradient-to-r from-transparent via-rose-400 to-transparent"
+                                        ></span>
+                                    </span>
+                                    <span class="text-rose-600">❞</span>
                                 </p>
                             </div>
 
-                            <!-- Decorative corner -->
-                            <div
-                                class="absolute bottom-0 left-0 h-20 w-20 opacity-5"
-                            >
-                                <svg
-                                    viewBox="0 0 100 100"
-                                    class="text-rose-400"
+                            <div class="relative">
+                                <p
+                                    class="text-xl leading-relaxed font-normal text-gray-700 md:text-2xl"
                                 >
-                                    <path
-                                        d="M0,100 L100,100 L0,0 Z"
-                                        fill="currentColor"
-                                    />
-                                </svg>
+                                    It does not envy, it does not boast, it is
+                                    not proud.
+                                </p>
+                            </div>
+
+                            <div class="relative">
+                                <p
+                                    class="text-xl leading-relaxed font-normal text-gray-700 md:text-2xl"
+                                >
+                                    It does not dishonor others, it is not
+                                    self-seeking,
+                                    <br class="hidden md:block" />
+                                    it is not easily angered, it keeps no record
+                                    of wrongs.
+                                </p>
+                            </div>
+
+                            <div class="relative">
+                                <p
+                                    class="text-xl leading-relaxed font-normal text-gray-700 md:text-2xl"
+                                >
+                                    Love does not delight in evil but rejoices
+                                    with the truth.
+                                </p>
+                            </div>
+
+                            <div class="relative">
+                                <p
+                                    class="font-secondary text-2xl leading-relaxed text-gray-800 md:text-3xl"
+                                >
+                                    <span class="relative font-medium">
+                                        It always protects, always trusts,
+                                        always hopes, always perseveres.
+                                        <span
+                                            class="absolute -bottom-2 left-1/2 h-px w-24 -translate-x-1/2 bg-gradient-to-r from-transparent via-amber-400 to-transparent"
+                                        ></span>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-12 flex justify-center space-x-8">
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    class="h-2 w-2 rounded-full bg-rose-300"
+                                ></div>
+                                <div
+                                    class="h-2 w-2 rounded-full bg-amber-300"
+                                ></div>
+                                <div
+                                    class="h-2 w-2 rounded-full bg-rose-300"
+                                ></div>
+                            </div>
+                            <span class="text-sm font-light italic"
+                                >Love never fails</span
+                            >
+                            <div class="flex items-center space-x-2">
+                                <div
+                                    class="h-2 w-2 rounded-full bg-rose-300"
+                                ></div>
+                                <div
+                                    class="h-2 w-2 rounded-full bg-amber-300"
+                                ></div>
+                                <div
+                                    class="h-2 w-2 rounded-full bg-rose-300"
+                                ></div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- Bottom decorative element -->
-            <div class="mt-20 text-center">
-                <div class="inline-flex items-center space-x-4">
                     <div
-                        class="h-px w-24 bg-gradient-to-r from-transparent via-rose-300 to-transparent"
-                    ></div>
-                    <p class="font-light text-gray-500 italic">
-                        And the adventure continues...
-                    </p>
-                    <div
-                        class="h-px w-24 bg-gradient-to-l from-transparent via-rose-300 to-transparent"
+                        class="h-2 bg-gradient-to-r from-amber-300 via-rose-300 to-amber-300"
                     ></div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </template>
@@ -353,50 +344,46 @@ onMounted(() => {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-/* Enhanced smooth animations for cards */
-.story-card {
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+/* Enhanced smooth animations for bible verse container */
+.bible-verse-container {
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform-origin: center bottom;
 }
 
-.story-card:nth-child(1) {
-    transition-delay: 0ms;
+/* Add subtle entrance animation for verse content */
+.bible-verse-container .relative {
+    transition: all 0.8s ease-out;
 }
 
-.story-card:nth-child(2) {
-    transition-delay: 150ms;
+.bible-verse-container:not(.verse-visible) .relative {
+    transform: translateY(30px);
 }
 
-.story-card:nth-child(3) {
-    transition-delay: 300ms;
-}
-
-.story-card:nth-child(4) {
-    transition-delay: 450ms;
-}
-
-/* Add subtle entrance animation for card content */
-.story-card .group {
-    transition: all 0.6s ease-out;
-}
-
-.story-card:not(.visible) .group {
-    transform: translateY(20px);
-    opacity: 0.8;
-}
-
-.story-card.visible .group {
+.bible-verse-container.verse-visible .relative {
     transform: translateY(0);
     opacity: 1;
 }
 
-/* Enhanced hover effects */
-.story-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    z-index: 10;
+/* Enhanced hover effects for the main container */
+.bible-verse-container:hover .relative {
+    transform: translateY(-2px);
 }
 
-.story-card:hover .group {
-    transform: translateY(-4px);
+/* Add subtle animation to decorative elements */
+.bible-verse-container:hover .animate-spin-very-slow {
+    animation-duration: 30s;
+}
+
+/* Responsive adjustments for verse text */
+@media (max-width: 768px) {
+    .bible-verse-container .font-playfair {
+        font-size: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .bible-verse-container .font-light {
+        font-size: 1.125rem;
+        line-height: 1.7;
+    }
 }
 </style>

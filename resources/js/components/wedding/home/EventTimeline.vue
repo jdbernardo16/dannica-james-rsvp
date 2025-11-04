@@ -16,7 +16,7 @@ const timelineEvents = ref([
         visible: false,
     },
     {
-        time: '4:45 PM',
+        time: '4:30 PM',
         title: 'Cocktails & Photos',
         description:
             'Celebrate with drinks while we capture these precious moments',

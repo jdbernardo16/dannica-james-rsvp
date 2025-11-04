@@ -62,18 +62,26 @@ onUnmounted(() => {
                             Dannica
                         </span>
                     </h1>
-                    <p
-                        class="text-normal mx-auto mb-8 max-w-2xl leading-relaxed font-light text-white/90 md:mx-0 md:text-lg"
-                    >
-                        Two hearts, one beautiful journey. Join us as we
-                        celebrate the beginning of our forever together,
-                        surrounded by the love and laughter of those who mean
-                        the most.
-                    </p>
+                    <div class="mx-auto mb-8 max-w-2xl md:mx-0 md:text-lg">
+                        <p
+                            class="text-normalleading-relaxed font-light text-white/90 italic"
+                        >
+                            Love is patient, love is kind. It does not envy, it
+                            does not boast, it is not proud. It does not
+                            dishonor others, it is not self-seeking, it is not
+                            easily angered, it keeps no record of wrongs. Love
+                            does not delight in evil but rejoices with the
+                            truth. It always protects, always trusts, always
+                            hopes, always perseveres. Love never fails.
+                        </p>
+                        <div class="flex w-full justify-end text-white">
+                            <p class="text-sm">~ 1 Corinthians 13:4-7</p>
+                        </div>
+                    </div>
                     <div class="mt-6 text-center md:text-left">
                         <a
                             href="/rsvp"
-                            class="inline-flex items-center justify-center rounded-full bg-rose-600 px-8 py-4 text-base font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-rose-700 hover:shadow-xl focus:ring-4 focus:ring-rose-300 focus:outline-none md:px-10 md:py-4 md:text-lg"
+                            class="btn-wedding-accent group wedding-touch-target-lg animate-fade-in-up inline-flex w-fit items-center"
                         >
                             RSVP Now
                             <svg

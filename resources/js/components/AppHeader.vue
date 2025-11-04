@@ -4,15 +4,13 @@ import { ref, watch } from 'vue';
 const isMenuOpen = ref(false);
 
 const navItems = [
-    { name: 'Save the Date', href: '#save-the-date' },
-    { name: 'Our Story', href: '#story' },
-    { name: 'Couple', href: '#couple' },
     { name: 'Invitation', href: '#invitation' },
     { name: 'Schedule', href: '#schedule' },
     { name: 'Location', href: '#location' },
     { name: 'Attire', href: '#attire' },
+    { name: 'Gift Guide', href: '#gift-guide' },
     { name: 'Entourage', href: '#entourage' },
-    { name: 'RSVP', href: '/rsvp' },
+    { name: 'RSVP', href: '#rsvp' },
 ];
 
 const scrollToSection = (href: string) => {
@@ -220,7 +218,7 @@ watch(isMenuOpen, (newValue) => {
                                             </svg>
                                             <svg
                                                 v-else-if="
-                                                    item.name === 'Couple'
+                                                    item.name === 'Video'
                                                 "
                                                 class="h-5 w-5"
                                                 fill="none"
@@ -231,7 +229,7 @@ watch(isMenuOpen, (newValue) => {
                                                     stroke-linecap="round"
                                                     stroke-linejoin="round"
                                                     stroke-width="2"
-                                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
                                                 ></path>
                                             </svg>
                                             <svg
@@ -302,6 +300,22 @@ watch(isMenuOpen, (newValue) => {
                                                     stroke-linejoin="round"
                                                     stroke-width="2"
                                                     d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+                                                ></path>
+                                            </svg>
+                                            <svg
+                                                v-else-if="
+                                                    item.name === 'Gift Guide'
+                                                "
+                                                class="h-5 w-5"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"
                                                 ></path>
                                             </svg>
                                             <svg

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
 import OptimizedImage from '@/components/OptimizedImage.vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const elementsVisible = ref({
     title: false,
@@ -184,7 +184,12 @@ onUnmounted(() => {
                                 class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-amber-50"
                             >
                                 <!-- Placeholder for attire image -->
-                                <OptimizedImage src="/images/barong.png" alt="" class="h-full w-full object-cover" loading="lazy" />
+                                <OptimizedImage
+                                    src="/images/barong.png"
+                                    alt=""
+                                    class="h-full w-full object-cover"
+                                    loading="lazy"
+                                />
                             </div>
                         </div>
 
@@ -223,7 +228,12 @@ onUnmounted(() => {
                                 class="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-rose-50"
                             >
                                 <!-- Placeholder for attire image -->
-                                <OptimizedImage src="/images/filipiniana.png" alt="" class="h-full w-full object-cover" loading="lazy" />
+                                <OptimizedImage
+                                    src="/images/filipiniana.png"
+                                    alt=""
+                                    class="h-full w-full object-cover"
+                                    loading="lazy"
+                                />
                             </div>
                         </div>
 
@@ -232,7 +242,12 @@ onUnmounted(() => {
                                 Filipiniana dress or butterfly dress
                             </p>
                             <div class="flex items-center">
-                                <OptimizedImage src="/images/color-pallete.png" alt="" class="h-16" loading="lazy" />
+                                <OptimizedImage
+                                    src="/images/color-pallete.png"
+                                    alt=""
+                                    class="h-16"
+                                    loading="lazy"
+                                />
                             </div>
                         </div>
                     </div>
@@ -271,7 +286,7 @@ onUnmounted(() => {
                             <div class="rounded-xl bg-purple-50 p-6 shadow-sm">
                                 <p class="text-lg font-light text-gray-700">
                                     <span class="font-medium">Ladies:</span>
-                                    Cocktail - Modern Filipiniana or Puff
+                                    Semi-Formal - Modern Filipiniana or Puff
                                     Sleeves
                                 </p>
                             </div>

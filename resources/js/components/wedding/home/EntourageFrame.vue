@@ -21,44 +21,11 @@ const entourage = {
             role: 'Principal Sponsor',
         },
         {
-            name: 'Mr. Erick J. Santos',
-            role: 'Principal Sponsor',
-        },
-        {
-            name: 'Mr. Salvador R. Tejada Jr.',
-            role: 'Principal Sponsor',
-        },
-        {
-            name: 'Mr. Danilo C. Teofilo',
-            role: 'Principal Sponsor',
-        },
-        {
-            name: 'Mr. Enrico Simon',
-            role: 'Principal Sponsor',
-        },
-        {
-            name: 'Mr. Cristino Cuanang',
-            role: 'Principal Sponsor',
-        },
-        {
-            name: 'Mr. Remilo Eguico',
-            role: 'Principal Sponsor',
-        },
-        {
-            name: 'Mr. Michael Dingco',
-            role: 'Principal Sponsor',
-        },
-        {
-            name: 'Mr. Aries Torreleiza',
-            role: 'Principal Sponsor',
-        },
-        {
-            name: 'Chief Engr. Jaime Roncales',
-            role: 'Principal Sponsor',
-        },
-        // Female Sponsors
-        {
             name: 'Mrs. Carmela C. Vinzon',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mr. Erick J. Santos',
             role: 'Principal Sponsor',
         },
         {
@@ -66,7 +33,15 @@ const entourage = {
             role: 'Principal Sponsor',
         },
         {
+            name: 'Mr. Salvador R. Tejada Jr.',
+            role: 'Principal Sponsor',
+        },
+        {
             name: 'Mrs. Consuelo B. Bernardo',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mr. Danilo C. Teofilo',
             role: 'Principal Sponsor',
         },
         {
@@ -74,7 +49,15 @@ const entourage = {
             role: 'Principal Sponsor',
         },
         {
+            name: 'Mr. Enrico Simon',
+            role: 'Principal Sponsor',
+        },
+        {
             name: 'Mrs. Elisa G. Simon',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mr. Cristino Cuanang',
             role: 'Principal Sponsor',
         },
         {
@@ -82,7 +65,15 @@ const entourage = {
             role: 'Principal Sponsor',
         },
         {
+            name: 'Mr. Remilo Eguico',
+            role: 'Principal Sponsor',
+        },
+        {
             name: 'Mrs. Eway V. Castillo',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Mr. Michael Dingco',
             role: 'Principal Sponsor',
         },
         {
@@ -90,7 +81,15 @@ const entourage = {
             role: 'Principal Sponsor',
         },
         {
+            name: 'Mr. Aries Torreleiza',
+            role: 'Principal Sponsor',
+        },
+        {
             name: 'Mrs. Cristina Torreleiza',
+            role: 'Principal Sponsor',
+        },
+        {
+            name: 'Chief Engr. Jaime Roncales',
             role: 'Principal Sponsor',
         },
         {

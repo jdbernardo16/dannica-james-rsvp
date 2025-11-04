@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import AttireSection from '@/components/wedding/home/AttireSection.vue';
-import CoupleDetails from '@/components/wedding/home/CoupleDetails.vue';
 import EntourageFrame from '@/components/wedding/home/EntourageFrame.vue';
 import EventTimeline from '@/components/wedding/home/EventTimeline.vue';
 import GeneralTextImage from '@/components/wedding/home/GeneralTextImage.vue';
+import GiftGuide from '@/components/wedding/home/GiftGuide.vue';
 import HeroSection from '@/components/wedding/home/HeroSection.vue';
 import LocationFrame from '@/components/wedding/home/LocationFrame.vue';
 import OurStory from '@/components/wedding/home/OurStory.vue';
@@ -22,7 +22,7 @@ import WeddingLayout from '@/layouts/WeddingLayout.vue';
 
         <OurStory />
 
-        <CoupleDetails />
+        <!-- <CoupleDetails /> -->
 
         <GeneralTextImage />
 
@@ -31,6 +31,8 @@ import WeddingLayout from '@/layouts/WeddingLayout.vue';
         <LocationFrame />
 
         <AttireSection />
+
+        <GiftGuide />
 
         <EntourageFrame />
 
