@@ -6,10 +6,12 @@ import { Bell, Gift } from 'lucide-vue-next';
 <template>
     <NonResponsiveWrapper>
         <section
-            class="relative h-screen w-full overflow-hidden bg-cover bg-center bg-no-repeat"
+            class="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat"
             style="background-image: url('/images/f1-bg.png')"
         >
-            <div class="grid h-full w-full place-items-center px-10 py-20">
+            <div
+                class="grid h-full w-full place-items-center px-10 pt-32 pb-20"
+            >
                 <div class="relative m-auto mb-6 w-fit">
                     <div
                         class="absolute -top-16 left-1/2 w-[110%] -translate-x-1/2"

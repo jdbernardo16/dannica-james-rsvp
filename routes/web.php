@@ -8,6 +8,10 @@ Route::get('/', function () {
     return Inertia::render('Index');
 })->name('home');
 
+Route::get('/mobile', function () {
+    return Inertia::render('IndexMobile');
+})->name('home.mobile');
+
 Route::get('/legacy', function () {
     return Inertia::render('Legacy');
 })->name('legacy');

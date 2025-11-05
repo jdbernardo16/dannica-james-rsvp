@@ -4,27 +4,30 @@ import { nextTick, onMounted, onUnmounted, ref } from 'vue';
 const scale = ref(1);
 const wrapperRef = ref<HTMLElement>();
 const containerRef = ref<HTMLElement>();
+const resizeObserver = ref<ResizeObserver | null>(null);
 
 const updateScale = async () => {
     if (!wrapperRef.value || !containerRef.value) return;
 
     const viewportWidth = window.innerWidth;
-    const designWidth = 1440; // Base design width
+    const designWidth = 1440;
 
     if (viewportWidth < designWidth) {
         scale.value = viewportWidth / designWidth;
 
-        // Set container width to prevent horizontal scrolling
         containerRef.value.style.width = `${viewportWidth}px`;
         containerRef.value.style.overflow = 'hidden';
 
-        // Wait for next tick to ensure DOM is updated
         await nextTick();
 
-        // Calculate and set the proper container height based on scaled content
-        const wrapperHeight = wrapperRef.value.scrollHeight;
-        const scaledHeight = wrapperHeight * scale.value;
-        containerRef.value.style.height = `${scaledHeight}px`;
+        // Use a small delay to ensure content is fully rendered
+        requestAnimationFrame(() => {
+            if (!wrapperRef.value || !containerRef.value) return;
+
+            const wrapperHeight = wrapperRef.value.scrollHeight;
+            const scaledHeight = wrapperHeight * scale.value;
+            containerRef.value.style.height = `${scaledHeight}px`;
+        });
     } else {
         scale.value = 1;
         containerRef.value.style.width = '100%';
@@ -36,10 +39,28 @@ const updateScale = async () => {
 onMounted(() => {
     updateScale();
     window.addEventListener('resize', updateScale);
+
+    // Watch for content size changes and recalculate height
+    if (wrapperRef.value) {
+        resizeObserver.value = new ResizeObserver(() => {
+            if (scale.value < 1) {
+                requestAnimationFrame(() => {
+                    if (!wrapperRef.value || !containerRef.value) return;
+                    const wrapperHeight = wrapperRef.value.scrollHeight;
+                    const scaledHeight = wrapperHeight * scale.value;
+                    containerRef.value.style.height = `${scaledHeight}px`;
+                });
+            }
+        });
+        resizeObserver.value.observe(wrapperRef.value);
+    }
 });
 
 onUnmounted(() => {
     window.removeEventListener('resize', updateScale);
+    if (resizeObserver.value) {
+        resizeObserver.value.disconnect();
+    }
 });
 </script>
 
