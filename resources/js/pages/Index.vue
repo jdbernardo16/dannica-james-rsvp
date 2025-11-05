@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import NonResponsiveWrapper from '@/components/NonResponsiveWrapper.vue';
+import OptimizedImage from '@/components/OptimizedImage.vue';
 import { Bell, Gift } from 'lucide-vue-next';
 </script>
 <template>
@@ -13,7 +14,12 @@ import { Bell, Gift } from 'lucide-vue-next';
                     <div
                         class="absolute -top-16 left-1/2 w-[110%] -translate-x-1/2"
                     >
-                        <OptimizedImage src="/images/Paragraph.svg" alt="" class="w-full" loading="lazy" />
+                        <OptimizedImage
+                            src="/images/Paragraph.svg"
+                            alt=""
+                            class="w-full"
+                            loading="lazy"
+                        />
                     </div>
                     <p
                         class="font-wedding-heading absolute top-1/2 right-[105%] -translate-y-1/2 text-[7rem] text-white"
@@ -23,7 +29,12 @@ import { Bell, Gift } from 'lucide-vue-next';
                     <div
                         class="aspect-[526/682] w-[526px] overflow-hidden rounded-t-full"
                     >
-                        <OptimizedImage src="/images/frame5.webp" alt="" class="h-full w-full object-cover" loading="lazy" />
+                        <OptimizedImage
+                            src="/images/frame5.webp"
+                            alt=""
+                            class="h-full w-full object-cover"
+                            loading="lazy"
+                        />
                     </div>
                     <p
                         class="font-wedding-heading absolute top-1/2 left-[105%] -translate-y-1/2 text-[6rem] text-white"
@@ -42,7 +53,12 @@ import { Bell, Gift } from 'lucide-vue-next';
             <div class="flex items-center space-x-20 py-20 pr-10 pl-20">
                 <div class="w-6/12">
                     <div class="aspect-[558/714] overflow-hidden rounded-3xl">
-                        <OptimizedImage src="/images/test1.webp" alt="" class="h-full w-full object-cover" loading="lazy" />
+                        <OptimizedImage
+                            src="/images/test1.webp"
+                            alt=""
+                            class="h-full w-full object-cover"
+                            loading="lazy"
+                        />
                     </div>
                 </div>
                 <div class="w-6/12 text-center text-[#4c0211]">
@@ -149,7 +165,12 @@ import { Bell, Gift } from 'lucide-vue-next';
     </section> -->
         <section>
             <div class="aspect-[1392/636] w-full">
-                <OptimizedImage src="/images/hero.webp" alt="" class="h-full w-full object-cover" loading="lazy" />
+                <OptimizedImage
+                    src="/images/hero.webp"
+                    alt=""
+                    class="h-full w-full object-cover"
+                    loading="lazy"
+                />
             </div>
         </section>
         <section class="bg-[#ebddd7]">
@@ -164,7 +185,12 @@ import { Bell, Gift } from 'lucide-vue-next';
                         class="space-y-4 rounded-2xl bg-[#4c0511] p-6 text-center text-white"
                     >
                         <div class="mx-auto w-[51px]">
-                            <OptimizedImage src="/images/location.png" alt="location" class="w-full" loading="lazy" />
+                            <OptimizedImage
+                                src="/images/location.png"
+                                alt="location"
+                                class="w-full"
+                                loading="lazy"
+                            />
                         </div>
                         <p class="font-playfair text-7xl">2:00 PM</p>
                         <p class="font-playfair text-5xl">Arrival</p>
@@ -173,7 +199,12 @@ import { Bell, Gift } from 'lucide-vue-next';
                         class="space-y-4 rounded-2xl bg-[#4c0511] p-6 text-center text-white"
                     >
                         <div class="mx-auto w-[94px]">
-                            <OptimizedImage src="/images/ring.png" alt="location" class="w-full" loading="lazy" />
+                            <OptimizedImage
+                                src="/images/ring.png"
+                                alt="location"
+                                class="w-full"
+                                loading="lazy"
+                            />
                         </div>
                         <p class="font-playfair text-7xl">3:00 PM</p>
                         <p class="font-playfair text-5xl">Ceremony</p>
@@ -182,7 +213,12 @@ import { Bell, Gift } from 'lucide-vue-next';
                         class="space-y-4 rounded-2xl bg-[#4c0511] p-6 text-center text-white"
                     >
                         <div class="mx-auto w-[68px]">
-                            <OptimizedImage src="/images/toast.png" alt="location" class="w-full" loading="lazy" />
+                            <OptimizedImage
+                                src="/images/toast.png"
+                                alt="location"
+                                class="w-full"
+                                loading="lazy"
+                            />
                         </div>
                         <p class="font-playfair text-7xl">6:00 PM</p>
                         <p class="font-playfair text-5xl">Reception</p>
@@ -198,7 +234,12 @@ import { Bell, Gift } from 'lucide-vue-next';
                         <div
                             class="mx-auto aspect-[490/580] w-fit rounded-3xl border-2 border-[#4c0511] p-5"
                         >
-                            <OptimizedImage src="/images/san-agustin.jpg" alt="image" class="h-full w-full rounded-2xl object-cover" loading="lazy" />
+                            <OptimizedImage
+                                src="/images/san-agustin.jpg"
+                                alt="image"
+                                class="h-full w-full rounded-2xl object-cover"
+                                loading="lazy"
+                            />
                         </div>
                         <p class="text-center font-playfair text-5xl">
                             San Agustine Church
@@ -218,7 +259,12 @@ import { Bell, Gift } from 'lucide-vue-next';
                         <div
                             class="mx-auto aspect-[490/580] w-fit rounded-3xl border-2 border-[#4c0511] p-5"
                         >
-                            <OptimizedImage src="/images/la-castellana.jpg" alt="image" class="h-full w-full rounded-2xl object-cover" loading="lazy" />
+                            <OptimizedImage
+                                src="/images/la-castellana.jpg"
+                                alt="image"
+                                class="h-full w-full rounded-2xl object-cover"
+                                loading="lazy"
+                            />
                         </div>
                         <p class="text-center font-playfair text-5xl">
                             La Castellana
@@ -234,7 +280,12 @@ import { Bell, Gift } from 'lucide-vue-next';
         </section>
         <section>
             <div class="aspect-[1392/636] w-full">
-                <OptimizedImage src="/images/rsvp.webp" alt="rsvp" class="h-full w-full object-cover" loading="lazy" />
+                <OptimizedImage
+                    src="/images/rsvp.webp"
+                    alt="rsvp"
+                    class="h-full w-full object-cover"
+                    loading="lazy"
+                />
             </div>
         </section>
         <section
@@ -462,16 +513,36 @@ import { Bell, Gift } from 'lucide-vue-next';
         <section class="bg-[#e6cabf]">
             <div class="grid grid-cols-2 gap-10 p-20">
                 <div class="aspect-[612/790] overflow-hidden rounded-xl">
-                    <OptimizedImage src="/images/frame5.webp" alt="" class="h-full w-full object-cover" loading="lazy" />
+                    <OptimizedImage
+                        src="/images/frame5.webp"
+                        alt=""
+                        class="h-full w-full object-cover"
+                        loading="lazy"
+                    />
                 </div>
                 <div class="aspect-[612/790] overflow-hidden rounded-xl">
-                    <OptimizedImage src="/images/hero.webp" alt="" class="h-full w-full object-cover" loading="lazy" />
+                    <OptimizedImage
+                        src="/images/hero.webp"
+                        alt=""
+                        class="h-full w-full object-cover"
+                        loading="lazy"
+                    />
                 </div>
                 <div class="aspect-[612/790] overflow-hidden rounded-xl">
-                    <OptimizedImage src="/images/element2.png" alt="" class="h-full w-full object-cover" loading="lazy" />
+                    <OptimizedImage
+                        src="/images/element2.png"
+                        alt=""
+                        class="h-full w-full object-cover"
+                        loading="lazy"
+                    />
                 </div>
                 <div class="aspect-[612/790] overflow-hidden rounded-xl">
-                    <OptimizedImage src="/images/test1.webp" alt="" class="h-full w-full object-cover" loading="lazy" />
+                    <OptimizedImage
+                        src="/images/test1.webp"
+                        alt=""
+                        class="h-full w-full object-cover"
+                        loading="lazy"
+                    />
                 </div>
             </div>
         </section>
@@ -488,7 +559,12 @@ import { Bell, Gift } from 'lucide-vue-next';
                     Principal Sponsors
                 </p>
                 <div class="m-auto w-[400px]">
-                    <OptimizedImage src="/images/color-pallete.png" alt="" class="" loading="lazy" />
+                    <OptimizedImage
+                        src="/images/color-pallete.png"
+                        alt=""
+                        class=""
+                        loading="lazy"
+                    />
                 </div>
                 <div
                     class="m-auto mb-16 flex w-fit -translate-x-7 items-center justify-between space-x-24 text-2xl"
@@ -527,12 +603,22 @@ import { Bell, Gift } from 'lucide-vue-next';
                 <p class="font-wedding-accent mb-10 text-[5rem]">Dress Code</p>
                 <div class="mb- flex items-center space-x-6">
                     <div class="w-1/2">
-                        <OptimizedImage src="/images/barong1.png" alt="" class="mx-auto h-[50vh]" loading="lazy" />
+                        <OptimizedImage
+                            src="/images/barong1.png"
+                            alt=""
+                            class="mx-auto h-[50vh]"
+                            loading="lazy"
+                        />
                         <p class="text-3xl">Gentlemen</p>
                         <p class="text-xl">Barong and Black pants</p>
                     </div>
                     <div class="w-1/2">
-                        <OptimizedImage src="/images/dress1.png" alt="" class="mx-auto h-[50vh]" loading="lazy" />
+                        <OptimizedImage
+                            src="/images/dress1.png"
+                            alt=""
+                            class="mx-auto h-[50vh]"
+                            loading="lazy"
+                        />
                         <p class="text-3xl">Ladies</p>
                         <p class="text-xl">Filipiniana or Butterfly dress</p>
                     </div>
