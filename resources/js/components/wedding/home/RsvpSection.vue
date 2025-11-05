@@ -233,11 +233,11 @@ onMounted(() => {
                 >
                     <a
                         href="/rsvp"
-                        class="group inline-flex items-center justify-center rounded-full bg-gradient-to-r from-rose-500 to-rose-600 px-10 py-5 text-lg font-medium text-white shadow-lg transition-all duration-300 hover:scale-105 hover:from-rose-600 hover:to-rose-700 hover:shadow-2xl focus:ring-4 focus:ring-rose-300 focus:outline-none md:px-12 md:py-6 md:text-xl"
+                        class="btn-wedding-accent group wedding-touch-target-lg animate-fade-in-up m-auto inline-flex w-fit items-center"
                     >
-                        <span class="mr-3">RSVP Now</span>
+                        RSVP Now
                         <svg
-                            class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                            class="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"

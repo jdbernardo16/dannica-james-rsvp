@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import OptimizedImage from '@/components/OptimizedImage.vue';
 import { onMounted, onUnmounted, ref } from 'vue';
 
 const locations = ref([
@@ -247,6 +248,156 @@ onUnmounted(() => {
                         </div>
                     </div>
                 </a>
+            </div>
+
+            <!-- Direction Guide Section -->
+            <div
+                class="mt-16 transition-all duration-1000 ease-out"
+                :class="
+                    sectionVisible
+                        ? 'translate-y-0 opacity-100'
+                        : 'translate-y-8 opacity-0'
+                "
+            >
+                <div
+                    class="mx-auto max-w-4xl rounded-3xl bg-gradient-to-br from-rose-50 to-amber-50 p-8 shadow-xl md:p-12"
+                >
+                    <div class="mb-8 text-center">
+                        <h3
+                            class="mb-4 font-secondary text-3xl text-gray-800 md:text-4xl"
+                        >
+                            Direction Guide
+                        </h3>
+                        <p
+                            class="text-lg leading-relaxed font-light text-gray-600"
+                        >
+                            Scan this QR code to get directions
+                        </p>
+                    </div>
+
+                    <div
+                        class="flex flex-col items-center space-y-8 md:flex-row md:items-center md:justify-center md:space-y-0 md:space-x-8"
+                    >
+                        <!-- QR Code -->
+                        <a
+                            href="https://maps.app.goo.gl/MJeGE12dxgJuiTye9"
+                            class="flex flex-col items-center"
+                        >
+                            <div
+                                class="relative overflow-hidden rounded-2xl bg-white p-4 shadow-lg transition-transform duration-300 hover:scale-105"
+                            >
+                                <OptimizedImage
+                                    src="/images/direction-qr.png"
+                                    alt="Direction QR Code"
+                                    class="h-32 w-32 object-contain md:h-40 md:w-40"
+                                    loading="lazy"
+                                />
+                            </div>
+                        </a>
+
+                        <!-- Direction Information -->
+                        <div class="max-w-md flex-1 space-y-6">
+                            <!-- Route Information -->
+                            <div class="text-center md:text-left">
+                                <h4
+                                    class="mb-2 text-lg font-semibold text-gray-800"
+                                >
+                                    Ceremony to Reception
+                                </h4>
+                                <p class="leading-relaxed text-gray-600">
+                                    Convenient walking distance between venues
+                                    within historic Intramuros
+                                </p>
+                            </div>
+
+                            <!-- Parking Information -->
+                            <div
+                                class="rounded-2xl bg-white/70 p-6 backdrop-blur-sm"
+                            >
+                                <div class="mb-3 flex items-center">
+                                    <svg
+                                        class="mr-2 h-5 w-5 text-rose-500"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                                        ></path>
+                                    </svg>
+                                    <h5 class="font-semibold text-gray-800">
+                                        Parking Address:
+                                    </h5>
+                                </div>
+                                <p class="leading-relaxed text-gray-700">
+                                    Villa Immaculada Parking, Cabildo cor. Anda
+                                    Street, Intramuros, Manila
+                                </p>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <div
+                                class="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3"
+                            >
+                                <a
+                                    href="https://maps.app.goo.gl/z6BhRGKf3jQjPQBX6"
+                                    target="_blank"
+                                    class="inline-flex items-center justify-center rounded-full bg-rose-400 px-6 py-3 text-white transition-colors duration-300 hover:bg-rose-500 focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 focus:outline-none"
+                                >
+                                    <svg
+                                        class="mr-2 h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                        ></path>
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                        ></path>
+                                    </svg>
+                                    Ceremony
+                                </a>
+                                <a
+                                    href="https://maps.app.goo.gl/2amhumtYKS1NZNwH8"
+                                    target="_blank"
+                                    class="inline-flex items-center justify-center rounded-full bg-amber-400 px-6 py-3 text-white transition-colors duration-300 hover:bg-amber-500 focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:outline-none"
+                                >
+                                    <svg
+                                        class="mr-2 h-4 w-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                        ></path>
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                        ></path>
+                                    </svg>
+                                    Reception
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Bottom decorative element -->
