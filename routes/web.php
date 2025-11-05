@@ -8,6 +8,10 @@ Route::get('/', function () {
     return Inertia::render('Index');
 })->name('home');
 
+Route::get('/legacy', function () {
+    return Inertia::render('Legacy');
+})->name('legacy');
+
 // Test route for layout testing
 Route::get('/test-layout', function () {
     return Inertia::render('TestLayout');
