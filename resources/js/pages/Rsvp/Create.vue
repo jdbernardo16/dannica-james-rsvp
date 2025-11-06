@@ -82,18 +82,18 @@
                     class="card-wedding-elegant wedding-animate-scale-in shadow-wedding-xl wedding-hover-lift"
                     style="animation-delay: 0.2s"
                 >
-                    <CardContent class="p-6 sm:p-8">
+                    <CardContent class="p-0 sm:p-8">
                         <form @submit.prevent="handleSubmit">
                             <!-- Step 1: Guest Identification -->
                             <div
                                 v-if="currentStep === 0"
                                 class="wedding-animate-page-transition space-y-6"
                             >
-                                <div>
+                                <div class="text-center">
                                     <h3
-                                        class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
+                                        class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy m-auto text-center"
                                     >
-                                        Find Your Invitation
+                                        Find My Invitation
                                     </h3>
                                     <div
                                         class="wedding-divider-blush mt-4"
@@ -101,20 +101,16 @@
                                     <p
                                         class="text-wedding-lg font-wedding-body wedding-navy mt-4"
                                     >
-                                        Please enter your full name as it
-                                        appears on your invitation.
+                                        Kindly enter your full name to find your
+                                        invitation and RSVP
                                     </p>
                                 </div>
 
                                 <div class="space-y-4">
                                     <div>
-                                        <Label
-                                            for="guest_name"
-                                            class="font-wedding-semibold wedding-navy wedding-animate-fade-in-left"
+                                        <div
+                                            class="relative flex flex-col items-center space-y-7"
                                         >
-                                            Full Name
-                                        </Label>
-                                        <div class="relative">
                                             <Input
                                                 id="guest_name"
                                                 v-model="formData.guest_name"
@@ -131,16 +127,17 @@
                                                 }"
                                             />
                                             <button
+                                                v-if="!guestFound && !guestData"
                                                 type="button"
-                                                class="text-wedding-navy hover:text-wedding-gold absolute top-1/2 right-2 -translate-y-1/2 transform p-2 transition-colors duration-200"
                                                 @click="checkGuestName"
+                                                class="btn-wedding-primary wedding-hover-lift wedding-touch-target-lg"
                                                 :disabled="
                                                     isLoading ||
                                                     !formData.guest_name.trim()
                                                 "
                                                 title="Find My Invitation"
                                             >
-                                                <Search class="h-4 w-4" />
+                                                Search
                                             </button>
                                         </div>
                                         <p
@@ -171,23 +168,33 @@
                                         v-if="guestFound && guestData"
                                         class="rounded-wedding-lg border-wedding-gold bg-wedding-ivory-bg shadow-wedding-soft wedding-animate-bounce-in wedding-success-animation border-2 p-4"
                                     >
-                                        <div class="flex items-start">
+                                        <div
+                                            class="flex flex-col items-center space-y-4"
+                                        >
                                             <CheckCircle
-                                                class="mt-0.5 mr-2 h-5 w-5 text-green-600"
+                                                class="mt-0.5 mr-2 h-7 w-7 text-green-600"
                                             />
                                             <div>
-                                                <h3
-                                                    class="font-wedding-semibold text-green-900"
+                                                <h4
+                                                    class="font-wedding-semibold text-normal text-center text-green-900 lg:text-2xl"
                                                 >
-                                                    Invitation Found!
-                                                </h3>
-                                                <p
+                                                    Welcome,
+                                                    {{ formData.guest_name }}!
+                                                    <br />
+                                                    You have
+                                                    {{
+                                                        guestData.group_guests
+                                                            ?.length
+                                                    }}
+                                                    reserved seat in your name.
+                                                </h4>
+                                                <!-- <p
                                                     class="font-wedding-body mt-1 text-sm text-green-700"
                                                 >
                                                     Group:
                                                     {{ guestData.group?.name }}
-                                                </p>
-                                                <div
+                                                </p> -->
+                                                <!-- <div
                                                     v-if="
                                                         guestData.group_guests &&
                                                         guestData.group_guests
@@ -210,7 +217,7 @@
                                                             {{ guest }}
                                                         </li>
                                                     </ul>
-                                                </div>
+                                                </div> -->
                                                 <div
                                                     v-if="
                                                         guestData.group
@@ -273,7 +280,7 @@
                             <!-- Step 2: Attendance Confirmation -->
                             <div
                                 v-if="currentStep === 1"
-                                class="wedding-animate-page-transition space-y-6"
+                                class="wedding-animate-page-transition space-y-6 text-center"
                             >
                                 <div>
                                     <h3
@@ -296,27 +303,25 @@
                                     v-if="guestData"
                                     class="rounded-wedding-lg border-wedding-blush bg-wedding-blush-light-bg shadow-wedding-soft mb-6 border-2 p-4"
                                 >
-                                    <p
+                                    <!-- <p
                                         class="font-wedding-semibold wedding-navy"
                                     >
                                         Group: {{ guestData.group?.name }}
-                                    </p>
-                                    <p
-                                        class="wedding-navy font-wedding-body text-sm"
-                                    >
+                                    </p> -->
+                                    <p class="wedding-navy font-wedding-body">
                                         Maximum attendees:
                                         {{ guestData.group?.max_attendees }}
                                     </p>
                                 </div>
 
-                                <div class="space-y-4">
+                                <div class="space-y-4 text-center">
                                     <div>
-                                        <Label
+                                        <p
                                             for="attending_count"
-                                            class="font-wedding-semibold wedding-navy"
+                                            class="font-wedding-semibold wedding-navy m-auto text-center"
                                         >
                                             Number of Attendees
-                                        </Label>
+                                        </p>
                                         <div
                                             class="mt-4 flex items-center justify-center space-x-4 sm:space-x-6"
                                         >
@@ -551,7 +556,7 @@
                                 </div>
 
                                 <div
-                                    class="rounded-wedding-lg bg-wedding-ivory-bg border-wedding-blush-light space-y-6 border-2 p-6"
+                                    class="rounded-wedding-lg bg-wedding-ivory-bg border-wedding-blush-light space-y-6 border-2 p-3 md:p-6"
                                 >
                                     <div>
                                         <h3
@@ -564,13 +569,13 @@
                                         >
                                             {{ formData.guest_name }}
                                         </p>
-                                        <p
+                                        <!-- <p
                                             v-if="guestData"
                                             class="wedding-navy font-wedding-body mt-1 text-sm"
                                         >
                                             Group:
                                             {{ guestData.group?.name }}
-                                        </p>
+                                        </p> -->
                                     </div>
 
                                     <div class="wedding-divider"></div>
@@ -674,11 +679,12 @@
 
                             <!-- Navigation Buttons -->
                             <div
-                                class="mt-6 flex flex-col justify-between gap-4 sm:mt-8 sm:flex-row sm:gap-0"
+                                v-if="guestFound && guestData"
+                                class="mt-6 flex justify-between gap-4 sm:mt-8 sm:flex-row sm:gap-0"
                             >
                                 <button
                                     type="button"
-                                    class="btn-wedding-secondary wedding-hover-lift wedding-touch-target-lg order-2 sm:order-1"
+                                    class="btn-wedding-secondary wedding-hover-lift wedding-touch-target-lg w-1/2 lg:w-auto"
                                     @click="previousStep"
                                     :disabled="
                                         currentStep === 0 || isSubmitting
@@ -693,7 +699,7 @@
                                 <button
                                     v-if="currentStep < 5"
                                     type="button"
-                                    class="btn-wedding-primary wedding-hover-lift wedding-touch-target-lg order-1 sm:order-2"
+                                    class="btn-wedding-primary wedding-hover-lift wedding-touch-target-lg w-1/2 lg:w-auto"
                                     @click="nextStep"
                                     :disabled="!canProceed || isSubmitting"
                                 >
@@ -706,7 +712,7 @@
                                 <button
                                     v-if="currentStep === 5"
                                     type="submit"
-                                    class="btn-wedding-accent wedding-hover-lift wedding-touch-target-lg order-1 sm:order-2"
+                                    class="btn-wedding-accent wedding-hover-lift wedding-touch-target-lg w-1/2 lg:w-auto"
                                     :disabled="isSubmitting || !canSubmit"
                                 >
                                     <div
@@ -718,7 +724,6 @@
                                             ? 'Submitting...'
                                             : 'Submit RSVP'
                                     }}
-                                    <Send class="ml-2 h-4 w-4" />
                                 </button>
                             </div>
                         </form>
@@ -1057,8 +1062,6 @@ import {
     CheckCircle,
     Minus,
     Plus,
-    Search,
-    Send,
     XCircle,
 } from 'lucide-vue-next';
 import { computed, ref, watch } from 'vue';

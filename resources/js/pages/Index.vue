@@ -613,7 +613,7 @@ onMounted(() => {
 
                 <!-- Bearers and Flower Girls -->
                 <div>
-                    <div class="grid grid-cols-3 gap-10 text-center">
+                    <div class="mb-10 grid grid-cols-2 gap-10 text-center">
                         <div>
                             <p
                                 class="font-wedding-accent animateUp mb-6 text-[3rem] tracking-widest"
@@ -634,16 +634,16 @@ onMounted(() => {
                                 Kyle Dame F. Villaspin
                             </p>
                         </div>
-                        <div>
-                            <p
-                                class="font-wedding-accent animateUp mb-6 text-[3rem] tracking-widest"
-                            >
-                                Ring Bearer
-                            </p>
-                            <p class="animateUp text-4xl">
-                                Zeke Nikolai S. Sarmiento
-                            </p>
-                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p
+                            class="font-wedding-accent animateUp mb-6 text-[3rem] tracking-widest"
+                        >
+                            Ring Bearer
+                        </p>
+                        <p class="animateUp text-4xl">
+                            Zeke Nikolai S. Sarmiento
+                        </p>
                     </div>
 
                     <div class="mt-16">
@@ -652,11 +652,17 @@ onMounted(() => {
                         >
                             Flower Girls
                         </p>
-                        <div class="grid grid-cols-3 gap-x-10 gap-y-4 text-4xl">
-                            <p class="animateUp">Elliyah Jhay D. Santos</p>
+                        <div
+                            class="mb-10 grid grid-cols-2 gap-x-10 gap-y-4 text-4xl"
+                        >
+                            <p class="animateUp text-right">
+                                Elliyah Jhay D. Santos
+                            </p>
                             <p class="animateUp">Eiryn Jessy D. Santos</p>
-                            <p class="animateUp">Meiryne Joie D. Sarmiento</p>
                         </div>
+                        <p class="animateUp text-center text-4xl">
+                            Meiryne Joie D. Sarmiento
+                        </p>
                     </div>
                     <div class="mt-16">
                         <p
