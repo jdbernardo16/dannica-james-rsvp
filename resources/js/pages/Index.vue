@@ -692,6 +692,9 @@ onMounted(() => {
                 <p class="font-wedding-accent animateUp text-[5rem]">
                     Principal Sponsors
                 </p>
+                <p class="mb-4 text-center font-playfair text-3xl uppercase">
+                    Ninong and Ninang
+                </p>
                 <div class="animateUp m-auto w-[400px]">
                     <OptimizedImage
                         src="/images/color-pallete.png"
@@ -708,7 +711,38 @@ onMounted(() => {
                 </div>
 
                 <p class="font-wedding-accent animateUp mb-10 text-[5rem]">
+                    Dress Code
+                </p>
+                <div class="mb- mb-10 flex items-center space-x-6">
+                    <div class="animateUp w-1/2">
+                        <OptimizedImage
+                            src="/images/barong1.png"
+                            alt=""
+                            class="mx-auto h-[50vh]"
+                            loading="lazy"
+                        />
+                        <p class="animateUp text-3xl">Gentlemen</p>
+                        <p class="animateUp text-xl">Barong and Black pants</p>
+                    </div>
+                    <div class="animateUp w-1/2">
+                        <OptimizedImage
+                            src="/images/dress1.png"
+                            alt=""
+                            class="mx-auto h-[50vh]"
+                            loading="lazy"
+                        />
+                        <p class="animateUp text-3xl">Ladies</p>
+                        <p class="animateUp text-xl">
+                            Filipiniana or Butterfly dress
+                        </p>
+                    </div>
+                </div>
+
+                <p class="font-wedding-accent animateUp mb-4 text-[5rem]">
                     Guest
+                </p>
+                <p class="mb-10 text-center font-playfair text-3xl uppercase">
+                    Formal/Semi Formal
                 </p>
                 <div class="rounded-5 animateUp mb-16 grid grid-cols-4 gap-10">
                     <div>
@@ -734,33 +768,6 @@ onMounted(() => {
                             class="mb-4 aspect-square rounded-full border-2 border-[#4c0211] bg-[#c77a6f]"
                         ></div>
                         <p class="text-2xl">Burnt Sienna</p>
-                    </div>
-                </div>
-                <p class="font-wedding-accent animateUp mb-10 text-[5rem]">
-                    Dress Code
-                </p>
-                <div class="mb- flex items-center space-x-6">
-                    <div class="animateUp w-1/2">
-                        <OptimizedImage
-                            src="/images/barong1.png"
-                            alt=""
-                            class="mx-auto h-[50vh]"
-                            loading="lazy"
-                        />
-                        <p class="animateUp text-3xl">Gentlemen</p>
-                        <p class="animateUp text-xl">Barong and Black pants</p>
-                    </div>
-                    <div class="animateUp w-1/2">
-                        <OptimizedImage
-                            src="/images/dress1.png"
-                            alt=""
-                            class="mx-auto h-[50vh]"
-                            loading="lazy"
-                        />
-                        <p class="animateUp text-3xl">Ladies</p>
-                        <p class="animateUp text-xl">
-                            Filipiniana or Butterfly dress
-                        </p>
                     </div>
                 </div>
             </div>
