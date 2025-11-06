@@ -1,0 +1,11 @@
+import{L as f,_ as d,g as m,i as u,j as p,k as h,l as k,m as y,n as $,o as b,p as v,q as g,r as x,s as M,t as I}from"./AppSidebarHeader.vue_vue_type_script_setup_true_lang-DwNq_I3B.js";import{a as t}from"./index-opWzLI44.js";import{d as c,c as U,F as C,a,y as l,u as s,w as e,l as L,o as _,g as q}from"./app-CqgbcyvB.js";import{c as o}from"./createLucideIcon-X2_-fqn8.js";import{M as w}from"./mail-DLJNhyG5.js";/**
+ * @license lucide-vue-next v0.468.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const B=o("UserCheckIcon",[["path",{d:"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2",key:"1yyitq"}],["circle",{cx:"9",cy:"7",r:"4",key:"nufk8"}],["polyline",{points:"16 11 18 13 22 9",key:"1pwet4"}]]);/**
+ * @license lucide-vue-next v0.468.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const G=o("UsersIcon",[["path",{d:"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2",key:"1yyitq"}],["circle",{cx:"9",cy:"7",r:"4",key:"nufk8"}],["path",{d:"M22 21v-2a4 4 0 0 0-3-3.87",key:"kshegd"}],["path",{d:"M16 3.13a4 4 0 0 1 0 7.75",key:"1da9ce"}]]),N=c({__name:"AdminSidebar",setup(i){const n=[{title:"Dashboard",href:t.dashboard(),icon:f},{title:"Groups",href:t.groups.index(),icon:G},{title:"Guests",href:t.guests.index(),icon:B},{title:"RSVPs",href:t.rsvps.index(),icon:w}];return(r,S)=>(_(),U(C,null,[a(s(d),{collapsible:"icon",variant:"inset"},{default:e(()=>[a(s(m),null,{default:e(()=>[a(s(u),null,{default:e(()=>[a(s(p),null,{default:e(()=>[a(s(h),{size:"lg","as-child":""},{default:e(()=>[a(s(L),{href:s(t).dashboard()},{default:e(()=>[a(k)]),_:1},8,["href"])]),_:1})]),_:1})]),_:1})]),_:1}),a(s(y),null,{default:e(()=>[a($,{items:n})]),_:1}),a(s(b),null,{default:e(()=>[a(v,{items:r.footerNavItems},null,8,["items"]),a(g)]),_:1})]),_:1}),l(r.$slots,"default")],64))}}),z=c({__name:"AdminLayout",props:{breadcrumbs:{default:()=>[]}},setup(i){return(n,r)=>(_(),q(I,{variant:"sidebar"},{default:e(()=>[a(N),a(x,{variant:"sidebar"},{default:e(()=>[a(M,{breadcrumbs:i.breadcrumbs},null,8,["breadcrumbs"]),l(n.$slots,"default")]),_:3})]),_:3}))}});export{G as U,z as _,B as a};

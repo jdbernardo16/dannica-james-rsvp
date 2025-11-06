@@ -234,11 +234,6 @@
                 <h2>RSVP Details</h2>
 
                 <div class="detail-item">
-                    <div class="detail-label">Group Name</div>
-                    <div class="detail-value">{{ $rsvp->group ? $rsvp->group->name : 'N/A' }}</div>
-                </div>
-
-                <div class="detail-item">
                     <div class="detail-label">Attendance Status</div>
                     <div class="detail-value">
                         <span class="attendance-badge {{ $rsvp->attending_count > 0 ? 'attending' : 'not-attending' }}">
