@@ -33,7 +33,7 @@
     --font-playfair: 'Playfair Display', serif;
 
     /* Wedding-specific semantic colors */
-    --wedding-primary: var(--wedding-navy);
+    --wedding-primary: white;
     --wedding-primary-foreground: var(--wedding-ivory);
     --wedding-secondary: var(--wedding-blush);
     --wedding-secondary-foreground: var(--wedding-navy);
@@ -1490,12 +1490,12 @@
     }
 
     .wedding-step.active .wedding-step-label {
-        color: var(--wedding-navy);
+        color: white;
         font-weight: 600;
     }
 
     .wedding-step.completed .wedding-step-label {
-        color: var(--wedding-navy);
+        color: white;
         font-weight: 600;
     }
 
@@ -1674,7 +1674,7 @@
         }
 
         .card-wedding-elegant {
-            padding: 2rem;
+            padding: 1rem;
         }
 
         /* Step Indicator Mobile Optimization */

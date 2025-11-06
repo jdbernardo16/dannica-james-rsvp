@@ -5,588 +5,605 @@
         :showHeader="false"
         :showFooter="false"
     >
-        <!-- Decorative Floral Corners with Enhanced Animations -->
+        <!-- Background Image Container -->
         <div
-            class="wedding-animate-fade-in-down wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed top-0 left-0 h-24 w-24 opacity-20 sm:h-32 sm:w-32"
-            style="animation-delay: 0.2s"
+            class="relative min-h-screen w-full overflow-hidden bg-cover bg-center bg-no-repeat py-20"
+            style="background-image: url('/images/f1-bg.png')"
         >
-            <svg
-                viewBox="0 0 100 100"
-                class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
+            <!-- Decorative Floral Corners with Enhanced Animations -->
+            <div
+                class="wedding-animate-fade-in-down wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed top-0 left-0 h-24 w-24 opacity-20 sm:h-32 sm:w-32"
+                style="animation-delay: 0.2s"
             >
-                <path
-                    d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
-                    fill="currentColor"
-                />
-                <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
-            </svg>
-        </div>
-        <div
-            class="wedding-animate-fade-in-down wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed top-0 right-0 h-24 w-24 rotate-90 opacity-20 sm:h-32 sm:w-32"
-            style="animation-delay: 0.4s"
-        >
-            <svg
-                viewBox="0 0 100 100"
-                class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
-            >
-                <path
-                    d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
-                    fill="currentColor"
-                />
-                <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
-            </svg>
-        </div>
-        <div
-            class="wedding-animate-fade-in-up wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed bottom-0 left-0 h-24 w-24 -rotate-90 opacity-20 sm:h-32 sm:w-32"
-            style="animation-delay: 0.6s"
-        >
-            <svg
-                viewBox="0 0 100 100"
-                class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
-            >
-                <path
-                    d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
-                    fill="currentColor"
-                />
-                <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
-            </svg>
-        </div>
-        <div
-            class="wedding-animate-fade-in-up wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed right-0 bottom-0 h-24 w-24 rotate-180 opacity-20 sm:h-32 sm:w-32"
-            style="animation-delay: 0.8s"
-        >
-            <svg
-                viewBox="0 0 100 100"
-                class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
-            >
-                <path
-                    d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
-                    fill="currentColor"
-                />
-                <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
-            </svg>
-        </div>
-
-        <!-- Celebration Confetti and Petals -->
-        <div
-            v-if="rsvp"
-            class="pointer-events-none fixed inset-0 overflow-hidden"
-        >
-            <!-- Confetti Elements -->
-            <div
-                class="wedding-confetti"
-                style="
-                    left: 10%;
-                    animation-delay: 0s;
-                    background: var(--wedding-gold);
-                "
-            ></div>
-            <div
-                class="wedding-confetti"
-                style="
-                    left: 20%;
-                    animation-delay: 0.5s;
-                    background: var(--wedding-blush);
-                "
-            ></div>
-            <div
-                class="wedding-confetti"
-                style="
-                    left: 30%;
-                    animation-delay: 1s;
-                    background: var(--wedding-navy);
-                "
-            ></div>
-            <div
-                class="wedding-confetti"
-                style="
-                    left: 40%;
-                    animation-delay: 1.5s;
-                    background: var(--wedding-gold-light);
-                "
-            ></div>
-            <div
-                class="wedding-confetti"
-                style="
-                    left: 50%;
-                    animation-delay: 2s;
-                    background: var(--wedding-blush-dark);
-                "
-            ></div>
-            <div
-                class="wedding-confetti"
-                style="
-                    left: 60%;
-                    animation-delay: 2.5s;
-                    background: var(--wedding-gold);
-                "
-            ></div>
-            <div
-                class="wedding-confetti"
-                style="
-                    left: 70%;
-                    animation-delay: 3s;
-                    background: var(--wedding-blush);
-                "
-            ></div>
-            <div
-                class="wedding-confetti"
-                style="
-                    left: 80%;
-                    animation-delay: 3.5s;
-                    background: var(--wedding-navy-light);
-                "
-            ></div>
-            <div
-                class="wedding-confetti"
-                style="
-                    left: 90%;
-                    animation-delay: 4s;
-                    background: var(--wedding-gold-dark);
-                "
-            ></div>
-
-            <!-- Petal Elements -->
-            <div
-                class="wedding-petal"
-                style="left: 15%; animation-delay: 0.3s"
-            ></div>
-            <div
-                class="wedding-petal"
-                style="left: 25%; animation-delay: 1.2s"
-            ></div>
-            <div
-                class="wedding-petal"
-                style="left: 35%; animation-delay: 2.1s"
-            ></div>
-            <div
-                class="wedding-petal"
-                style="left: 45%; animation-delay: 3s"
-            ></div>
-            <div
-                class="wedding-petal"
-                style="left: 55%; animation-delay: 3.9s"
-            ></div>
-            <div
-                class="wedding-petal"
-                style="left: 65%; animation-delay: 4.8s"
-            ></div>
-            <div
-                class="wedding-petal"
-                style="left: 75%; animation-delay: 5.7s"
-            ></div>
-            <div
-                class="wedding-petal"
-                style="left: 85%; animation-delay: 6.6s"
-            ></div>
-
-            <!-- Sparkle Elements -->
-            <div
-                class="wedding-sparkle"
-                style="top: 20%; left: 10%; animation-delay: 0.2s"
-            ></div>
-            <div
-                class="wedding-sparkle"
-                style="top: 30%; left: 30%; animation-delay: 0.7s"
-            ></div>
-            <div
-                class="wedding-sparkle"
-                style="top: 25%; left: 50%; animation-delay: 1.2s"
-            ></div>
-            <div
-                class="wedding-sparkle"
-                style="top: 35%; left: 70%; animation-delay: 1.7s"
-            ></div>
-            <div
-                class="wedding-sparkle"
-                style="top: 40%; left: 90%; animation-delay: 2.2s"
-            ></div>
-            <div
-                class="wedding-sparkle"
-                style="top: 60%; left: 20%; animation-delay: 2.7s"
-            ></div>
-            <div
-                class="wedding-sparkle"
-                style="top: 70%; left: 40%; animation-delay: 3.2s"
-            ></div>
-            <div
-                class="wedding-sparkle"
-                style="top: 65%; left: 60%; animation-delay: 3.7s"
-            ></div>
-            <div
-                class="wedding-sparkle"
-                style="top: 75%; left: 80%; animation-delay: 4.2s"
-            ></div>
-        </div>
-
-        <div
-            class="wedding-smooth-scroll wedding-container relative z-10 px-4 py-8 sm:py-10 lg:py-12"
-        >
-            <div class="mx-auto max-w-4xl">
-                <!-- Success Message -->
-                <div
-                    v-if="rsvp"
-                    class="wedding-header wedding-animate-bounce-in mb-8 text-center sm:mb-10 lg:mb-12"
+                <svg
+                    viewBox="0 0 100 100"
+                    class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
                 >
-                    <div
-                        class="bg-wedding-gold-light shadow-wedding-gold wedding-animate-gold-shimmer wedding-success-animation mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full sm:mb-6 sm:h-20 sm:w-20"
-                    >
-                        <CheckCircle
-                            class="text-wedding-navy wedding-animate-scale-in h-8 w-8 sm:h-10 sm:w-10"
-                        />
-                    </div>
-                    <h1
-                        class="wedding-title text-wedding-4xl sm:text-wedding-5xl font-wedding-black wedding-navy wedding-hover-glow"
-                    >
-                        Thank You!
-                    </h1>
-                    <div
-                        class="wedding-divider wedding-animate-gold-shimmer mt-4 mb-3 sm:mt-6 sm:mb-4"
-                    ></div>
-                    <p
-                        class="wedding-subtitle font-wedding-accent text-wedding-lg sm:text-wedding-xl wedding-animate-fade-in-up"
-                        style="animation-delay: 0.3s"
-                    >
-                        Your RSVP has been received!
-                    </p>
-                    <p
-                        class="text-wedding-base sm:text-wedding-lg font-wedding-body wedding-navy wedding-animate-fade-in-up mt-2"
-                        style="animation-delay: 0.5s"
-                    >
-                        We're so excited to celebrate with you on our special
-                        day.
-                    </p>
+                    <path
+                        d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
+                        fill="currentColor"
+                    />
+                    <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
+                </svg>
+            </div>
+            <div
+                class="wedding-animate-fade-in-down wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed top-0 right-0 h-24 w-24 rotate-90 opacity-20 sm:h-32 sm:w-32"
+                style="animation-delay: 0.4s"
+            >
+                <svg
+                    viewBox="0 0 100 100"
+                    class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
+                >
+                    <path
+                        d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
+                        fill="currentColor"
+                    />
+                    <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
+                </svg>
+            </div>
+            <div
+                class="wedding-animate-fade-in-up wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed bottom-0 left-0 h-24 w-24 -rotate-90 opacity-20 sm:h-32 sm:w-32"
+                style="animation-delay: 0.6s"
+            >
+                <svg
+                    viewBox="0 0 100 100"
+                    class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
+                >
+                    <path
+                        d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
+                        fill="currentColor"
+                    />
+                    <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
+                </svg>
+            </div>
+            <div
+                class="wedding-animate-fade-in-up wedding-mobile-hidden wedding-tablet-block wedding-desktop-block pointer-events-none fixed right-0 bottom-0 h-24 w-24 rotate-180 opacity-20 sm:h-32 sm:w-32"
+                style="animation-delay: 0.8s"
+            >
+                <svg
+                    viewBox="0 0 100 100"
+                    class="text-wedding-gold wedding-animate-heartbeat h-full w-full"
+                >
+                    <path
+                        d="M20,50 Q30,30 50,20 Q70,30 80,50 Q70,70 50,80 Q30,70 20,50"
+                        fill="currentColor"
+                    />
+                    <circle cx="50" cy="50" r="5" fill="var(--wedding-blush)" />
+                </svg>
+            </div>
 
-                    <!-- Enhanced Celebration Animation Elements -->
+            <!-- Celebration Confetti and Petals -->
+            <div
+                v-if="rsvp"
+                class="pointer-events-none fixed inset-0 overflow-hidden"
+            >
+                <!-- Confetti Elements -->
+                <div
+                    class="wedding-confetti"
+                    style="
+                        left: 10%;
+                        animation-delay: 0s;
+                        background: var(--wedding-gold);
+                    "
+                ></div>
+                <div
+                    class="wedding-confetti"
+                    style="
+                        left: 20%;
+                        animation-delay: 0.5s;
+                        background: var(--wedding-blush);
+                    "
+                ></div>
+                <div
+                    class="wedding-confetti"
+                    style="
+                        left: 30%;
+                        animation-delay: 1s;
+                        background: var(--wedding-navy);
+                    "
+                ></div>
+                <div
+                    class="wedding-confetti"
+                    style="
+                        left: 40%;
+                        animation-delay: 1.5s;
+                        background: var(--wedding-gold-light);
+                    "
+                ></div>
+                <div
+                    class="wedding-confetti"
+                    style="
+                        left: 50%;
+                        animation-delay: 2s;
+                        background: var(--wedding-blush-dark);
+                    "
+                ></div>
+                <div
+                    class="wedding-confetti"
+                    style="
+                        left: 60%;
+                        animation-delay: 2.5s;
+                        background: var(--wedding-gold);
+                    "
+                ></div>
+                <div
+                    class="wedding-confetti"
+                    style="
+                        left: 70%;
+                        animation-delay: 3s;
+                        background: var(--wedding-blush);
+                    "
+                ></div>
+                <div
+                    class="wedding-confetti"
+                    style="
+                        left: 80%;
+                        animation-delay: 3.5s;
+                        background: var(--wedding-navy-light);
+                    "
+                ></div>
+                <div
+                    class="wedding-confetti"
+                    style="
+                        left: 90%;
+                        animation-delay: 4s;
+                        background: var(--wedding-gold-dark);
+                    "
+                ></div>
+
+                <!-- Petal Elements -->
+                <div
+                    class="wedding-petal"
+                    style="left: 15%; animation-delay: 0.3s"
+                ></div>
+                <div
+                    class="wedding-petal"
+                    style="left: 25%; animation-delay: 1.2s"
+                ></div>
+                <div
+                    class="wedding-petal"
+                    style="left: 35%; animation-delay: 2.1s"
+                ></div>
+                <div
+                    class="wedding-petal"
+                    style="left: 45%; animation-delay: 3s"
+                ></div>
+                <div
+                    class="wedding-petal"
+                    style="left: 55%; animation-delay: 3.9s"
+                ></div>
+                <div
+                    class="wedding-petal"
+                    style="left: 65%; animation-delay: 4.8s"
+                ></div>
+                <div
+                    class="wedding-petal"
+                    style="left: 75%; animation-delay: 5.7s"
+                ></div>
+                <div
+                    class="wedding-petal"
+                    style="left: 85%; animation-delay: 6.6s"
+                ></div>
+
+                <!-- Sparkle Elements -->
+                <div
+                    class="wedding-sparkle"
+                    style="top: 20%; left: 10%; animation-delay: 0.2s"
+                ></div>
+                <div
+                    class="wedding-sparkle"
+                    style="top: 30%; left: 30%; animation-delay: 0.7s"
+                ></div>
+                <div
+                    class="wedding-sparkle"
+                    style="top: 25%; left: 50%; animation-delay: 1.2s"
+                ></div>
+                <div
+                    class="wedding-sparkle"
+                    style="top: 35%; left: 70%; animation-delay: 1.7s"
+                ></div>
+                <div
+                    class="wedding-sparkle"
+                    style="top: 40%; left: 90%; animation-delay: 2.2s"
+                ></div>
+                <div
+                    class="wedding-sparkle"
+                    style="top: 60%; left: 20%; animation-delay: 2.7s"
+                ></div>
+                <div
+                    class="wedding-sparkle"
+                    style="top: 70%; left: 40%; animation-delay: 3.2s"
+                ></div>
+                <div
+                    class="wedding-sparkle"
+                    style="top: 65%; left: 60%; animation-delay: 3.7s"
+                ></div>
+                <div
+                    class="wedding-sparkle"
+                    style="top: 75%; left: 80%; animation-delay: 4.2s"
+                ></div>
+            </div>
+
+            <div
+                class="wedding-smooth-scroll wedding-container relative z-10 px-4 py-8 text-white sm:py-10 lg:py-12"
+            >
+                <div class="mx-auto max-w-4xl">
+                    <!-- Success Message -->
                     <div
-                        class="mt-6 flex justify-center space-x-2 sm:mt-8 sm:space-x-4"
+                        v-if="rsvp"
+                        class="wedding-header wedding-animate-bounce-in mb-8 text-center sm:mb-10 lg:mb-12"
                     >
                         <div
-                            class="wedding-animate-fade-in-up wedding-hover-scale"
+                            class="bg-wedding-gold-light shadow-wedding-gold wedding-animate-gold-shimmer wedding-success-animation mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full sm:mb-6 sm:h-20 sm:w-20"
+                        >
+                            <CheckCircle
+                                class="text-wedding-navy wedding-animate-scale-in h-8 w-8 sm:h-10 sm:w-10"
+                            />
+                        </div>
+                        <h1
+                            class="font-wedding-accent animateUp text-center text-[6rem] tracking-widest text-white sm:text-[8rem]"
+                        >
+                            Thank You!
+                        </h1>
+                        <div
+                            class="animateUp mx-auto mt-4 h-1 w-20 rounded bg-white"
                             style="animation-delay: 0.2s"
+                        ></div>
+                        <p
+                            class="animateUp mt-6 font-playfair text-3xl text-white sm:text-4xl"
+                            style="animation-delay: 0.3s"
                         >
-                            <span class="animate-pulse text-2xl sm:text-4xl"
-                                >💐</span
-                            >
-                        </div>
-                        <div
-                            class="wedding-animate-fade-in-up wedding-hover-scale"
-                            style="animation-delay: 0.4s"
+                            Your RSVP has been received!
+                        </p>
+                        <p
+                            class="animateUp mt-4 font-playfair text-2xl text-white sm:text-3xl"
+                            style="animation-delay: 0.5s"
                         >
-                            <span class="animate-pulse text-2xl sm:text-4xl"
-                                >🌸</span
-                            >
-                        </div>
-                        <div
-                            class="wedding-animate-fade-in-up wedding-hover-scale"
-                            style="animation-delay: 0.6s"
-                        >
-                            <span class="animate-pulse text-2xl sm:text-4xl"
-                                >✨</span
-                            >
-                        </div>
-                        <div
-                            class="wedding-animate-fade-in-up wedding-hover-scale"
-                            style="animation-delay: 0.8s"
-                        >
-                            <span class="animate-pulse text-2xl sm:text-4xl"
-                                >💕</span
-                            >
-                        </div>
-                        <div
-                            class="wedding-animate-fade-in-up wedding-hover-scale"
-                            style="animation-delay: 1s"
-                        >
-                            <span class="animate-pulse text-2xl sm:text-4xl"
-                                >🌹</span
-                            >
-                        </div>
-                    </div>
-                </div>
+                            We're so excited to celebrate with you on our
+                            special day.
+                        </p>
 
-                <!-- No RSVP Data -->
-                <div
-                    v-else
-                    class="wedding-header wedding-animate-fade-in-up mb-8 text-center sm:mb-10 lg:mb-12"
-                >
-                    <div
-                        class="bg-wedding-blush-light wedding-animate-scale-in mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full sm:mb-6 sm:h-16 sm:w-16"
-                    >
-                        <Info class="text-wedding-navy h-6 w-6 sm:h-8 sm:w-8" />
-                    </div>
-                    <h1
-                        class="wedding-title text-wedding-3xl sm:text-wedding-4xl font-wedding-bold wedding-navy"
-                    >
-                        RSVP Not Found
-                    </h1>
-                    <div class="wedding-divider-blush mt-4 mb-4"></div>
-                    <p
-                        class="text-wedding-base sm:text-wedding-lg font-wedding-body wedding-navy mt-2"
-                    >
-                        We couldn't find your RSVP confirmation. Please try
-                        submitting your RSVP again.
-                    </p>
-                    <button
-                        class="btn-wedding-primary wedding-hover-lift wedding-touch-target-lg mt-4 sm:mt-6"
-                        @click="$inertia.visit('/rsvp')"
-                    >
-                        <ArrowLeft class="mr-2 inline h-4 w-4" />
-                        <span class="text-sm sm:text-base"
-                            >Back to RSVP Form</span
+                        <!-- Enhanced Celebration Animation Elements -->
+                        <div
+                            class="mt-6 flex justify-center space-x-2 sm:mt-8 sm:space-x-4"
                         >
-                    </button>
-                </div>
-
-                <!-- RSVP Details Card -->
-                <Card
-                    v-if="rsvp"
-                    class="card-wedding-elegant wedding-animate-scale-in shadow-wedding-xl wedding-hover-lift mb-6 sm:mb-8"
-                    style="animation-delay: 0.3s"
-                >
-                    <CardHeader class="pb-4 text-center sm:pb-6">
-                        <CardTitle
-                            class="wedding-title text-wedding-2xl sm:text-wedding-3xl font-wedding-bold wedding-navy"
-                        >
-                            RSVP Confirmation Details
-                        </CardTitle>
-                        <div class="wedding-divider-blush mt-4"></div>
-                        <CardDescription
-                            class="text-wedding-base sm:text-wedding-lg font-wedding-body wedding-navy mt-2"
-                        >
-                            Please review your submitted information below
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent class="p-6 sm:p-8">
-                        <div class="space-y-6">
-                            <!-- Group Information -->
                             <div
-                                class="card-wedding rounded-wedding-lg border-wedding-gold wedding-animate-fade-in-up wedding-hover-lift border-2 p-6"
+                                class="wedding-animate-fade-in-up wedding-hover-scale"
+                                style="animation-delay: 0.2s"
+                            >
+                                <span class="animate-pulse text-2xl sm:text-4xl"
+                                    >💐</span
+                                >
+                            </div>
+                            <div
+                                class="wedding-animate-fade-in-up wedding-hover-scale"
                                 style="animation-delay: 0.4s"
                             >
-                                <h3
-                                    class="wedding-title text-wedding-xl font-wedding-semibold wedding-navy mb-4"
+                                <span class="animate-pulse text-2xl sm:text-4xl"
+                                    >🌸</span
                                 >
-                                    Group Information
-                                </h3>
-                                <div
-                                    class="grid grid-cols-1 gap-4 sm:grid-cols-2"
-                                >
-                                    <div>
-                                        <p
-                                            class="text-wedding-sm font-wedding-medium wedding-blush"
-                                        >
-                                            Group Name
-                                        </p>
-                                        <p
-                                            class="text-wedding-lg font-wedding-semibold wedding-navy"
-                                        >
-                                            {{ rsvp.group_name }}
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <p
-                                            class="text-wedding-sm font-wedding-medium wedding-blush"
-                                        >
-                                            Submitted
-                                        </p>
-                                        <p
-                                            class="text-wedding-lg font-wedding-semibold wedding-navy"
-                                        >
-                                            {{ formatDate(rsvp.submitted_at) }}
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
-
-                            <!-- Attendance Information -->
                             <div
-                                class="card-wedding rounded-wedding-lg border-wedding-blush bg-wedding-blush-light-bg wedding-animate-fade-in-up wedding-hover-lift border-2 p-6"
+                                class="wedding-animate-fade-in-up wedding-hover-scale"
                                 style="animation-delay: 0.6s"
                             >
-                                <h3
-                                    class="wedding-title text-wedding-xl font-wedding-semibold wedding-navy mb-4"
+                                <span class="animate-pulse text-2xl sm:text-4xl"
+                                    >✨</span
                                 >
-                                    Attendance
-                                </h3>
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p
-                                            class="text-wedding-sm font-wedding-medium wedding-blush"
-                                        >
-                                            Number of Attendees
-                                        </p>
-                                        <p
-                                            class="text-wedding-3xl font-wedding-bold wedding-navy"
-                                        >
-                                            {{ rsvp.attending_count }}
-                                            {{
-                                                rsvp.attending_count === 1
-                                                    ? 'person'
-                                                    : 'people'
-                                            }}
-                                        </p>
-                                    </div>
-                                    <div class="text-right">
-                                        <p
-                                            class="text-wedding-sm font-wedding-medium wedding-blush"
-                                        >
-                                            Status
-                                        </p>
-                                        <div
-                                            class="mt-1 inline-flex items-center rounded-full px-4 py-2"
-                                            :class="
-                                                rsvp.attending_count > 0
-                                                    ? 'border-2 border-green-300 bg-green-100 text-green-800'
-                                                    : 'border-2 border-gray-300 bg-gray-100 text-gray-800'
-                                            "
-                                        >
-                                            {{
-                                                rsvp.attending_count > 0
-                                                    ? '✨ Attending'
-                                                    : 'Not Attending'
-                                            }}
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-
-                            <!-- Guest List -->
                             <div
-                                v-if="
-                                    rsvp.group &&
-                                    rsvp.group.guests &&
-                                    rsvp.group.guests.length > 0
-                                "
-                                class="card-wedding rounded-wedding-lg border-wedding-gold wedding-animate-fade-in-up wedding-hover-lift border-2 p-6"
+                                class="wedding-animate-fade-in-up wedding-hover-scale"
                                 style="animation-delay: 0.8s"
                             >
-                                <h3
-                                    class="wedding-title text-wedding-xl font-wedding-semibold wedding-navy mb-4"
+                                <span class="animate-pulse text-2xl sm:text-4xl"
+                                    >💕</span
                                 >
-                                    Guests in Your Group
-                                </h3>
+                            </div>
+                            <div
+                                class="wedding-animate-fade-in-up wedding-hover-scale"
+                                style="animation-delay: 1s"
+                            >
+                                <span class="animate-pulse text-2xl sm:text-4xl"
+                                    >🌹</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- No RSVP Data -->
+                    <div
+                        v-else
+                        class="wedding-header wedding-animate-fade-in-up mb-8 text-center sm:mb-10 lg:mb-12"
+                    >
+                        <div
+                            class="bg-wedding-blush-light wedding-animate-scale-in mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full sm:mb-6 sm:h-16 sm:w-16"
+                        >
+                            <Info
+                                class="text-wedding-navy h-6 w-6 sm:h-8 sm:w-8"
+                            />
+                        </div>
+                        <h1
+                            class="font-wedding-accent animateUp text-center text-[4rem] text-white sm:text-[5rem]"
+                        >
+                            RSVP Not Found
+                        </h1>
+                        <div
+                            class="animateUp mx-auto mt-4 h-1 w-20 rounded bg-white"
+                            style="animation-delay: 0.2s"
+                        ></div>
+                        <p
+                            class="animateUp mt-4 font-playfair text-xl text-white sm:text-2xl"
+                            style="animation-delay: 0.3s"
+                        >
+                            We couldn't find your RSVP confirmation. Please try
+                            submitting your RSVP again.
+                        </p>
+                        <button
+                            class="wedding-touch-target-lg mt-4 rounded-full bg-[#4c0511] px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d] sm:mt-6"
+                            @click="$inertia.visit('/rsvp')"
+                        >
+                            <ArrowLeft class="mr-2 inline h-4 w-4" />
+                            <span class="text-sm sm:text-base"
+                                >Back to RSVP Form</span
+                            >
+                        </button>
+                    </div>
+
+                    <!-- RSVP Details Card -->
+                    <div
+                        v-if="rsvp"
+                        class="animateUp wedding-animate-scale-in mb-6 rounded-3xl bg-[#ebddd7] p-3 shadow-2xl sm:mb-8 sm:p-8"
+                        style="animation-delay: 0.3s"
+                    >
+                        <div class="pb-4 text-center sm:pb-6">
+                            <h3
+                                class="font-wedding-accent animateUp text-center text-[4rem] text-[#4c0511] sm:text-[5rem]"
+                            >
+                                RSVP Confirmation Details
+                            </h3>
+                            <div
+                                class="animateUp mx-auto mt-4 h-1 w-20 rounded bg-[#4c0511]"
+                                style="animation-delay: 0.2s"
+                            ></div>
+                            <p
+                                class="animateUp mt-4 font-playfair text-xl text-[#4c0511] sm:text-2xl"
+                                style="animation-delay: 0.3s"
+                            >
+                                Please review your submitted information below
+                            </p>
+                        </div>
+                        <div>
+                            <div class="space-y-6">
+                                <!-- Group Information -->
                                 <div
-                                    class="grid grid-cols-1 gap-3 sm:grid-cols-2"
+                                    class="rounded-wedding-lg wedding-animate-fade-in-up wedding-hover-lift border-2 border-[#4c0511] bg-white p-3 sm:p-6"
+                                    style="animation-delay: 0.4s"
                                 >
-                                    <div
-                                        v-for="guest in rsvp.group.guests"
-                                        :key="guest.id"
-                                        class="rounded-wedding-lg bg-wedding-ivory-bg border-wedding-blush-light wedding-hover-scale wedding-transition flex items-center space-x-3 border p-3"
+                                    <!-- <h3
+                                        class="wedding-title text-wedding-xl font-wedding-semibold wedding-navy mb-4"
                                     >
-                                        <div class="flex-shrink-0">
-                                            <div
-                                                class="bg-wedding-gold-light flex h-10 w-10 items-center justify-center rounded-full"
-                                            >
-                                                <User
-                                                    class="text-wedding-navy h-5 w-5"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div>
+                                        Group Information
+                                    </h3> -->
+                                    <div
+                                        class="grid grid-cols-1 gap-4 sm:grid-cols-2"
+                                    >
+                                        <!-- <div>
                                             <p
-                                                class="text-wedding-base font-wedding-semibold wedding-navy"
+                                                class="text-wedding-sm font-wedding-medium wedding-blush"
                                             >
-                                                {{ guest.full_name }}
+                                                Group Name
                                             </p>
                                             <p
-                                                v-if="guest.email"
-                                                class="text-wedding-sm font-wedding-body wedding-blush"
+                                                class="text-wedding-lg font-wedding-semibold wedding-navy"
                                             >
-                                                {{ guest.email }}
+                                                {{ rsvp.group_name }}
+                                            </p>
+                                        </div> -->
+                                        <div>
+                                            <p
+                                                class="text-wedding-sm font-wedding-medium text-[#4c0511]"
+                                            >
+                                                Submitted
+                                            </p>
+                                            <p
+                                                class="text-wedding-lg font-wedding-semibold text-[#4c0511]"
+                                            >
+                                                {{
+                                                    formatDate(
+                                                        rsvp.submitted_at,
+                                                    )
+                                                }}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Message -->
-                            <div
-                                v-if="rsvp.message"
-                                class="card-wedding rounded-wedding-lg border-wedding-gold wedding-animate-fade-in-up wedding-hover-lift border-2 p-6"
-                                style="animation-delay: 1s"
-                            >
-                                <h3
-                                    class="wedding-title text-wedding-xl font-wedding-semibold wedding-navy mb-4 flex items-center"
-                                >
-                                    <MessageSquare
-                                        class="text-wedding-gold mr-2 h-6 w-6"
-                                    />
-                                    Message to the Couple
-                                </h3>
+                                <!-- Attendance Information -->
                                 <div
-                                    class="rounded-wedding-lg bg-wedding-ivory-bg border-wedding-blush-light border p-4"
+                                    class="rounded-wedding-lg wedding-animate-fade-in-up wedding-hover-lift border-2 border-[#4c0511] bg-white p-3 sm:p-6"
+                                    style="animation-delay: 0.6s"
                                 >
-                                    <p
-                                        class="text-wedding-base font-wedding-body wedding-navy whitespace-pre-wrap"
+                                    <h3
+                                        class="font-wedding-accent animateUp text-center text-[3rem] text-[#4c0511] sm:text-[4rem]"
                                     >
-                                        {{ rsvp.message }}
-                                    </p>
+                                        Attendance
+                                    </h3>
+                                    <div class="flex justify-between">
+                                        <div>
+                                            <p class="font-bold text-[#4c0511]">
+                                                Number of Attendees
+                                            </p>
+                                            <p
+                                                class="text-3xl font-bold text-[#4c0511]"
+                                            >
+                                                {{ rsvp.attending_count }}
+                                                {{
+                                                    rsvp.attending_count === 1
+                                                        ? 'person'
+                                                        : 'people'
+                                                }}
+                                            </p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-bold text-[#4c0511]">
+                                                Status
+                                            </p>
+                                            <div
+                                                class="mt-1 inline-flex items-center rounded-full px-4 py-2 text-xs md:text-base"
+                                                :class="
+                                                    rsvp.attending_count > 0
+                                                        ? 'border-2 border-green-300 bg-green-100 text-green-800'
+                                                        : 'border-2 border-gray-300 bg-gray-100 text-gray-800'
+                                                "
+                                            >
+                                                {{
+                                                    rsvp.attending_count > 0
+                                                        ? '✨ Attending'
+                                                        : 'Not Attending'
+                                                }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Guest List -->
+                                <div
+                                    v-if="
+                                        rsvp.group &&
+                                        rsvp.group.guests &&
+                                        rsvp.group.guests.length > 0
+                                    "
+                                    class="rounded-wedding-lg wedding-animate-fade-in-up wedding-hover-lift border-2 border-[#4c0511] bg-white p-3 sm:p-6"
+                                    style="animation-delay: 0.8s"
+                                >
+                                    <h3
+                                        class="font-wedding-accent animateUp text-center text-[3rem] text-[#4c0511] sm:text-[4rem]"
+                                    >
+                                        Guests in Your Group
+                                    </h3>
+                                    <div
+                                        class="grid grid-cols-1 gap-3 sm:grid-cols-2"
+                                    >
+                                        <div
+                                            v-for="guest in rsvp.group.guests"
+                                            :key="guest.id"
+                                            class="rounded-wedding-lg wedding-hover-scale wedding-transition flex items-center space-x-3 border-2 border-[#4c0511] bg-white p-3"
+                                        >
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="flex h-10 w-10 items-center justify-center rounded-full bg-[#ebddd7]"
+                                                >
+                                                    <User
+                                                        class="h-5 w-5 text-[#4c0511]"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p
+                                                    class="text-base font-semibold text-[#4c0511]"
+                                                >
+                                                    {{ guest.full_name }}
+                                                </p>
+                                                <p
+                                                    v-if="guest.email"
+                                                    class="font-body text-sm text-[#4c0511]"
+                                                >
+                                                    {{ guest.email }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Message -->
+                                <div
+                                    v-if="rsvp.message"
+                                    class="rounded-wedding-lg wedding-animate-fade-in-up wedding-hover-lift border-2 border-[#4c0511] bg-white p-3 sm:p-6"
+                                    style="animation-delay: 1s"
+                                >
+                                    <h3
+                                        class="font-wedding-accent animateUp flex items-center justify-center text-center text-[3rem] text-[#4c0511] sm:text-[4rem]"
+                                    >
+                                        <MessageSquare
+                                            class="text-wedding-gold mr-2 h-6 w-6"
+                                        />
+                                        Message to the Couple
+                                    </h3>
+                                    <div
+                                        class="rounded-wedding-lg border-2 border-[#4c0511] bg-[#ebddd7] p-4"
+                                    >
+                                        <p
+                                            class="font-body text-base text-[#4c0511]"
+                                        >
+                                            {{ rsvp.message }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Song Suggestion -->
+                                <div
+                                    v-if="rsvp.song_suggestion"
+                                    class="rounded-wedding-lg wedding-animate-fade-in-up wedding-hover-lift border-2 border-[#4c0511] bg-white p-3 sm:p-6"
+                                    style="animation-delay: 1.2s"
+                                >
+                                    <h3
+                                        class="font-wedding-accent animateUp flex items-center justify-center text-center text-[3rem] text-[#4c0511] sm:text-[4rem]"
+                                    >
+                                        <Music
+                                            class="mr-2 h-6 w-6 text-[#4c0511]"
+                                        />
+                                        Song Suggestion
+                                    </h3>
+                                    <div
+                                        class="rounded-wedding-lg border-2 border-[#4c0511] bg-[#ebddd7] p-4"
+                                    >
+                                        <p
+                                            class="font-body text-base text-[#4c0511]"
+                                        >
+                                            🎵 {{ rsvp.song_suggestion }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Email Information -->
+                                <div
+                                    class="rounded-wedding-lg wedding-animate-fade-in-up wedding-hover-lift border-2 border-[#4c0511] bg-white p-3 sm:p-6"
+                                    style="animation-delay: 1.4s"
+                                >
+                                    <h3
+                                        class="font-wedding-accent animateUp flex items-center justify-center text-center text-[3rem] text-[#4c0511] sm:text-[4rem]"
+                                    >
+                                        <Mail
+                                            class="text-wedding-gold mr-2 h-6 w-6"
+                                        />
+                                        Email Confirmation
+                                    </h3>
+                                    <div
+                                        class="rounded-wedding-lg border-2 border-[#4c0511] bg-[#ebddd7] p-4"
+                                    >
+                                        <p
+                                            class="text-wedding-base font-wedding-body mb-2 text-[#4c0511]"
+                                        >
+                                            A confirmation email has been sent
+                                            to:
+                                        </p>
+                                        <p
+                                            class="text-wedding-lg font-wedding-semibold text-[#4c0511]"
+                                        >
+                                            {{ rsvp.email }}
+                                        </p>
+                                        <p
+                                            class="text-wedding-sm font-wedding-body mt-2 text-[#4c0511]"
+                                        >
+                                            Please check your inbox (and spam
+                                            folder) for the confirmation email.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Song Suggestion -->
-                            <div
-                                v-if="rsvp.song_suggestion"
-                                class="card-wedding rounded-wedding-lg border-wedding-blush wedding-animate-fade-in-up wedding-hover-lift border-2 p-6"
-                                style="animation-delay: 1.2s"
-                            >
-                                <h3
-                                    class="wedding-title text-wedding-xl font-wedding-semibold wedding-navy mb-4 flex items-center"
-                                >
-                                    <Music
-                                        class="text-wedding-gold mr-2 h-6 w-6"
-                                    />
-                                    Song Suggestion
-                                </h3>
-                                <div
-                                    class="rounded-wedding-lg bg-wedding-ivory-bg border-wedding-blush-light border p-4"
-                                >
-                                    <p
-                                        class="text-wedding-base font-wedding-body wedding-navy"
-                                    >
-                                        🎵 {{ rsvp.song_suggestion }}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Email Information -->
-                            <div
-                                class="card-wedding rounded-wedding-lg border-wedding-navy wedding-animate-fade-in-up wedding-hover-lift border-2 p-6"
-                                style="animation-delay: 1.4s"
-                            >
-                                <h3
-                                    class="wedding-title text-wedding-xl font-wedding-semibold wedding-navy mb-4 flex items-center"
-                                >
-                                    <Mail
-                                        class="text-wedding-gold mr-2 h-6 w-6"
-                                    />
-                                    Email Confirmation
-                                </h3>
-                                <div
-                                    class="rounded-wedding-lg bg-wedding-ivory-bg border-wedding-blush-light border p-4"
-                                >
-                                    <p
-                                        class="text-wedding-base font-wedding-body wedding-navy mb-2"
-                                    >
-                                        A confirmation email has been sent to:
-                                    </p>
-                                    <p
-                                        class="text-wedding-lg font-wedding-semibold wedding-navy"
-                                    >
-                                        {{ rsvp.email }}
-                                    </p>
-                                    <p
-                                        class="text-wedding-sm font-wedding-body wedding-blush mt-2"
-                                    >
-                                        Please check your inbox (and spam
-                                        folder) for the confirmation email.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <!-- <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+                            <!-- Action Buttons -->
+                            <!-- <div class="mt-8 flex flex-col gap-4 sm:flex-row">
                             <button
                                 class="btn-wedding-secondary wedding-hover-lift flex-1"
                                 @click="resendConfirmation"
@@ -602,49 +619,55 @@
                                 Submit Another RSVP
                             </button>
                         </div> -->
-                    </CardContent>
-                </Card>
+                        </div>
+                    </div>
 
-                <!-- Additional Information -->
-                <div
-                    v-if="rsvp"
-                    class="wedding-animate-fade-in-up"
-                    style="animation-delay: 1.6s"
-                >
+                    <!-- Additional Information -->
                     <div
-                        class="card-wedding-elegant rounded-wedding-xl shadow-wedding-soft wedding-hover-lift p-6"
+                        v-if="rsvp"
+                        class="wedding-animate-fade-in-up"
+                        style="animation-delay: 1.6s"
                     >
-                        <h3
-                            class="wedding-title text-wedding-xl font-wedding-semibold wedding-navy mb-4"
-                        >
-                            Need to Make Changes?
-                        </h3>
-                        <div class="wedding-divider-blush mb-4"></div>
-                        <p
-                            class="text-wedding-base font-wedding-body wedding-navy mb-6"
-                        >
-                            If you need to update your RSVP or have any
-                            questions, please contact us directly.
-                        </p>
                         <div
-                            class="flex flex-col justify-center gap-4 sm:flex-row"
+                            class="animateUp wedding-hover-lift rounded-3xl bg-[#ebddd7] p-6 shadow-2xl"
+                            style="animation-delay: 0.2s"
                         >
-                            <a href="tel: +639560934971" target="_blank">
-                                <button
-                                    class="btn-wedding-accent wedding-hover-lift"
-                                >
-                                    <Phone class="mr-2 inline h-4 w-4" />
-                                    Contact Couple
-                                </button>
-                            </a>
-                            <a href="/">
-                                <button
-                                    class="btn-wedding-secondary wedding-hover-lift"
-                                >
-                                    <Calendar class="mr-2 inline h-4 w-4" />
-                                    View Wedding Details
-                                </button>
-                            </a>
+                            <h3
+                                class="font-wedding-accent animateUp text-center text-[3rem] text-[#4c0511] sm:text-[4rem]"
+                            >
+                                Need to Make Changes?
+                            </h3>
+                            <div
+                                class="animateUp mx-auto mt-4 h-1 w-20 rounded bg-[#4c0511]"
+                                style="animation-delay: 0.2s"
+                            ></div>
+                            <p
+                                class="animateUp mt-4 font-playfair text-xl text-white sm:text-2xl"
+                                style="animation-delay: 0.3s"
+                            >
+                                If you need to update your RSVP or have any
+                                questions, please contact us directly.
+                            </p>
+                            <div
+                                class="flex flex-col justify-center gap-4 sm:flex-row"
+                            >
+                                <a href="tel: +639665898647" target="_blank">
+                                    <button
+                                        class="wedding-touch-target-lg mt-6 w-full rounded-full bg-[#4c0511] px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d] md:w-auto"
+                                    >
+                                        <Phone class="mr-2 inline h-4 w-4" />
+                                        Contact Couple
+                                    </button>
+                                </a>
+                                <a href="/">
+                                    <button
+                                        class="wedding-touch-target-lg w-full rounded-full bg-[#4c0511] px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d] md:w-auto"
+                                    >
+                                        <Calendar class="mr-2 inline h-4 w-4" />
+                                        View Wedding Details
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -654,13 +677,6 @@
 </template>
 
 <script setup lang="ts">
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
 import PublicLayout from '@/layouts/PublicLayout.vue';
 import { router } from '@inertiajs/vue3';
 import {

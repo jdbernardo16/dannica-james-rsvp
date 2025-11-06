@@ -8,193 +8,210 @@
         <!-- Decorative Floral Corners with Enhanced Animations -->
 
         <div
-            class="wedding-smooth-scroll wedding-container relative z-10 px-4 py-8 sm:py-10 lg:py-12"
+            class="relative min-h-screen w-full overflow-hidden bg-cover bg-center bg-no-repeat py-20"
+            style="background-image: url('/images/f1-bg.png')"
         >
-            <div class="mx-auto max-w-4xl">
-                <!-- Header -->
-                <div
-                    class="wedding-header wedding-animate-bounce-in mb-8 text-center sm:mb-10 lg:mb-12"
-                >
-                    <h3
-                        class="wedding-title text-wedding-4xl sm:text-wedding-5xl"
-                    >
-                        James & Dannica's Wedding
-                    </h3>
+            <div
+                class="wedding-smooth-scroll wedding-container relative z-10 px-4 py-8 text-white sm:py-10 lg:py-12"
+            >
+                <div class="mx-auto max-w-4xl">
+                    <!-- Header -->
                     <div
-                        class="wedding-divider wedding-animate-gold-shimmer mt-4 mb-3 sm:mt-6 sm:mb-4"
-                    ></div>
-                    <p
-                        class="wedding-subtitle font-wedding-accent text-wedding-lg sm:text-wedding-xl wedding-animate-fade-in-up"
-                        style="animation-delay: 0.3s"
+                        class="wedding-header wedding-animate-bounce-in mb-8 text-center sm:mb-10 lg:mb-12"
                     >
-                        We're so excited to celebrate with you!
-                    </p>
-                    <p
-                        class="text-wedding-base sm:text-wedding-lg font-wedding-body wedding-navy wedding-animate-fade-in-up mt-2"
-                        style="animation-delay: 0.5s"
-                    >
-                        Please fill out this form to let us know if you can
-                        attend our special day.
-                    </p>
-                </div>
+                        <h3
+                            class="font-wedding-accent animateUp text-center text-[6rem] tracking-widest sm:text-[8rem]"
+                        >
+                            James & Dannica's Wedding
+                        </h3>
+                        <div
+                            class="wedding-divider wedding-animate-gold-shimmer mt-4 mb-3 sm:mt-6 sm:mb-4"
+                        ></div>
+                        <p
+                            class="animateUp mt-6 font-playfair text-3xl sm:text-4xl"
+                            style="animation-delay: 0.3s"
+                        >
+                            We're so excited to celebrate with you!
+                        </p>
+                        <p
+                            class="animateUp mt-4 font-playfair text-2xl sm:text-3xl"
+                            style="animation-delay: 0.5s"
+                        >
+                            Please fill out this form to let us know if you can
+                            attend our special day.
+                        </p>
+                    </div>
 
-                <!-- Wedding-themed Progress Bar -->
-                <div class="wedding-animate-slide-up mb-8 sm:mb-10 lg:mb-12">
-                    <div class="wedding-progress-container">
-                        <div class="wedding-progress-bar">
-                            <div
-                                class="wedding-progress-fill"
-                                :style="{ width: progressPercentage + '%' }"
-                            ></div>
-                        </div>
-                        <div class="wedding-progress-steps">
-                            <div
-                                v-for="(step, index) in steps"
-                                :key="index"
-                                class="wedding-progress-step"
-                                :class="{
-                                    active: currentStep === index,
-                                    completed: currentStep > index,
-                                }"
-                                @click="goToStep(index)"
-                            >
-                                <div class="wedding-progress-dot">
-                                    <CheckCircle
-                                        v-if="currentStep > index"
-                                        class="h-3 w-3 sm:h-4 sm:w-4"
-                                    />
-                                    <span v-else class="text-xs sm:text-sm">{{
-                                        index + 1
-                                    }}</span>
-                                </div>
-                                <span
-                                    class="wedding-progress-label text-xs sm:text-sm"
+                    <!-- Wedding-themed Progress Bar -->
+                    <div
+                        class="wedding-animate-slide-up mb-8 sm:mb-10 lg:mb-12"
+                    >
+                        <div class="wedding-progress-container">
+                            <div class="wedding-progress-bar">
+                                <div
+                                    class="wedding-progress-fill"
+                                    :style="{ width: progressPercentage + '%' }"
+                                ></div>
+                            </div>
+                            <div class="wedding-progress-steps">
+                                <div
+                                    v-for="(step, index) in steps"
+                                    :key="index"
+                                    class="wedding-progress-step"
+                                    :class="{
+                                        active: currentStep === index,
+                                        completed: currentStep > index,
+                                    }"
+                                    @click="goToStep(index)"
                                 >
-                                    {{ step.title }}
-                                </span>
+                                    <div class="wedding-progress-dot">
+                                        <CheckCircle
+                                            v-if="currentStep > index"
+                                            class="h-3 w-3 sm:h-4 sm:w-4"
+                                        />
+                                        <span
+                                            v-else
+                                            class="text-xs sm:text-sm"
+                                            >{{ index + 1 }}</span
+                                        >
+                                    </div>
+                                    <span
+                                        class="wedding-progress-label text-xs sm:text-sm"
+                                    >
+                                        {{ step.title }}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Form -->
-                <div
-                    class="card-wedding-elegant wedding-animate-scale-in shadow-wedding-xl wedding-hover-lift"
-                    style="animation-delay: 0.2s"
-                >
-                    <CardContent class="p-0 sm:p-8">
-                        <form @submit.prevent="handleSubmit">
-                            <!-- Step 1: Guest Identification -->
-                            <div
-                                v-if="currentStep === 0"
-                                class="wedding-animate-page-transition space-y-6"
-                            >
-                                <div class="text-center">
-                                    <h3
-                                        class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy m-auto text-center"
-                                    >
-                                        Find My Invitation
-                                    </h3>
-                                    <div
-                                        class="wedding-divider-blush mt-4"
-                                    ></div>
-                                    <p
-                                        class="text-wedding-lg font-wedding-body wedding-navy mt-4"
-                                    >
-                                        Kindly enter your full name to find your
-                                        invitation and RSVP
-                                    </p>
-                                </div>
-
-                                <div class="space-y-4">
-                                    <div>
+                    <!-- Form -->
+                    <div
+                        class="animateUp rounded-3xl bg-[#ebddd7] p-6 shadow-2xl sm:p-8"
+                        style="animation-delay: 0.2s"
+                    >
+                        <CardContent class="p-0 sm:p-8">
+                            <form @submit.prevent="handleSubmit">
+                                <!-- Step 1: Guest Identification -->
+                                <div
+                                    v-if="currentStep === 0"
+                                    class="wedding-animate-page-transition space-y-6"
+                                >
+                                    <div class="text-center">
+                                        <h3
+                                            class="font-wedding-accent animateUp text-center text-[4rem] text-[#4c0511] sm:text-[5rem]"
+                                        >
+                                            Find My Invitation
+                                        </h3>
                                         <div
-                                            class="relative flex flex-col items-center space-y-7"
-                                        >
-                                            <Input
-                                                id="guest_name"
-                                                v-model="formData.guest_name"
-                                                type="text"
-                                                placeholder="Enter your full name"
-                                                :disabled="isLoading"
-                                                required
-                                                class="input-wedding wedding-transition-slow mt-2 pr-12"
-                                                :class="{
-                                                    error: errors.guest_name,
-                                                    success:
-                                                        guestFound &&
-                                                        !errors.guest_name,
-                                                }"
-                                            />
-                                            <button
-                                                v-if="!guestFound && !guestData"
-                                                type="button"
-                                                @click="checkGuestName"
-                                                class="btn-wedding-primary wedding-hover-lift wedding-touch-target-lg"
-                                                :disabled="
-                                                    isLoading ||
-                                                    !formData.guest_name.trim()
-                                                "
-                                                title="Find My Invitation"
-                                            >
-                                                Search
-                                            </button>
-                                        </div>
+                                            class="animateUp mx-auto mt-4 h-1 w-20 rounded bg-[#4c0511]"
+                                        ></div>
                                         <p
-                                            v-if="errors.guest_name"
-                                            class="font-wedding-medium mt-1 text-sm text-red-600"
+                                            class="animateUp mt-4 font-playfair text-xl text-[#4c0511] sm:text-2xl"
                                         >
-                                            {{ errors.guest_name }}
+                                            Kindly enter your full name to find
+                                            your invitation and RSVP
                                         </p>
                                     </div>
 
-                                    <!-- Loading state -->
-                                    <div
-                                        v-if="isLoading"
-                                        class="wedding-animate-fade-in flex items-center justify-center py-4"
-                                    >
-                                        <div
-                                            class="wedding-loading border-wedding-gold h-8 w-8 rounded-full border-b-2"
-                                        ></div>
-                                        <span
-                                            class="wedding-navy font-wedding-medium wedding-animate-pulse ml-2"
-                                            >Searching for your
-                                            invitation...</span
-                                        >
-                                    </div>
-
-                                    <!-- Guest found -->
-                                    <div
-                                        v-if="guestFound && guestData"
-                                        class="rounded-wedding-lg border-wedding-gold bg-wedding-ivory-bg shadow-wedding-soft wedding-animate-bounce-in wedding-success-animation border-2 p-4"
-                                    >
-                                        <div
-                                            class="flex flex-col items-center space-y-4"
-                                        >
-                                            <CheckCircle
-                                                class="mt-0.5 mr-2 h-7 w-7 text-green-600"
-                                            />
-                                            <div>
-                                                <h4
-                                                    class="font-wedding-semibold text-normal text-center text-green-900 lg:text-2xl"
+                                    <div class="space-y-4">
+                                        <div>
+                                            <div
+                                                class="relative flex flex-col items-center space-y-7"
+                                            >
+                                                <Input
+                                                    id="guest_name"
+                                                    v-model="
+                                                        formData.guest_name
+                                                    "
+                                                    type="text"
+                                                    placeholder="Enter your full name"
+                                                    :disabled="isLoading"
+                                                    required
+                                                    class="mt-2 w-full rounded-lg border-2 border-[#4c0511] bg-white/90 px-4 py-3 pr-12 text-[#4c0511] transition-all duration-300 focus:ring-2 focus:ring-[#4c0511] focus:outline-none"
+                                                    :class="{
+                                                        error: errors.guest_name,
+                                                        success:
+                                                            guestFound &&
+                                                            !errors.guest_name,
+                                                    }"
+                                                />
+                                                <button
+                                                    v-if="
+                                                        !guestFound &&
+                                                        !guestData
+                                                    "
+                                                    type="button"
+                                                    @click="checkGuestName"
+                                                    class="wedding-touch-target-lg rounded-full bg-[#4c0511] px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d]"
+                                                    :disabled="
+                                                        isLoading ||
+                                                        !formData.guest_name.trim()
+                                                    "
+                                                    title="Find My Invitation"
                                                 >
-                                                    Welcome,
-                                                    {{ formData.guest_name }}!
-                                                    <br />
-                                                    You have
-                                                    {{
-                                                        guestData.group_guests
-                                                            ?.length
-                                                    }}
-                                                    reserved seat in your name.
-                                                </h4>
-                                                <!-- <p
+                                                    Search
+                                                </button>
+                                            </div>
+                                            <p
+                                                v-if="errors.guest_name"
+                                                class="font-wedding-medium mt-1 text-sm text-red-600"
+                                            >
+                                                {{ errors.guest_name }}
+                                            </p>
+                                        </div>
+
+                                        <!-- Loading state -->
+                                        <div
+                                            v-if="isLoading"
+                                            class="wedding-animate-fade-in flex items-center justify-center py-4"
+                                        >
+                                            <div
+                                                class="wedding-loading h-8 w-8 rounded-full border-b-2 border-[#4c0511]"
+                                            ></div>
+                                            <span
+                                                class="wedding-navy font-wedding-medium wedding-animate-pulse ml-2"
+                                                >Searching for your
+                                                invitation...</span
+                                            >
+                                        </div>
+
+                                        <!-- Guest found -->
+                                        <div
+                                            v-if="guestFound && guestData"
+                                            class="rounded-wedding-lg bg-wedding-ivory-bg shadow-wedding-soft wedding-animate-bounce-in wedding-success-animation border-2 border-[#4c0511] bg-white p-4"
+                                        >
+                                            <div
+                                                class="flex flex-col items-center space-y-4"
+                                            >
+                                                <CheckCircle
+                                                    class="mt-0.5 mr-2 h-7 w-7 text-[#4c0511]"
+                                                />
+                                                <div>
+                                                    <h4
+                                                        class="font-wedding-semibold text-normal text-center text-[#4c0511] lg:text-2xl"
+                                                    >
+                                                        Welcome,
+                                                        {{
+                                                            formData.guest_name
+                                                        }}!
+                                                        <br />
+                                                        You have
+                                                        {{
+                                                            guestData
+                                                                .group_guests
+                                                                ?.length
+                                                        }}
+                                                        reserved seat in your
+                                                        name.
+                                                    </h4>
+                                                    <!-- <p
                                                     class="font-wedding-body mt-1 text-sm text-green-700"
                                                 >
                                                     Group:
                                                     {{ guestData.group?.name }}
                                                 </p> -->
-                                                <!-- <div
+                                                    <!-- <div
                                                     v-if="
                                                         guestData.group_guests &&
                                                         guestData.group_guests
@@ -218,516 +235,535 @@
                                                         </li>
                                                     </ul>
                                                 </div> -->
-                                                <div
-                                                    v-if="
-                                                        guestData.group
-                                                            ?.has_rsvp
-                                                    "
-                                                    class="rounded-wedding mt-2 border border-yellow-300 bg-yellow-100 p-2"
-                                                >
-                                                    <p
-                                                        class="font-wedding-medium text-sm text-yellow-800"
+                                                    <div
+                                                        v-if="
+                                                            guestData.group
+                                                                ?.has_rsvp
+                                                        "
+                                                        class="rounded-wedding mt-2 border border-yellow-300 bg-yellow-100 p-2"
                                                     >
-                                                        <AlertCircle
-                                                            class="mr-1 inline h-4 w-4"
-                                                        />
-                                                        This group has already
-                                                        submitted an RSVP.
-                                                        Please contact the
-                                                        couple if you need to
-                                                        make changes.
+                                                        <p
+                                                            class="font-wedding-medium text-sm text-yellow-800"
+                                                        >
+                                                            <AlertCircle
+                                                                class="mr-1 inline h-4 w-4"
+                                                            />
+                                                            This invitation has
+                                                            already submitted an
+                                                            RSVP. Please contact
+                                                            the couple if you
+                                                            need to make
+                                                            changes.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Guest not found -->
+                                        <div
+                                            v-if="
+                                                !guestFound &&
+                                                formData.guest_name &&
+                                                !isLoading &&
+                                                errors.guest_name
+                                            "
+                                            class="rounded-wedding-lg border-2 border-red-200 bg-red-50 p-4"
+                                        >
+                                            <div class="flex items-start">
+                                                <XCircle
+                                                    class="mt-0.5 mr-2 h-5 w-5 text-red-600"
+                                                />
+                                                <div>
+                                                    <h3
+                                                        class="font-wedding-semibold text-red-900"
+                                                    >
+                                                        Invitation Not Found
+                                                    </h3>
+                                                    <p
+                                                        class="font-wedding-body mt-1 text-sm text-red-700"
+                                                    >
+                                                        We couldn't find your
+                                                        invitation. Please check
+                                                        the spelling of your
+                                                        name or contact the
+                                                        couple for assistance.
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- Guest not found -->
-                                    <div
-                                        v-if="
-                                            !guestFound &&
-                                            formData.guest_name &&
-                                            !isLoading &&
-                                            errors.guest_name
-                                        "
-                                        class="rounded-wedding-lg border-2 border-red-200 bg-red-50 p-4"
-                                    >
-                                        <div class="flex items-start">
-                                            <XCircle
-                                                class="mt-0.5 mr-2 h-5 w-5 text-red-600"
-                                            />
-                                            <div>
-                                                <h3
-                                                    class="font-wedding-semibold text-red-900"
-                                                >
-                                                    Invitation Not Found
-                                                </h3>
-                                                <p
-                                                    class="font-wedding-body mt-1 text-sm text-red-700"
-                                                >
-                                                    We couldn't find your
-                                                    invitation. Please check the
-                                                    spelling of your name or
-                                                    contact the couple for
-                                                    assistance.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Step 2: Attendance Confirmation -->
-                            <div
-                                v-if="currentStep === 1"
-                                class="wedding-animate-page-transition space-y-6 text-center"
-                            >
-                                <div>
-                                    <h3
-                                        class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
-                                    >
-                                        Will You Be Attending?
-                                    </h3>
-                                    <div
-                                        class="wedding-divider-blush mt-4"
-                                    ></div>
-                                    <p
-                                        class="text-wedding-lg font-wedding-body wedding-navy mt-4"
-                                    >
-                                        Let us know how many people from your
-                                        group will be attending the wedding.
-                                    </p>
                                 </div>
 
+                                <!-- Step 2: Attendance Confirmation -->
                                 <div
-                                    v-if="guestData"
-                                    class="rounded-wedding-lg border-wedding-blush bg-wedding-blush-light-bg shadow-wedding-soft mb-6 border-2 p-4"
+                                    v-if="currentStep === 1"
+                                    class="wedding-animate-page-transition space-y-6 text-center"
                                 >
-                                    <!-- <p
+                                    <div>
+                                        <h3
+                                            class="font-wedding-accent animateUp text-center text-[4rem] text-[#4c0511] sm:text-[5rem]"
+                                        >
+                                            Will You Be Attending?
+                                        </h3>
+                                        <div
+                                            class="animateUp mx-auto mt-4 h-1 w-20 rounded bg-[#4c0511]"
+                                        ></div>
+                                        <p
+                                            class="animateUp mt-4 font-playfair text-xl text-[#4c0511] sm:text-2xl"
+                                        >
+                                            Let us know how many people from
+                                            your group will be attending the
+                                            wedding.
+                                        </p>
+                                    </div>
+
+                                    <div
+                                        v-if="guestData"
+                                        class="mb-6 rounded-2xl border-2 border-[#4c0511] bg-white/90 p-4"
+                                    >
+                                        <!-- <p
                                         class="font-wedding-semibold wedding-navy"
                                     >
                                         Group: {{ guestData.group?.name }}
                                     </p> -->
-                                    <p class="wedding-navy font-wedding-body">
-                                        Maximum attendees:
-                                        {{ guestData.group?.max_attendees }}
-                                    </p>
-                                </div>
-
-                                <div class="space-y-4 text-center">
-                                    <div>
                                         <p
-                                            for="attending_count"
-                                            class="font-wedding-semibold wedding-navy m-auto text-center"
+                                            class="wedding-navy font-wedding-body"
                                         >
-                                            Number of Attendees
+                                            Maximum attendees:
+                                            {{ guestData.group?.max_attendees }}
                                         </p>
-                                        <div
-                                            class="mt-4 flex items-center justify-center space-x-4 sm:space-x-6"
-                                        >
-                                            <button
-                                                type="button"
-                                                class="btn-wedding-secondary wedding-hover-scale wedding-touch-target-lg"
-                                                @click="decrementAttendees"
-                                                :disabled="
-                                                    formData.attending_count <=
-                                                    0
-                                                "
+                                    </div>
+
+                                    <div class="space-y-4 text-center">
+                                        <div>
+                                            <p
+                                                for="attending_count"
+                                                class="m-auto text-center font-bold text-[#4c0511]"
                                             >
-                                                <Minus
-                                                    class="h-4 w-4 sm:h-5 sm:w-5"
-                                                />
-                                            </button>
+                                                Number of Attendees
+                                            </p>
                                             <div
-                                                class="font-wedding-bold wedding-navy wedding-animate-scale-in w-16 text-center text-2xl sm:w-20 sm:text-3xl"
+                                                class="mt-4 flex items-center justify-center space-x-4 sm:space-x-6"
                                             >
-                                                {{ formData.attending_count }}
+                                                <button
+                                                    type="button"
+                                                    class="wedding-hover-scale wedding-touch-target-lg rounded-full bg-[#4c0511] px-4 py-2 text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d]"
+                                                    @click="decrementAttendees"
+                                                    :disabled="
+                                                        formData.attending_count <=
+                                                        0
+                                                    "
+                                                >
+                                                    <Minus
+                                                        class="h-4 w-4 sm:h-5 sm:w-5"
+                                                    />
+                                                </button>
+                                                <div
+                                                    class="animateUp w-16 text-center text-2xl font-bold text-[#4c0511] sm:w-20 sm:text-3xl"
+                                                >
+                                                    {{
+                                                        formData.attending_count
+                                                    }}
+                                                </div>
+                                                <button
+                                                    type="button"
+                                                    class="wedding-hover-scale wedding-touch-target-lg rounded-full bg-[#4c0511] px-4 py-2 text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d]"
+                                                    @click="incrementAttendees"
+                                                    :disabled="
+                                                        formData.attending_count >=
+                                                        (guestData?.group
+                                                            ?.max_attendees ||
+                                                            0)
+                                                    "
+                                                >
+                                                    <Plus
+                                                        class="h-4 w-4 sm:h-5 sm:w-5"
+                                                    />
+                                                </button>
                                             </div>
-                                            <button
-                                                type="button"
-                                                class="btn-wedding-secondary wedding-hover-scale wedding-touch-target-lg"
-                                                @click="incrementAttendees"
-                                                :disabled="
-                                                    formData.attending_count >=
-                                                    (guestData?.group
-                                                        ?.max_attendees || 0)
-                                                "
+                                            <p
+                                                class="text-wedding-base sm:text-wedding-lg font-wedding-body wedding-navy mt-4 text-center"
                                             >
-                                                <Plus
-                                                    class="h-4 w-4 sm:h-5 sm:w-5"
-                                                />
-                                            </button>
+                                                {{
+                                                    formData.attending_count ===
+                                                    0
+                                                        ? "We're sorry you can't make it. We'll miss you!"
+                                                        : `Great! We're excited to celebrate with ${formData.attending_count} ${formData.attending_count === 1 ? 'person' : 'people'}.`
+                                                }}
+                                            </p>
                                         </div>
-                                        <p
-                                            class="text-wedding-base sm:text-wedding-lg font-wedding-body wedding-navy mt-4 text-center"
-                                        >
-                                            {{
-                                                formData.attending_count === 0
-                                                    ? "We're sorry you can't make it. We'll miss you!"
-                                                    : `Great! We're excited to celebrate with ${formData.attending_count} ${formData.attending_count === 1 ? 'person' : 'people'}.`
-                                            }}
-                                        </p>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Step 3: Message to Couple -->
-                            <div
-                                v-if="currentStep === 2"
-                                class="wedding-animate-page-transition space-y-6"
-                            >
-                                <div>
-                                    <h3
-                                        class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
-                                    >
-                                        Message to the Couple
-                                    </h3>
-                                    <div
-                                        class="wedding-divider-blush mt-4"
-                                    ></div>
-                                    <p
-                                        class="text-wedding-lg font-wedding-body wedding-navy mt-4"
-                                    >
-                                        Share a special message or well wishes
-                                        with us (optional).
-                                    </p>
-                                </div>
-
-                                <div class="space-y-4">
-                                    <div>
-                                        <Label
-                                            for="message"
-                                            class="font-wedding-semibold wedding-navy"
-                                        >
-                                            Your Message
-                                        </Label>
-                                        <Textarea
-                                            id="message"
-                                            v-model="formData.message"
-                                            placeholder="Write your message here..."
-                                            rows="5"
-                                            maxlength="1000"
-                                            class="input-wedding wedding-transition-slow textarea-wedding mt-2"
-                                        />
-                                        <p
-                                            class="wedding-navy font-wedding-body mt-1 text-sm"
-                                        >
-                                            {{
-                                                formData.message?.length || 0
-                                            }}/1000 characters
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Step 4: Song Suggestion -->
-                            <div
-                                v-if="currentStep === 3"
-                                class="wedding-animate-page-transition space-y-6"
-                            >
-                                <div>
-                                    <h3
-                                        class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
-                                    >
-                                        Song Suggestion
-                                    </h3>
-                                    <div
-                                        class="wedding-divider-blush mt-4"
-                                    ></div>
-                                    <p
-                                        class="text-wedding-lg font-wedding-body wedding-navy mt-4"
-                                    >
-                                        Help us create the perfect playlist!
-                                        Suggest a song that would make you want
-                                        to dance (optional).
-                                    </p>
-                                </div>
-
-                                <div class="space-y-4">
-                                    <div>
-                                        <Label
-                                            for="song_suggestion"
-                                            class="font-wedding-semibold wedding-navy"
-                                        >
-                                            Song Title & Artist
-                                        </Label>
-                                        <Input
-                                            id="song_suggestion"
-                                            v-model="formData.song_suggestion"
-                                            type="text"
-                                            placeholder="e.g., 'Perfect - Ed Sheeran'"
-                                            maxlength="255"
-                                            class="input-wedding wedding-transition-slow mt-2"
-                                        />
-                                        <p
-                                            class="wedding-navy font-wedding-body mt-1 text-sm"
-                                        >
-                                            {{
-                                                formData.song_suggestion
-                                                    ?.length || 0
-                                            }}/255 characters
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Step 5: Email Address -->
-                            <div
-                                v-if="currentStep === 4"
-                                class="wedding-animate-page-transition space-y-6"
-                            >
-                                <div>
-                                    <h3
-                                        class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
-                                    >
-                                        Email Address
-                                    </h3>
-                                    <div
-                                        class="wedding-divider-blush mt-4"
-                                    ></div>
-                                    <p
-                                        class="text-wedding-lg font-wedding-body wedding-navy mt-4"
-                                    >
-                                        Provide your email address for
-                                        confirmation and updates about the
-                                        wedding.
-                                    </p>
-                                </div>
-
-                                <div class="space-y-4">
-                                    <div>
-                                        <Label
-                                            for="email"
-                                            class="font-wedding-semibold wedding-navy"
-                                        >
-                                            Email Address
-                                        </Label>
-                                        <Input
-                                            id="email"
-                                            v-model="formData.email"
-                                            type="email"
-                                            placeholder="your.email@example.com"
-                                            required
-                                            class="input-wedding wedding-transition-slow mt-2"
-                                            :class="{
-                                                error: errors.email,
-                                                success:
-                                                    formData.email &&
-                                                    !errors.email,
-                                            }"
-                                        />
-                                        <p
-                                            v-if="errors.email"
-                                            class="font-wedding-medium mt-1 text-sm text-red-600"
-                                        >
-                                            {{ errors.email }}
-                                        </p>
-                                        <p
-                                            class="wedding-navy font-wedding-body mt-1 text-sm"
-                                        >
-                                            We'll use this to send you a
-                                            confirmation and any important
-                                            updates.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Step 6: Confirmation -->
-                            <div
-                                v-if="currentStep === 5"
-                                class="wedding-animate-page-transition space-y-6"
-                            >
-                                <div>
-                                    <h3
-                                        class="wedding-title text-wedding-3xl font-wedding-bold wedding-navy"
-                                    >
-                                        Review Your RSVP
-                                    </h3>
-                                    <div
-                                        class="wedding-divider-blush mt-4"
-                                    ></div>
-                                    <p
-                                        class="text-wedding-lg font-wedding-body wedding-navy mt-4"
-                                    >
-                                        Please review your information before
-                                        submitting.
-                                    </p>
-                                </div>
-
+                                <!-- Step 3: Message to Couple -->
                                 <div
-                                    class="rounded-wedding-lg bg-wedding-ivory-bg border-wedding-blush-light space-y-6 border-2 p-3 md:p-6"
+                                    v-if="currentStep === 2"
+                                    class="wedding-animate-page-transition space-y-6"
                                 >
                                     <div>
                                         <h3
-                                            class="font-wedding-semibold wedding-navy text-wedding-xl"
+                                            class="font-wedding-accent animateUp text-center text-[4rem] text-[#4c0511] sm:text-[5rem]"
                                         >
-                                            Guest Information
+                                            Message to the Couple
                                         </h3>
+                                        <div
+                                            class="animateUp mx-auto mt-4 h-1 w-20 rounded bg-[#4c0511]"
+                                        ></div>
                                         <p
-                                            class="wedding-navy font-wedding-body text-wedding-lg mt-2"
+                                            class="animateUp mt-4 font-playfair text-xl text-[#4c0511] sm:text-2xl"
                                         >
-                                            {{ formData.guest_name }}
+                                            Share a special message or well
+                                            wishes with us (optional).
                                         </p>
-                                        <!-- <p
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div>
+                                            <Label
+                                                for="message"
+                                                class="font-bold text-[#4c0511]"
+                                            >
+                                                Your Message
+                                            </Label>
+                                            <Textarea
+                                                id="message"
+                                                v-model="formData.message"
+                                                placeholder="Write your message here..."
+                                                rows="5"
+                                                maxlength="1000"
+                                                class="mt-2 w-full rounded-lg border-2 border-[#4c0511] bg-white/90 px-4 py-3 text-[#4c0511] transition-all duration-300 focus:ring-2 focus:ring-[#4c0511] focus:outline-none"
+                                            />
+                                            <p
+                                                class="mt-1 text-sm text-[#4c0511]"
+                                            >
+                                                {{
+                                                    formData.message?.length ||
+                                                    0
+                                                }}/1000 characters
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 4: Song Suggestion -->
+                                <div
+                                    v-if="currentStep === 3"
+                                    class="wedding-animate-page-transition space-y-6"
+                                >
+                                    <div>
+                                        <h3
+                                            class="font-wedding-accent animateUp text-center text-[4rem] text-[#4c0511] sm:text-[5rem]"
+                                        >
+                                            Song Suggestion
+                                        </h3>
+                                        <div
+                                            class="animateUp mx-auto mt-4 h-1 w-20 rounded bg-[#4c0511]"
+                                        ></div>
+                                        <p
+                                            class="animateUp mt-4 font-playfair text-xl text-[#4c0511] sm:text-2xl"
+                                        >
+                                            Help us create the perfect playlist!
+                                            Suggest a song that would make you
+                                            want to dance (optional).
+                                        </p>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div>
+                                            <Label
+                                                for="song_suggestion"
+                                                class="font-bold text-[#4c0511]"
+                                            >
+                                                Song Title & Artist
+                                            </Label>
+                                            <Input
+                                                id="song_suggestion"
+                                                v-model="
+                                                    formData.song_suggestion
+                                                "
+                                                type="text"
+                                                placeholder="e.g., 'Perfect - Ed Sheeran'"
+                                                maxlength="255"
+                                                class="mt-2 w-full rounded-lg border-2 border-[#4c0511] bg-white/90 px-4 py-3 text-[#4c0511] transition-all duration-300 focus:ring-2 focus:ring-[#4c0511] focus:outline-none"
+                                            />
+                                            <p
+                                                class="wedding-navy font-wedding-body mt-1 text-sm"
+                                            >
+                                                {{
+                                                    formData.song_suggestion
+                                                        ?.length || 0
+                                                }}/255 characters
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 5: Email Address -->
+                                <div
+                                    v-if="currentStep === 4"
+                                    class="wedding-animate-page-transition space-y-6"
+                                >
+                                    <div>
+                                        <h3
+                                            class="font-wedding-accent animateUp text-center text-[4rem] text-[#4c0511] sm:text-[5rem]"
+                                        >
+                                            Email Address
+                                        </h3>
+                                        <div
+                                            class="animateUp mx-auto mt-4 h-1 w-20 rounded bg-[#4c0511]"
+                                        ></div>
+                                        <p
+                                            class="animateUp mt-4 font-playfair text-xl text-[#4c0511] sm:text-2xl"
+                                        >
+                                            Provide your email address for
+                                            confirmation and updates about the
+                                            wedding.
+                                        </p>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div>
+                                            <Label
+                                                for="email"
+                                                class="font-bold text-[#4c0511]"
+                                            >
+                                                Email Address
+                                            </Label>
+                                            <Input
+                                                id="email"
+                                                v-model="formData.email"
+                                                type="email"
+                                                placeholder="your.email@example.com"
+                                                required
+                                                class="mt-2 w-full rounded-lg border-2 border-[#4c0511] bg-white/90 px-4 py-3 text-[#4c0511] transition-all duration-300 focus:ring-2 focus:ring-[#4c0511] focus:outline-none"
+                                                :class="{
+                                                    error: errors.email,
+                                                    success:
+                                                        formData.email &&
+                                                        !errors.email,
+                                                }"
+                                            />
+                                            <p
+                                                v-if="errors.email"
+                                                class="font-wedding-medium mt-1 text-sm text-red-600"
+                                            >
+                                                {{ errors.email }}
+                                            </p>
+                                            <p
+                                                class="wedding-navy font-wedding-body mt-1 text-sm"
+                                            >
+                                                We'll use this to send you a
+                                                confirmation and any important
+                                                updates.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 6: Confirmation -->
+                                <div
+                                    v-if="currentStep === 5"
+                                    class="wedding-animate-page-transition space-y-6"
+                                >
+                                    <div>
+                                        <h3
+                                            class="font-wedding-accent animateUp text-center text-[4rem] text-[#4c0511] sm:text-[5rem]"
+                                        >
+                                            Review Your RSVP
+                                        </h3>
+                                        <div
+                                            class="animateUp mx-auto mt-4 h-1 w-20 rounded bg-[#4c0511]"
+                                        ></div>
+                                        <p
+                                            class="animateUp mt-4 font-playfair text-xl text-[#4c0511] sm:text-2xl"
+                                        >
+                                            Please review your information
+                                            before submitting.
+                                        </p>
+                                    </div>
+
+                                    <div
+                                        class="space-y-6 rounded-2xl border-2 border-[#4c0511] bg-white/90 p-3 md:p-6"
+                                    >
+                                        <div>
+                                            <h3
+                                                class="text-wedding-xl font-bold text-[#4c0511]"
+                                            >
+                                                Guest Information
+                                            </h3>
+                                            <p
+                                                class="text-wedding-lg mt-2 text-[#4c0511]"
+                                            >
+                                                {{ formData.guest_name }}
+                                            </p>
+                                            <!-- <p
                                             v-if="guestData"
                                             class="wedding-navy font-wedding-body mt-1 text-sm"
                                         >
                                             Group:
                                             {{ guestData.group?.name }}
                                         </p> -->
-                                    </div>
+                                        </div>
 
-                                    <div class="wedding-divider"></div>
+                                        <div class="wedding-divider"></div>
 
-                                    <div>
-                                        <h3
-                                            class="font-wedding-semibold wedding-navy text-wedding-xl"
-                                        >
-                                            Attendance
-                                        </h3>
-                                        <p
-                                            class="wedding-navy font-wedding-body text-wedding-lg mt-2"
-                                        >
-                                            {{ formData.attending_count }}
-                                            {{
-                                                formData.attending_count === 1
-                                                    ? 'person'
-                                                    : 'people'
-                                            }}
-                                            attending
-                                        </p>
-                                    </div>
-
-                                    <div
-                                        v-if="formData.message"
-                                        class="wedding-divider"
-                                    ></div>
-
-                                    <div v-if="formData.message">
-                                        <h3
-                                            class="font-wedding-semibold wedding-navy text-wedding-xl"
-                                        >
-                                            Message
-                                        </h3>
-                                        <p
-                                            class="wedding-navy font-wedding-body text-wedding-lg mt-2 whitespace-pre-wrap"
-                                        >
-                                            {{ formData.message }}
-                                        </p>
-                                    </div>
-
-                                    <div
-                                        v-if="formData.song_suggestion"
-                                        class="wedding-divider"
-                                    ></div>
-
-                                    <div v-if="formData.song_suggestion">
-                                        <h3
-                                            class="font-wedding-semibold wedding-navy text-wedding-xl"
-                                        >
-                                            Song Suggestion
-                                        </h3>
-                                        <p
-                                            class="wedding-navy font-wedding-body text-wedding-lg mt-2"
-                                        >
-                                            {{ formData.song_suggestion }}
-                                        </p>
-                                    </div>
-
-                                    <div class="wedding-divider"></div>
-
-                                    <div>
-                                        <h3
-                                            class="font-wedding-semibold wedding-navy text-wedding-xl"
-                                        >
-                                            Email
-                                        </h3>
-                                        <p
-                                            class="wedding-navy font-wedding-body text-wedding-lg mt-2"
-                                        >
-                                            {{ formData.email }}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="rounded-wedding-lg border-wedding-gold bg-wedding-ivory-bg shadow-wedding-gold border-2 p-4"
-                                >
-                                    <div class="flex items-start">
-                                        <CheckCircle
-                                            class="mt-0.5 mr-2 h-5 w-5 text-green-600"
-                                        />
                                         <div>
                                             <h3
-                                                class="font-wedding-semibold text-green-900"
+                                                class="text-wedding-xl font-bold text-[#4c0511]"
                                             >
-                                                Ready to Submit
+                                                Attendance
                                             </h3>
                                             <p
-                                                class="font-wedding-body mt-1 text-sm text-green-700"
+                                                class="text-wedding-lg mt-2 text-[#4c0511]"
                                             >
-                                                Click the submit button below to
-                                                complete your RSVP. You'll
-                                                receive a confirmation email
-                                                shortly.
+                                                {{ formData.attending_count }}
+                                                {{
+                                                    formData.attending_count ===
+                                                    1
+                                                        ? 'person'
+                                                        : 'people'
+                                                }}
+                                                attending
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            v-if="formData.message"
+                                            class="wedding-divider"
+                                        ></div>
+
+                                        <div v-if="formData.message">
+                                            <h3
+                                                class="text-wedding-xl font-bold text-[#4c0511]"
+                                            >
+                                                Message
+                                            </h3>
+                                            <p
+                                                class="text-wedding-lg mt-2 whitespace-pre-wrap text-[#4c0511]"
+                                            >
+                                                {{ formData.message }}
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            v-if="formData.song_suggestion"
+                                            class="wedding-divider"
+                                        ></div>
+
+                                        <div v-if="formData.song_suggestion">
+                                            <h3
+                                                class="text-wedding-xl font-bold text-[#4c0511]"
+                                            >
+                                                Song Suggestion
+                                            </h3>
+                                            <p
+                                                class="text-wedding-lg mt-2 text-[#4c0511]"
+                                            >
+                                                {{ formData.song_suggestion }}
+                                            </p>
+                                        </div>
+
+                                        <div class="wedding-divider"></div>
+
+                                        <div>
+                                            <h3
+                                                class="text-wedding-xl font-bold text-[#4c0511]"
+                                            >
+                                                Email
+                                            </h3>
+                                            <p
+                                                class="text-wedding-lg mt-2 text-[#4c0511]"
+                                            >
+                                                {{ formData.email }}
                                             </p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <!-- Navigation Buttons -->
-                            <div
-                                v-if="guestFound && guestData"
-                                class="mt-6 flex justify-between gap-4 sm:mt-8 sm:flex-row sm:gap-0"
-                            >
-                                <button
-                                    type="button"
-                                    class="btn-wedding-secondary wedding-hover-lift wedding-touch-target-lg w-1/2 lg:w-auto"
-                                    @click="previousStep"
-                                    :disabled="
-                                        currentStep === 0 || isSubmitting
-                                    "
-                                >
-                                    <ArrowLeft class="mr-2 h-4 w-4" />
-                                    <span class="text-sm sm:text-base"
-                                        >Previous</span
-                                    >
-                                </button>
-
-                                <button
-                                    v-if="currentStep < 5"
-                                    type="button"
-                                    class="btn-wedding-primary wedding-hover-lift wedding-touch-target-lg w-1/2 lg:w-auto"
-                                    @click="nextStep"
-                                    :disabled="!canProceed || isSubmitting"
-                                >
-                                    <span class="text-sm sm:text-base"
-                                        >Next</span
-                                    >
-                                    <ArrowRight class="ml-2 h-4 w-4" />
-                                </button>
-
-                                <button
-                                    v-if="currentStep === 5"
-                                    type="submit"
-                                    class="btn-wedding-accent wedding-hover-lift wedding-touch-target-lg w-1/2 lg:w-auto"
-                                    :disabled="isSubmitting || !canSubmit"
-                                >
                                     <div
-                                        v-if="isSubmitting"
-                                        class="wedding-loading border-wedding-navy mr-2 h-4 w-4 rounded-full border-b-2"
-                                    ></div>
-                                    {{
-                                        isSubmitting
-                                            ? 'Submitting...'
-                                            : 'Submit RSVP'
-                                    }}
-                                </button>
-                            </div>
-                        </form>
-                    </CardContent>
+                                        class="rounded-2xl border-2 border-[#4c0511] bg-white/90 p-4"
+                                    >
+                                        <div class="flex items-start">
+                                            <CheckCircle
+                                                class="mt-0.5 mr-2 h-5 w-5 text-green-600"
+                                            />
+                                            <div>
+                                                <h3
+                                                    class="font-wedding-semibold text-green-900"
+                                                >
+                                                    Ready to Submit
+                                                </h3>
+                                                <p
+                                                    class="font-wedding-body mt-1 text-sm text-green-700"
+                                                >
+                                                    Click the submit button
+                                                    below to complete your RSVP.
+                                                    You'll receive a
+                                                    confirmation email shortly.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <div
+                                    v-if="guestFound && guestData"
+                                    class="mt-6 flex justify-between gap-4 sm:mt-8 sm:flex-row sm:gap-0"
+                                >
+                                    <button
+                                        type="button"
+                                        class="wedding-touch-target-lg flex w-full items-center justify-center rounded-full bg-[#4c0511] px-4 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d] sm:w-1/2 sm:px-6 lg:w-auto"
+                                        @click="previousStep"
+                                        :disabled="
+                                            currentStep === 0 || isSubmitting
+                                        "
+                                    >
+                                        <ArrowLeft
+                                            class="mr-2 h-4 w-4 sm:mr-3 sm:h-5 sm:w-5"
+                                        />
+                                        <span class="text-sm sm:text-base"
+                                            >Previous</span
+                                        >
+                                    </button>
+
+                                    <button
+                                        v-if="currentStep < 5"
+                                        type="button"
+                                        class="wedding-touch-target-lg flex w-full items-center justify-center rounded-full bg-[#4c0511] px-4 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d] sm:w-1/2 sm:px-6 lg:w-auto"
+                                        @click="nextStep"
+                                        :disabled="!canProceed || isSubmitting"
+                                    >
+                                        <span class="text-sm sm:text-base"
+                                            >Next</span
+                                        >
+                                        <ArrowRight
+                                            class="ml-2 h-4 w-4 sm:ml-3 sm:h-5 sm:w-5"
+                                        />
+                                    </button>
+
+                                    <button
+                                        v-if="currentStep === 5"
+                                        type="submit"
+                                        class="wedding-touch-target-lg flex w-full items-center justify-center rounded-full bg-[#4c0511] px-4 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d] sm:w-1/2 sm:px-6 lg:w-auto"
+                                        :disabled="isSubmitting || !canSubmit"
+                                    >
+                                        <div
+                                            v-if="isSubmitting"
+                                            class="wedding-loading mr-2 h-4 w-4 rounded-full border-b-2 border-white sm:mr-3 sm:h-5 sm:w-5"
+                                        ></div>
+                                        <span class="text-sm sm:text-base">
+                                            {{
+                                                isSubmitting
+                                                    ? 'Submitting...'
+                                                    : 'Submit RSVP'
+                                            }}
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </CardContent>
+                    </div>
                 </div>
             </div>
         </div>
@@ -841,7 +877,7 @@
 .wedding-progress-label {
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--wedding-navy);
+    color: white;
     text-align: center;
     max-width: 80px;
     line-height: 1.2;
@@ -849,12 +885,12 @@
 }
 
 .wedding-progress-step.active .wedding-progress-label {
-    color: var(--wedding-navy);
+    color: white;
     font-weight: 600;
 }
 
 .wedding-progress-step.completed .wedding-progress-label {
-    color: var(--wedding-navy);
+    color: white;
     font-weight: 600;
 }
 
@@ -1190,7 +1226,7 @@ const checkGuestName = async () => {
 
             if (response.data.group?.has_rsvp) {
                 errors.value.guest_name =
-                    'This group has already submitted an RSVP. Please contact the couple if you need to make changes.';
+                    'This invitation has already submitted an RSVP. Please contact the couple if you need to make changes.';
             }
         } else {
             guestFound.value = false;

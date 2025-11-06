@@ -114,7 +114,7 @@ withDefaults(defineProps<Props>(), {
         </header>
 
         <!-- Main Content -->
-        <main class="relative z-10 flex-grow py-20">
+        <main class="relative z-10 flex-grow">
             <div :class="showWeddingTheme ? 'animate-fade-in' : ''">
                 <slot />
             </div>

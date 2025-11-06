@@ -418,7 +418,7 @@ onMounted(() => {
                     <p
                         class="font-wedding-accent animateUp text-center text-[8rem] tracking-widest"
                     >
-                        Tejada - Villaluz
+                        Villaluz - Tejada Nuptial
                     </p>
                     <p
                         class="font-wedding-accent animateUp text-center text-[8rem] tracking-widest"
@@ -431,19 +431,6 @@ onMounted(() => {
                 <div class="mb-20 grid grid-cols-2 gap-20">
                     <div class="space-y-4 text-right font-primary">
                         <p class="animateUp text-3xl font-bold uppercase">
-                            Parents of the Bride
-                        </p>
-                        <div class="space-y-3">
-                            <p class="animateUp text-4xl">
-                                Mr. Danilo R. Tejada
-                            </p>
-                            <p class="animateUp text-4xl">
-                                Mrs. Elona L. Tejada
-                            </p>
-                        </div>
-                    </div>
-                    <div class="space-y-4 font-primary">
-                        <p class="animateUp text-3xl font-bold uppercase">
                             Parents of the Groom
                         </p>
                         <div class="space-y-3">
@@ -452,6 +439,19 @@ onMounted(() => {
                             </p>
                             <p class="animateUp text-4xl">
                                 Mrs. Imelda D. Villaluz
+                            </p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 font-primary">
+                        <p class="animateUp text-3xl font-bold uppercase">
+                            Parents of the Bride
+                        </p>
+                        <div class="space-y-3">
+                            <p class="animateUp text-4xl">
+                                Mr. Danilo R. Tejada
+                            </p>
+                            <p class="animateUp text-4xl">
+                                Mrs. Elona L. Tejada
                             </p>
                         </div>
                     </div>
@@ -650,7 +650,7 @@ onMounted(() => {
                         <p
                             class="font-wedding-accent animateUp mb-10 text-center text-[4rem] tracking-widest"
                         >
-                            Flower Girls
+                            Flower Ladies
                         </p>
                         <div
                             class="mb-10 grid grid-cols-2 gap-x-10 gap-y-4 text-4xl"
