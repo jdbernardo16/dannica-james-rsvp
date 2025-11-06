@@ -2,7 +2,6 @@
 import ImageGallery from '@/components/ImageGallery.vue';
 import NonResponsiveWrapper from '@/components/NonResponsiveWrapper.vue';
 import OptimizedImage from '@/components/OptimizedImage.vue';
-import VideoSection from '@/components/wedding/home/VideoSection.vue';
 import WeddingInvitation from '@/components/wedding/home/WeddingInvitation.vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -215,13 +214,28 @@ onMounted(() => {
                 </h1>
                 <div class="grid grid-cols-3 gap-x-10 gap-y-5">
                     <div class="animateUp">
-                        <OptimizedImage src="/images/hands.png" alt="" class="m-auto invert" loading="lazy" />
+                        <OptimizedImage
+                            src="/images/hands.png"
+                            alt=""
+                            class="m-auto invert"
+                            loading="lazy"
+                        />
                     </div>
                     <div class="animateUp">
-                        <OptimizedImage src="/images/proposal.png" alt="" class="m-auto invert" loading="lazy" />
+                        <OptimizedImage
+                            src="/images/proposal.png"
+                            alt=""
+                            class="m-auto invert"
+                            loading="lazy"
+                        />
                     </div>
                     <div class="animateUp">
-                        <OptimizedImage src="/images/wedding1.png" alt="" class="m-auto invert" loading="lazy" />
+                        <OptimizedImage
+                            src="/images/wedding1.png"
+                            alt=""
+                            class="m-auto invert"
+                            loading="lazy"
+                        />
                     </div>
                     <p class="animateUp font-playfair text-4xl">
                         April 18, 2013
@@ -237,7 +251,7 @@ onMounted(() => {
                 </div>
             </div>
         </section>
-        <video-section />
+        <!-- <video-section /> -->
         <section class="bg-[#ebddd7]">
             <div class="p-20 text-[#4c0511]">
                 <p
