@@ -14,14 +14,14 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    title: 'Dannica & James - Wedding RSVP',
+    title: 'James & Dannica',
     description:
-        'Join Dannica and James as they celebrate their wedding day. Find event details, timeline, location information, and RSVP for their special celebration of love.',
+        'Mark your calendars for our special day as we celebrate love and new beginnings. Two souls with but a single thought, two hearts that beat as one. Villaluz - Tejada Nuptial',
     keywords:
-        'wedding, Dannica, James, marriage, celebration, RSVP, wedding ceremony, wedding reception, love story, wedding vows',
-    author: 'Dannica & James',
-    imageUrl: '/images/banner.webp',
-    url: '/',
+        'wedding, James, Dannica, Villaluz, Tejada, marriage, celebration, RSVP, wedding ceremony, wedding reception, love story, wedding vows, nuptial',
+    author: 'James & Dannica',
+    imageUrl: '/images/meta-image.png',
+    url: 'https://www.jamesdannica.site/',
     weddingDate: '2024-12-15',
     weddingLocation: 'Manila, Philippines',
 });
@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
 const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Wedding',
-    name: 'Dannica & James Wedding',
+    name: 'James & Dannica Wedding',
     description: props.description,
     startDate: props.weddingDate,
     location: {
@@ -55,7 +55,7 @@ const structuredData = {
     offers: {
         '@type': 'Offer',
         url: `${props.url}rsvp`,
-        description: 'RSVP for Dannica and James wedding',
+        description: 'RSVP for James and Dannica wedding',
         availability: 'https://schema.org/InStock',
     },
 };
@@ -91,7 +91,7 @@ const structuredData = {
             <meta property="og:image:height" content="630" />
             <meta property="og:url" :content="url" />
             <meta property="og:type" content="website" />
-            <meta property="og:site_name" content="Dannica & James Wedding" />
+            <meta property="og:site_name" content="James & Dannica" />
             <meta property="og:locale" content="en_US" />
 
             <!-- Twitter Card Meta Tags -->
@@ -107,8 +107,8 @@ const structuredData = {
             <!-- Additional SEO Meta Tags -->
             <meta name="theme-color" content="#E6B8C2" />
             <meta name="msapplication-TileColor" content="#E6B8C2" />
-            <meta name="application-name" content="Dannica & James Wedding" />
-            <meta name="apple-mobile-web-app-title" content="D&J Wedding" />
+            <meta name="application-name" content="James & Dannica" />
+            <meta name="apple-mobile-web-app-title" content="J&D Wedding" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta
                 name="apple-mobile-web-app-status-bar-style"

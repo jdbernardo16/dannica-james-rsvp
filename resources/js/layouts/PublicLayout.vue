@@ -7,14 +7,24 @@ interface Props {
     showWeddingTheme?: boolean;
     showHeader?: boolean;
     showFooter?: boolean;
+    keywords?: string;
+    author?: string;
+    imageUrl?: string;
+    url?: string;
 }
 
-withDefaults(defineProps<Props>(), {
-    title: 'Wedding RSVP',
-    description: 'Join us in celebrating our special day',
+const props = withDefaults(defineProps<Props>(), {
+    title: 'James & Dannica',
+    description:
+        'Mark your calendars for our special day as we celebrate love and new beginnings. Two souls with but a single thought, two hearts that beat as one. Villaluz - Tejada Nuptial',
     showWeddingTheme: true,
     showHeader: true,
     showFooter: true,
+    keywords:
+        'wedding, James, Dannica, Villaluz, Tejada, marriage, celebration, RSVP, wedding ceremony, wedding reception, love story, wedding vows, nuptial',
+    author: 'James & Dannica',
+    imageUrl: '/images/meta-image.png',
+    url: 'https://www.jamesdannica.site/',
 });
 </script>
 
@@ -26,11 +36,61 @@ withDefaults(defineProps<Props>(), {
         ]"
     >
         <Head :title="title">
+            <!-- Basic Meta Tags -->
             <meta name="description" :content="description" />
+            <meta name="keywords" :content="keywords" />
+            <meta name="author" :content="author" />
             <meta
                 name="viewport"
                 content="width=device-width, initial-scale=1"
             />
+            <meta
+                name="robots"
+                content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+            />
+            <meta name="language" content="English" />
+            <meta name="revisit-after" content="7 days" />
+
+            <!-- Open Graph Meta Tags -->
+            <meta property="og:title" :content="title" />
+            <meta property="og:description" :content="description" />
+            <meta property="og:image" :content="imageUrl" />
+            <meta
+                property="og:image:alt"
+                content="James & Dannica Wedding Celebration"
+            />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:url" :content="url" />
+            <meta property="og:type" content="website" />
+            <meta property="og:site_name" content="James & Dannica" />
+            <meta property="og:locale" content="en_US" />
+
+            <!-- Twitter Card Meta Tags -->
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" :content="title" />
+            <meta name="twitter:description" :content="description" />
+            <meta name="twitter:image" :content="imageUrl" />
+            <meta
+                name="twitter:image:alt"
+                content="James & Dannica Wedding Celebration"
+            />
+
+            <!-- Additional SEO Meta Tags -->
+            <meta name="theme-color" content="#E6B8C2" />
+            <meta name="msapplication-TileColor" content="#E6B8C2" />
+            <meta name="application-name" content="James & Dannica" />
+            <meta name="apple-mobile-web-app-title" content="J&D Wedding" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <meta
+                name="apple-mobile-web-app-status-bar-style"
+                content="default"
+            />
+
+            <!-- Canonical URL -->
+            <link rel="canonical" :href="url" />
+
+            <!-- Preconnect to external domains -->
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link
                 rel="preconnect"
