@@ -653,7 +653,7 @@
                             >
                                 <a href="tel: +639665898647" target="_blank">
                                     <button
-                                        class="wedding-touch-target-lg mt-6 w-full rounded-full bg-[#4c0511] px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d] md:w-auto"
+                                        class="wedding-touch-target-lg w-full rounded-full bg-[#4c0511] px-6 py-3 font-bold text-white transition-all duration-300 hover:scale-105 hover:bg-[#3a010d] md:w-auto"
                                     >
                                         <Phone class="mr-2 inline h-4 w-4" />
                                         Contact Couple
