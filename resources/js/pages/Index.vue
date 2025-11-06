@@ -5,7 +5,7 @@ import OptimizedImage from '@/components/OptimizedImage.vue';
 import WeddingInvitation from '@/components/wedding/home/WeddingInvitation.vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Bell, Car, Gift } from 'lucide-vue-next';
+import { Bell, Car, Gift, Heart } from 'lucide-vue-next';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -590,10 +590,8 @@ onMounted(() => {
                     <div
                         class="mb-6 grid grid-cols-2 gap-x-20 gap-y-4 text-4xl"
                     >
-                        <p class="animateUp text-right">
-                            Einar Jedrek D. Santos
-                        </p>
-                        <p class="animateUp">Marion Joyce D. Sarmiento</p>
+                        <p class="animateUp text-right">Jesi Valencia</p>
+                        <p class="animateUp">Mary Claire Vinzon-Geronimo</p>
                     </div>
                     <p
                         class="font-wedding-accent animateUp mb-6 text-center text-[3rem] tracking-widest"
@@ -692,7 +690,9 @@ onMounted(() => {
                 <p class="font-wedding-accent animateUp text-[5rem]">
                     Principal Sponsors
                 </p>
-                <p class="mb-4 text-center font-playfair text-3xl uppercase">
+                <p
+                    class="animateUp mb-4 text-center font-playfair text-3xl uppercase"
+                >
                     Ninong and Ninang
                 </p>
                 <div class="animateUp m-auto w-[400px]">
@@ -741,7 +741,9 @@ onMounted(() => {
                 <p class="font-wedding-accent animateUp mb-4 text-[5rem]">
                     Guest
                 </p>
-                <p class="mb-10 text-center font-playfair text-3xl uppercase">
+                <p
+                    class="animateUp mb-10 text-center font-playfair text-3xl uppercase"
+                >
                     Formal/Semi Formal
                 </p>
                 <div class="rounded-5 animateUp mb-16 grid grid-cols-4 gap-10">
@@ -830,6 +832,37 @@ onMounted(() => {
                             Intramuros, Manila
                         </p>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section
+            class="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat"
+            style="background-image: url('/images/f1-bg.png')"
+        >
+            <div class="p-20">
+                <div class="rounded-3xl p-20 text-white">
+                    <Heart class="animateUp m-auto h-20 w-20" />
+                    <p
+                        class="font-wedding-accent animateUp mb-6 text-center text-[5rem]"
+                    >
+                        With respect ...
+                    </p>
+                    <p
+                        class="animateUp mb-4 text-justify font-playfair text-4xl uppercase"
+                    >
+                        Due to limited capacity at our venue, we kindly ask that
+                        guests refrain from bringing a plus-one unless they are
+                        specifically named on the invitation.
+                    </p>
+                    <hr
+                        class="animateUp mb-4 border-2 border-dashed border-white"
+                    />
+                    <p
+                        class="animateUp text-center font-playfair text-4xl uppercase"
+                    >
+                        Thank you for your understanding<br />we look forward to
+                        celebrating with you!
+                    </p>
                 </div>
             </div>
         </section>
