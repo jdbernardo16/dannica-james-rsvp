@@ -198,9 +198,8 @@
                                                         <br />
                                                         You have
                                                         {{
-                                                            guestData
-                                                                .group_guests
-                                                                ?.length
+                                                            guestData?.group
+                                                                ?.max_attendees
                                                         }}
                                                         reserved seat in your
                                                         name.
