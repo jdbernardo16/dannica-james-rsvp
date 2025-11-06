@@ -6,20 +6,20 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Index');
-})->name('home');
+})->name('home')->middleware('web');
 
 Route::get('/mobile', function () {
     return Inertia::render('IndexMobile');
-})->name('home.mobile');
+})->name('home.mobile')->middleware('web');
 
 Route::get('/legacy', function () {
     return Inertia::render('Legacy');
-})->name('legacy');
+})->name('legacy')->middleware('web');
 
 // Test route for layout testing
 Route::get('/test-layout', function () {
     return Inertia::render('TestLayout');
-})->name('test.layout');
+})->name('test.layout')->middleware('web');
 
 // Public RSVP routes
 Route::get('/rsvp', [RsvpController::class, 'create'])->name('rsvp.create');

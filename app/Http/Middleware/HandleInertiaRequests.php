@@ -69,6 +69,42 @@ class HandleInertiaRequests extends Middleware
     {
         [$message, $author] = str(Inspiring::quotes()->random())->explode('-');
 
+        // Get current route name for SEO
+        $currentRoute = $request->route() ? $request->route()->getName() : '';
+
+        // Default SEO meta data
+        $seoData = [
+            'title' => 'James & Dannica',
+            'description' => 'Mark your calendars for our special day as we celebrate love and new beginnings. Two souls with but a single thought, two hearts that beat as one. Villaluz - Tejada Nuptial',
+            'keywords' => 'wedding, James, Dannica, Villaluz, Tejada, marriage, celebration, RSVP, wedding ceremony, wedding reception, love story, wedding vows, nuptial',
+            'author' => 'James & Dannica',
+            'image' => '/images/meta-image.png',
+            'url' => config('app.url') . $request->getRequestUri(),
+            'type' => 'website',
+            'locale' => 'en_US',
+            'site_name' => 'James & Dannica',
+        ];
+
+        // Route-specific SEO data
+        switch ($currentRoute) {
+            case 'home':
+                $seoData['title'] = 'James & Dannica - Wedding Invitation';
+                $seoData['description'] = 'Mark your calendars for our special day as we celebrate love and new beginnings. Two souls with but a single thought, two hearts that beat as one. Villaluz - Tejada Nuptial';
+                break;
+            case 'rsvp.create':
+                $seoData['title'] = 'RSVP - James & Dannica Wedding';
+                $seoData['description'] = 'RSVP for James and Dannica wedding. Let us know if you can join us on our special day, December 12, 2025.';
+                break;
+            case 'rsvp.confirmation':
+                $seoData['title'] = 'RSVP Confirmation - James & Dannica Wedding';
+                $seoData['description'] = 'Thank you for your RSVP! We have received your response for James and Dannica wedding.';
+                break;
+            case 'legacy':
+                $seoData['title'] = 'James & Dannica - Legacy';
+                $seoData['description'] = 'A glimpse into our love story and journey together.';
+                break;
+        }
+
         return [
             ...parent::share($request),
             'name' => config('app.name'),
@@ -81,6 +117,7 @@ class HandleInertiaRequests extends Middleware
                 'success' => $request->session()->get('success'),
                 'error' => $request->session()->get('error'),
             ],
+            'seo' => $seoData,
         ];
     }
 }

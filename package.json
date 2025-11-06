@@ -4,7 +4,9 @@
     "scripts": {
         "build": "vite build",
         "build:ssr": "vite build && vite build --ssr",
+        "build:ssr:full": "node scripts/build-ssr.js",
         "build:optimized": "concurrently \"npm run optimize-images\" \"npm run update-image-references\" \"npm run build\"",
+        "test:seo": "node scripts/test-seo.js",
         "update-image-references": "node scripts/update-image-references.js",
         "optimize-images": "node scripts/optimize-images.js",
         "dev": "vite",
