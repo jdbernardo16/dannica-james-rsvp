@@ -22,8 +22,8 @@ const props = withDefaults(defineProps<Props>(), {
     author: 'James & Dannica',
     imageUrl: '/images/meta-image.png',
     url: 'https://www.jamesdannica.site/',
-    weddingDate: '2024-12-15',
-    weddingLocation: 'Manila, Philippines',
+    weddingDate: '2025-12-12',
+    weddingLocation: 'San Agustin Church & La Castellana, Manila, Philippines',
 });
 
 // Structured data for wedding event

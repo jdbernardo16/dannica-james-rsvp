@@ -3,6 +3,7 @@ import ImageGallery from '@/components/ImageGallery.vue';
 import NonResponsiveWrapper from '@/components/NonResponsiveWrapper.vue';
 import OptimizedImage from '@/components/OptimizedImage.vue';
 import WeddingInvitation from '@/components/wedding/home/WeddingInvitation.vue';
+import { Head } from '@inertiajs/vue3';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Bell, Car, Gift, Heart } from 'lucide-vue-next';
@@ -156,6 +157,37 @@ onMounted(() => {
 });
 </script>
 <template>
+    <Head title="James & Dannica">
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="James & Dannica" />
+        <meta
+            name="description"
+            content="Mark your calendars for our special day as we celebrate love and new beginnings. Two souls with but a single thought, two hearts that beat as one. Villaluz - Tejada Nuptial"
+        />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.jamesdannica.site/" />
+        <meta property="og:title" content="James & Dannica" />
+        <meta
+            property="og:description"
+            content="Mark your calendars for our special day as we celebrate love and new beginnings. Two souls with but a single thought, two hearts that beat as one. Villaluz - Tejada Nuptial"
+        />
+        <meta property="og:image" content="/images/meta-image.png" />
+
+        <!-- X (Twitter) -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.jamesdannica.site/" />
+        <meta property="twitter:title" content="James & Dannica" />
+        <meta
+            property="twitter:description"
+            content="Mark your calendars for our special day as we celebrate love and new beginnings. Two souls with but a single thought, two hearts that beat as one. Villaluz - Tejada Nuptial"
+        />
+        <meta property="twitter:image" content="/images/meta-image.png" />
+
+        <!-- Meta Tags Generated with https://metatags.io -->
+        <link rel="canonical" href="https://www.jamesdannica.site/" />
+    </Head>
     <NonResponsiveWrapper>
         <section
             class="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat"

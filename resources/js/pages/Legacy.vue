@@ -13,7 +13,14 @@ import VideoSection from '@/components/wedding/home/VideoSection.vue';
 import WeddingLayout from '@/layouts/WeddingLayout.vue';
 </script>
 <template>
-    <WeddingLayout>
+    <WeddingLayout
+        title="James & Dannica"
+        description="Mark your calendars for our special day as we celebrate love and new beginnings. Two souls with but a single thought, two hearts that beat as one. Villaluz - Tejada Nuptial"
+        keywords="wedding, James, Dannica, Villaluz, Tejada, marriage, celebration, RSVP, wedding ceremony, wedding reception, love story, wedding vows, nuptial"
+        wedding-date="2025-12-12T15:00:00+08:00"
+        wedding-location="San Agustin Church & La Castellana, Manila, Philippines"
+        image-url="/images/meta-image.png"
+    >
         <HeroSection />
 
         <SaveTheDate />

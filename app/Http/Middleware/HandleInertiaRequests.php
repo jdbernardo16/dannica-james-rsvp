@@ -29,6 +29,22 @@ class HandleInertiaRequests extends Middleware
             return 'wedding';
         }
 
+        if ($request->route()->named('home.mobile')) {
+            return 'wedding';
+        }
+
+        if ($request->route()->named('legacy')) {
+            return 'wedding';
+        }
+
+        if ($request->route()->named('rsvp.create')) {
+            return 'wedding';
+        }
+
+        if ($request->route()->named('rsvp.confirmation')) {
+            return 'wedding';
+        }
+
         return 'app';
     }
 
