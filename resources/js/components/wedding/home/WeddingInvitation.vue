@@ -39,7 +39,7 @@ const props = defineProps<Props>();
                     </p>
                 </div>
                 <p class="animateUp mb-10 text-3xl uppercase">
-                    Saturday, <strong>December 12, 2025</strong>
+                    Friday, <strong>December 12, 2025</strong>
                 </p>
                 <CountdownTimer class="animateUp" :target-date="weddingDate" />
             </div>
